@@ -1,0 +1,22 @@
+{
+  "name": "secondchance",
+  "version": "1.0.0",
+  "description": "Second Hand",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "crypt": "0.0.2",
+    "express": "^4.16.4",
+    "path": "^0.12.7",
+    "uuid": "^3.3.2",
+    "validator": "^10.9.0"
+  }
+}
