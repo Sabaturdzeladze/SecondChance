@@ -2,11 +2,12 @@ module.exports = class User {
   constructor(body, id) {
     this.id = id;
     this.cart = [];
-    this.name = body.name;
-    this.lastname = body.lastname;
+    this.messages = [];
+    this.boughtItems = [];
+    this.birthday = body.birthday;
+    this.username = body.username;
     this.email = body.email;
     this.password = body.password;
-    this.country = body.country;
-    this.address = body.address;
+    this.balance = body.balance;
   }
 };
