@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const crypto = require("crypto");
+const CryptoJS = require("crypto-js");
 const fs = require("fs");
 const uuidv4 = require("uuid/v4"); // creating random id
 
@@ -20,6 +21,7 @@ const User = require("../../modules/user");
 
 // requiring validation
 const validateRegisterInput = require("../../validation/register.js");
+const validateLoginInput = require("../../validation/login.js");
 
 router.get("/test", (req, res) => res.json({ msg: "Users endpoint Works" }));
 
@@ -122,6 +124,41 @@ router.put("/:id", (req, res) => {
 
   const { name, lastname, email, country, address } = user;
   res.json({ name, lastname, email, country, address, id });
+});
+
+// PATH @/api/users/login
+router.post("/login", (req, res) => {
+  const { errors, isValid } = validateLoginInput(req.body);
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  let { email, password } = req.body;
+  password = encrypt(password);
+
+  let users = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
+  );
+
+  const user = users.find(
+    user => user.email === email && user.password === password
+  );
+
+  if (!user) {
+    errors.password = "Password Incorrect";
+    return res.status(400).json(errors);
+  } else {
+    let userData = {
+      id: user.id,
+      name: user.name,
+      country: user.country,
+      address: user.address,
+      cart: user.cart,
+      lastname: user.lastname
+    };
+
+    return res.json(userData)
+  }
 });
 
 module.exports = router;
