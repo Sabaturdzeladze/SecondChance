@@ -1,0 +1,61 @@
+[
+    {
+        "id": "0",
+        "category": "t-shirt",
+        "price": "5",
+        "size": "M",
+        "gender": "women",
+        "color": "red"
+    },
+    {
+        "id": "1",
+        "category": "t-shirt",
+        "price": "7",
+        "size": "L",
+        "gender": "men",
+        "color": "black"
+
+    },
+    {
+        "id": "3",
+        "category": "hoodie",
+        "price": "20",
+        "size": "M",
+        "gender": "men",
+        "color": "red"
+
+    },
+    {
+        "id": "4",
+        "category": "hoodie",
+        "price": "20",
+        "size": "S",
+        "gender": "women",
+        "color": "black"
+
+    },
+    {
+        "id": "5",
+        "category": "pants",
+        "price": "25",
+        "gender": "men",
+        "size": "L",
+        "color": "red"
+    },
+    {
+        "id": "6",
+        "category": "pants",
+        "price": "15",
+        "gender": "women",
+        "size": "S",
+        "color": "red"
+    },
+    {
+        "id": "7",
+        "category": "hoodie",
+        "price": "15",
+        "size": "L",
+        "gender": "women",
+        "color": "black"
+    }
+]
