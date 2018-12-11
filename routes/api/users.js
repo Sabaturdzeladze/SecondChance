@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const crypto = require("crypto");
-const CryptoJS = require("crypto-js");
 const fs = require("fs");
 const uuidv4 = require("uuid/v4"); // creating random id
 
@@ -35,7 +34,7 @@ router.post("/register", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  const { email } = req.body;
+  const { email, username } = req.body;
   // console.log(process.cwd());
 
   let users = JSON.parse(
@@ -43,8 +42,11 @@ router.post("/register", (req, res) => {
   );
   req.body.password = encrypt(req.body.password);
   // Checking if the user with the provided email exists
-  if (users.filter(user => user.email === email).length > 0) {
-    errors.email = "User with this email already exists";
+  if (
+    users.filter(user => user.email === email).length > 0 ||
+    users.filter(user => user.username === username).length > 0
+  ) {
+    errors.email = "User with this email or Username already exists";
     return res.status(400).json(errors);
   } else {
     // didn't find the user with provided email
@@ -73,32 +75,9 @@ router.get("/:id", (req, res) => {
     return res.status(404).json({ msg: "User not found" });
   }
   // destructing the user to get the needed data to return as a json object
-  const { name, lastname, email, country, address, cart } = user;
+  const { username, email, cart, balance, boughtItems, messages } = user;
 
-  res.json({ name, lastname, email, country, address, cart, id });
-});
-
-// PATH @/api/users/:id
-router.delete("/:id", (req, res) => {
-  let id = req.params.id;
-  let users = JSON.parse(
-    fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
-  );
-
-  const user = users.find(user => user.id === id);
-  if (!user) {
-    return res.status(404).json({ msg: "User not found" });
-  }
-
-  // finding user index and deleting from array
-  const index = users.indexOf(user);
-  users.splice(index, 1);
-  users = JSON.stringify(users);
-
-  fs.writeFileSync(path.join(__dirname, "../../db") + "/users.json", users);
-
-  const { name, lastname, email, country, address, cart } = user;
-  res.json({ name, lastname, email, country, address, cart, id });
+  res.json({ username, email, cart, balance, boughtItems, messages, id });
 });
 
 // PATH @/api/users/:id
@@ -113,17 +92,18 @@ router.put("/:id", (req, res) => {
     return res.status(404).json({ msg: "User not found" });
   }
 
-  if (req.body.name) user.name = req.body.name;
-  if (req.body.lastname) user.lastname = req.body.lastname;
+  if (req.body.username) user.username = req.body.username;
+  if (req.body.birthday) user.birthday = req.body.birthday;
+  if (req.body.balance) user.balance = req.body.balance;
   if (req.body.email) user.email = req.body.email;
-  if (req.body.country) user.country = req.body.country;
-  if (req.body.address) user.address = req.body.address;
+
   users = JSON.stringify(users);
 
   fs.writeFileSync(path.join(__dirname, "../../db") + "/users.json", users);
 
-  const { name, lastname, email, country, address } = user;
-  res.json({ name, lastname, email, country, address, id });
+  const { username, email, balance, birthday } = user;
+
+  res.json({ username, email, balance, birthday, id });
 });
 
 // PATH @/api/users/login
@@ -145,19 +125,13 @@ router.post("/login", (req, res) => {
   );
 
   if (!user) {
-    errors.password = "Password Incorrect";
+    errors.password = "Password or Email Incorrect";
     return res.status(400).json(errors);
   } else {
-    let userData = {
-      id: user.id,
-      name: user.name,
-      country: user.country,
-      address: user.address,
-      cart: user.cart,
-      lastname: user.lastname
-    };
+    const { username, email, cart, balance, boughtItems, messages, id } = user;
+    res.json({ username, email, cart, balance, boughtItems, messages, id });
 
-    return res.json(userData)
+    return res.json({ username, email, cart, balance, boughtItems, messages });
   }
 });
 

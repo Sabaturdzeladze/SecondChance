@@ -3,9 +3,12 @@ const bodyParser  = require('body-parser');
 const cors        = require('cors');
 const fs          = require('fs');    // file writing
 
-const app = express();
+const app         = express();
 
 const users       = require('./routes/api/users');
+// const admin       = require('./routes/api/admin');
+// const cart        = require('./routes/api/cart');
+// const clothes     = require('./routes/api/clothes');
 
 // to use post methods         (req.body to work)
 // Body parser middleware
@@ -13,19 +16,14 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  let users = JSON.parse(fs.readFileSync('./db/users.json'));
-  users.push({name: 'borisi'});
-  console.log(users)
-  users = JSON.stringify(users);
-  fs.writeFile('./db/users.json', users, (err) => {
-    if (err) throw err;
-    console.log(`Saved!`);
-  })
-  res.json(users);
+  res.json({ loaded: true });
 });
 
 // Use Routes
 app.use('/api/users', users);          // connecting endpoints of users.js to /api/users   ex: /api/users/test
+// app.use('/api/admin', admin);              // nino
+// app.use('/api/admin/clothes', clothes);    // gota
+// app.use('/api/users/:id/cart', cart);      // boria
 
 const port = process.env.PORT || 5000;
 
