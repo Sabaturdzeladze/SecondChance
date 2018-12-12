@@ -3,18 +3,42 @@ const router = express.Router();
 const path = require("path");
 const fs = require("fs");
 const uuidv4 = require("uuid/v4"); // creating random id
+const multer = require('multer')
+
+const storage = multer.diskStorage({  // setting storage engine with multer
+  destination: function (req, file, cb) {
+    cb(null, './uploads/'); // destination
+  },
+  filename: function (req, file, cb) { // setting filename
+    cb(null, `${new Date().getDate()}-${new Date().getMonth() + 1}-${new Date().getFullYear()} - ${file.originalname}`);
+  }
+})
+
+const fileFilter = (req, file, cb) => { // filter file by mimetype
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true)
+  } else { // reject a file
+    cb(null, false)
+  }
+}
+
+const upload = multer({ 
+  storage,
+  fileFilter,
+  limits: { fileSize: 1024 * 1024 * 2 } // limit filesize to 2MB
+}).array('images')
 
 const Product = require("../../modules/products");
 
 // adding new products
 // PATH @/api/admin/products/addnew
-router.post("/addnew", (req, res) => {
-
+router.post("/addnew", upload, (req, res) => {
+  console.log(req.files)
   let products = JSON.parse(
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
   );
 
-  const product = new Product(req.body, uuidv4());
+  const product = new Product(req.body, req.files, uuidv4());
   // modifying products array and writing it to products.json file
   products.unshift(product);
   products = JSON.stringify(products);
@@ -39,9 +63,9 @@ router.get("/:id", (req, res) => {
     return res.status(404).json({ msg: "Product not found" });
   }
   // destructing the product to get the needed data to return as a json object
-  const { images, category, subCategory, brand, size, color, price, priceSale, desc, condition } = product;
+  const { gender, images, category, subCategory, brand, size, color, price, priceSale, desc, condition } = product;
 
-  res.json({ images, category, subCategory, brand, size, color, price, priceSale, desc, condition, id });
+  res.json({ gender, images, category, subCategory, brand, size, color, price, priceSale, desc, condition, id });
 });
 
 // deleting products by id
@@ -65,23 +89,26 @@ router.delete("/:id", (req, res) => {
 
   fs.writeFileSync(path.join(__dirname, "../../db") + "/products.json", products);
 
-  const { images, category, subCategory, brand, size, color, price, priceSale, desc, condition } = product;
-  res.json({ images, category, subCategory, brand, size, color, price, priceSale, desc, condition, id });
+  const { gender, images, category, subCategory, brand, size, color, price, priceSale, desc, condition } = product;
+  res.json({ gender, images, category, subCategory, brand, size, color, price, priceSale, desc, condition, id });
 });
 
 // editing products by id
 // PATH @/api/admin/products/:id
-router.put("/:id", (req, res) => {
+router.put("/:id", upload, (req, res) => {
   let id = req.params.id;
   let products = JSON.parse(
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
   );
 
   let product = products.find(product => product.id === id);
+  console.log(product)
   if (!product) {
     return res.status(404).json({ msg: "Product not found" });
   }
-  if (req.body.images) product.images = req.body.images;
+
+  if (req.body.gender) product.gender = req.body.gender;
+  if (req.files) product.images = req.files;
   if (req.body.category) product.category = req.body.category;
   if (req.body.category) product.subCategory = req.body.subCategory;
   if (req.body.brand) product.brand = req.body.brand;
@@ -93,15 +120,15 @@ router.put("/:id", (req, res) => {
   if (req.body.condition) product.condition = req.body.condition;
 
   products = JSON.stringify(products);
-
+  console.log(upload)
   fs.writeFileSync(path.join(__dirname, "../../db") + "/products.json", products);
 
-  const { images, category, subCategory, brand, size, color, price, priceSale, desc, condition } = product;
-  res.json({ images, category, subCategory, brand, size, color, price, priceSale, desc, condition, id });
+  const { gender, images, category, subCategory, brand, size, color, price, priceSale, desc, condition } = product;
+  res.json({ gender, images, category, subCategory, brand, size, color, price, priceSale, desc, condition, id });
 });
 
 // Searching products by parameters
-// PATH @/api/products/admin/search/all
+// PATH @/api/admin/products/search/all
 router.get("/search/all", (req, res) => {
   const products = JSON.parse(
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
@@ -120,7 +147,7 @@ router.get("/search/all", (req, res) => {
 
   if (req.query.category) {
     foundProducts = foundProducts.filter(product => product.category === req.query.category);
-    
+
     if (foundProducts.lenght === 0) {
       return res.status(404).json({ msg: "Product not found" });
     }
@@ -128,7 +155,7 @@ router.get("/search/all", (req, res) => {
 
   if (req.query.size) {
     foundProducts = foundProducts.filter(product => product.size === req.query.size);
-    
+
     if (foundProducts.lenght === 0) {
       return res.status(404).json({ msg: "Product not found" });
     }
@@ -136,7 +163,7 @@ router.get("/search/all", (req, res) => {
 
   if (req.query.color) {
     foundProducts = foundProducts.filter(product => product.color === req.query.color);
-    
+
     if (foundProducts.lenght === 0) {
       return res.status(404).json({ msg: "Product not found" });
     }
@@ -144,7 +171,7 @@ router.get("/search/all", (req, res) => {
 
   if (req.query.condition) {
     foundProducts = foundProducts.filter(product => product.condition === req.query.condition);
-    
+
     if (foundProducts.lenght === 0) {
       return res.status(404).json({ msg: "Product not found" });
     }

@@ -1,8 +1,8 @@
 module.exports = class Product {
-    constructor(body, id) {
+    constructor(body, images, id) {
       this.id = id;
       this.gender = body.gender;
-      this.images = body.images; // ეს გასარკვევია multer-ზე როგორ მუშაობს
+      this.images = images; // images comes from multer
       this.category = body.category;
       this.subCategory = this.subCategory;
       this.brand = body.brand;
