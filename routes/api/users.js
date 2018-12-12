@@ -17,7 +17,6 @@ const encrypt = data => {
 };
 
 const User = require("../../modules/user");
-const Message = require("../../modules/message");
 
 // requiring validation
 const validateRegisterInput = require("../../validation/register.js");
@@ -60,46 +59,7 @@ router.post("/register", (req, res) => {
   }
 });
 
-router.post("/contact/:id", (req, res) => {
-  let id = req.params.id;
-  const text = req.body.text;
-  let messages = JSON.parse(
-    fs.readFileSync(path.join(__dirname, "../../db") + "/messages.json")
-  )
-  const message = new Message(req.body, id);
-  // attach new message 
-  messages.push(message);
-  messages = JSON.stringify(messages);
-    fs.writeFileSync(path.join(__dirname, "../../db") + "/messages.json", messages);
-    // writing new messages with user Id in message database
-    return res.json(message);
-});
-
-router.get("/contact/:id", (req, res) => {
-  let id = req.params.id;
-  let messages = JSON.parse(
-    fs.readFileSync(path.join(__dirname, "../../db") + "/messages.json")
-  )
-  const message = messages.find(message => message.id === id);
-  if (!message.answer) {
-    return res.status(404).json({ msg: "Message Answer with this Id not found" });
-  }
-// checking if user got any answers for his/her previous questions
-    return res.json(message.answer);
-});
-
-
-// PATH @/api/users/all
-router.get("/all", (req, res) => {
-  // taking the array of users from our json file
-  const users = JSON.parse(
-    fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
-  );
-
-  res.json({ users }); 
-  // getting all the members of users array
-});
-
+// PATH @/api/users/:id
 router.get("/:id", (req, res) => {
   // taking the id provided in url  (ex: /api/users/aojsnecpjn102enq2389hqnd)
   let id = req.params.id;
@@ -115,9 +75,37 @@ router.get("/:id", (req, res) => {
     return res.status(404).json({ msg: "User not found" });
   }
   // destructing the user to get the needed data to return as a json object
-  const { username, email, cart, balance, boughtItems, messages } = user;
+  const {
+    username,
+    email,
+    cart,
+    balance,
+    boughtItems,
+    messages,
+    isAdmin
+  } = user;
 
-  res.json({ username, email, cart, balance, boughtItems, messages, id });
+  res.json({
+    username,
+    email,
+    cart,
+    balance,
+    boughtItems,
+    messages,
+    id,
+    isAdmin
+  });
+});
+
+// PATH @/api/users/all
+router.get("/all", (req, res) => {
+  // taking the array of users from our json file
+  const users = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
+  );
+
+  res.json(users);
+  // getting all the members of users array
 });
 
 // PATH @/api/users/:id
@@ -163,28 +151,33 @@ router.post("/login", (req, res) => {
   const user = users.find(
     user => user.email === email && user.password === password
   );
-  const admin = users.find( // find Admin member in users array
-    user => user.isAdmin === true
-  );
 
   if (!user) {
     errors.password = "Password or Email Incorrect";
     return res.status(400).json(errors);
   } else {
-    if (user.username === admin.username) { 
-      // if Admin has logged in
-      const { username, email, cart, balance, boughtItems, messages, id } = admin;
-      return res.json({ username, id, email, messages })
-      // seeing different properties if user is admin
-    }
-    else {
-      const { username, email, cart, balance, boughtItems, messages, id } = user;
-      res.json({ username, email, cart, balance, boughtItems, messages, id });
+    const {
+      username,
+      email,
+      cart,
+      balance,
+      boughtItems,
+      messages,
+      id,
+      isAdmin
+    } = user;
+    res.json({
+      username,
+      email,
+      cart,
+      balance,
+      boughtItems,
+      messages,
+      id,
+      isAdmin
+    });
 
-      return res.json({ username, email, cart, balance, boughtItems, messages });
-      // ordinary user
-    }
-
+    return res.json({ username, email, cart, balance, boughtItems, messages });
   }
 });
 

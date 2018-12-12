@@ -1,11 +1,10 @@
 [
-    {
-        "id": "5e46c426-684a-4eb7-8413-0fff6e6e73a3",
-        "username": "Admin",
-        "lastname": "Adminy",
-        "email": "Admin@gmail.com",
-        "password": "130255eeabd30572966180ca6ca3daca953b4e1e33cda9233f9a9b935c2a7361",
-        "birthday": "10.01.1985",
-        "isAdmin": true
-    }
+  {
+    "id": "cc1c9786-4478-4dfb-92a8-548b47232517",
+    "conversation": [],
+    "username": "Admin",
+    "email": "admin@gmail.com",
+    "password": "41f415465473651590ca5211104615ef574837afb129b920c69ddc7865d7ca94",
+    "isAdmin": true
+  }
 ]
