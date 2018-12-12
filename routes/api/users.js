@@ -68,6 +68,10 @@ router.get("/:id", (req, res) => {
     fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
   );
 
+  if (users[0].id === id) {
+    return res.json({ isAdmin: true });
+  }
+
   // searching the user in users array
   const user = users.find(user => user.id === id);
   // if NOT found
@@ -179,6 +183,60 @@ router.post("/login", (req, res) => {
 
     return res.json({ username, email, cart, balance, boughtItems, messages });
   }
+});
+
+// PATH @/api/users/contact/all
+router.get("/contact/all", (req, res) => {
+  let users = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
+  );
+
+  users = users.filter(user => user.conversation.length !== 0);
+
+  res.json(users);
+});
+
+// PATH @/api/users/contact/:id/message
+router.post("/contact/:id/message", (req, res) => {
+  const id = req.params.id;
+  let users = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
+  );
+
+  const user = users.find(user => user.id === id);
+
+  let message = {
+    text: req.body.message,
+    username: user.username,
+    date: new Date().getTime(),
+    id: uuidv4()
+  };
+
+  user.conversation.push(message);
+  users = JSON.stringify(users);
+  fs.writeFileSync(path.join(__dirname, "../../db") + "/users.json", users);
+
+  res.json(message);
+});
+
+// PATH @/api/users/contact/:id/message
+router.delete("/contact/:id/:message_id", (req, res) => {
+  const id = req.params.id;
+  const message_id = req.params.message_id;
+  let users = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
+  );
+
+  const user = users.find(user => user.id === id);
+  const index = user.conversation.findIndex(
+    message => message.id === message_id
+  );
+
+  user.conversation.splice(index, 1);
+  users = JSON.stringify(users);
+  fs.writeFileSync(path.join(__dirname, "../../db") + "/users.json", users);
+
+  res.json({ success: true });
 });
 
 module.exports = router;
