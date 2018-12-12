@@ -4,7 +4,7 @@ const path = require("path");
 const fs = require("fs");
 const uuidv4 = require("uuid/v4"); // creating random id
 
-const Product = require("../../modules/product");
+const Product = require("../../modules/products");
 
 // adding new products
 // PATH @/api/admin/products/addnew
