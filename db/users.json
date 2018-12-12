@@ -1,1 +1,11 @@
-[]
+[
+    {
+        "id": "5e46c426-684a-4eb7-8413-0fff6e6e73a3",
+        "username": "Admin",
+        "lastname": "Adminy",
+        "email": "Admin@gmail.com",
+        "password": "130255eeabd30572966180ca6ca3daca953b4e1e33cda9233f9a9b935c2a7361",
+        "birthday": "10.01.1985",
+        "isAdmin": true
+    }
+]
