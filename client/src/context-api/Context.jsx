@@ -7,7 +7,7 @@ export default class Provider extends Component {
     user: {},
     errors: {},
     products: {},
-    isLogged: true
+    isLogged: false
   };
 
   onChangeHandler = (change) => {

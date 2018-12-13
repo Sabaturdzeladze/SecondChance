@@ -1,78 +1,81 @@
 import React, { Component } from "react";
-// import history from '../common/history';
+import { Redirect } from "react-router-dom";
 import { Consumer } from "../../context-api/Context";
+import axios from "axios";
 
 export default class Login extends Component {
-    state = {
-        email: '',
-        password: '',
-        isLogged: false,
-        value: {}
-    }
+  state = {
+    email: "",
+    password: ""
+  };
 
-    changeLocalState = (value) => {
-        this.setState({ value });
-    }
+  onChangeHandler = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
-    onChangeHandler = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
-    }
+  onSubmitHandler = (e, change) => {
+    e.preventDefault();
 
-    onSubmitHandler = (e,change) => {
-        e.preventDefault();
+    const user = {email: this.state.email, password: this.state.password};
+    axios
+      .post('/api/users/login', user)
+      .then(res => change({user: res.data, isLogged: true}))
+      .catch(err => console.log(err))
+  };
 
-        console.log(change)
-    }
-    
   render() {
     return (
       <Consumer>
-          {
-            value => {
-                const {onStateChange} = value;
-                // this.changeLocalState(value);
-                return (
-                <div className="container">
-                <div className="card card-container">
-                  <p id="profile-name" className="profile-name-card" />
-                  <form className="form-signin" onSubmit={(e) => this.onSubmitHandler(e, onStateChange)}>
-                    <span id="reauth-email" className="reauth-email" />
-                    <input
-                      type="email"
-                      name="email"
-                      id="inputEmail"
-                      className="form-control"
-                      placeholder="Email address"
-                      required
-                      autoFocus
-                      onChange={this.onChangeHandler}
-                    />
-                    <input
-                      type="password"
-                      name="password"
-                      id="inputPassword"
-                      className="form-control"
-                      placeholder="Password"
-                      required
-                      onChange={this.onChangeHandler}
-                    />
-                    <div id="remember" className="checkbox">
-                      <label>
-                        <input type="checkbox" value="remember-me" /> Remember me
-                      </label>
-                    </div>
-                    <button
-                      className="btn btn-lg btn-primary btn-block btn-signin"
+        {value => {
+          const { onStateChange, isLogged } = value;
+          return isLogged ? (
+            <Redirect to="/" />
+          ) : (
+            <div className="container">
+              <div className="card card-container">
+                <p id="profile-name" className="profile-name-card" />
+                <form
+                  className="form-signin"
+                  onSubmit={e => this.onSubmitHandler(e, onStateChange)}
+                >
+                  <span id="reauth-email" className="reauth-email" />
+                  <input
+                    type="email"
+                    name="email"
+                    id="inputEmail"
+                    className="form-control"
+                    placeholder="Email address"
+                    required
+                    autoFocus
+                    value={this.state.email}
+                    onChange={this.onChangeHandler}
+                  />
+                  <input
+                    type="password"
+                    name="password"
+                    id="inputPassword"
+                    className="form-control"
+                    placeholder="Password"
+                    required
+                    value={this.state.password}
+                    onChange={this.onChangeHandler}
+                  />
+                  <div id="remember" className="checkbox">
+                    <label>
+                      <input type="checkbox" value="remember-me" /> Remember me
+                    </label>
+                  </div>
+                  <button
+                    className="btn btn-lg btn-primary btn-block btn-signin"
                     //   type="submit"
-                    >
-                      Sign in
-                    </button>
-                  </form>
-                </div>
+                  >
+                    Sign in
+                  </button>
+                </form>
               </div>
-              )
-            }
-          }
+            </div>
+          );
+        }}
       </Consumer>
     );
   }
