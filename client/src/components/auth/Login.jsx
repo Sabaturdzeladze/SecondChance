@@ -6,7 +6,8 @@ import axios from "axios";
 export default class Login extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    showError: true
   };
 
   onChangeHandler = e => {
@@ -16,11 +17,14 @@ export default class Login extends Component {
   onSubmitHandler = (e, change) => {
     e.preventDefault();
 
-    const user = {email: this.state.email, password: this.state.password};
+    const user = { email: this.state.email, password: this.state.password };
     axios
-      .post('/api/users/login', user)
-      .then(res => change({user: res.data, isLogged: true}))
-      .catch(err => console.log(err))
+      .post("/api/users/login", user)
+      .then(res => change({ user: res.data, isLogged: true }))
+      .catch(errors => {
+        console.log(errors)
+        this.setState({ showError: true })
+      });
   };
 
   render() {
@@ -67,10 +71,10 @@ export default class Login extends Component {
                   </div>
                   <button
                     className="btn btn-lg btn-primary btn-block btn-signin"
-                    //   type="submit"
                   >
                     Sign in
                   </button>
+                  {this.state.showError && <p className="invalid">User email or password is incorrect</p> }
                 </form>
               </div>
             </div>

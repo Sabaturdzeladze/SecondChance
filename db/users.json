@@ -1,11 +1,13 @@
-[{
+[
+  {
     "id": "cc1c9786-4478-4dfb-92a8-548b47232517",
     "conversation": [],
     "username": "Admin",
     "email": "admin@gmail.com",
     "password": "41f415465473651590ca5211104615ef574837afb129b920c69ddc7865d7ca94",
     "isAdmin": true
-}, {
+  },
+  {
     "id": "8db35455-d17a-4bef-a4f5-e7f48fba77b2",
     "cart": [],
     "conversation": [],
@@ -15,4 +17,5 @@
     "email": "saba@gmail.com",
     "password": "41f415465473651590ca5211104615ef574837afb129b920c69ddc7865d7ca94",
     "balance": "1000"
-}]
+  }
+]
