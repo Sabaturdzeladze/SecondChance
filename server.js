@@ -1,5 +1,6 @@
 const express     = require('express');
 const bodyParser  = require('body-parser');
+const cors        = require('cors');
 
 const app         = express();
 
@@ -8,6 +9,7 @@ const admin       = require('./routes/api/admin'); // Admin initialization
 const cart        = require('./routes/api/cart');
 const products     = require('./routes/api/products');
 
+app.use(cors('*'));
 // to use post methods         (req.body to work)
 // Body parser middleware
 app.use(bodyParser.urlencoded({extended: false}));
