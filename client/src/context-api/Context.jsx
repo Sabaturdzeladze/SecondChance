@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 
 const Context = React.createContext();
 
@@ -10,8 +11,12 @@ export default class Provider extends Component {
     isLogged: false
   };
 
-  onChangeHandler = (change) => {
+  onChangeHandler = change => {
     this.setState(change);
+  };
+
+  componentDidMount() {
+    axios.get("/api/products/search/all").then(res => this.setState({ products: res.data }));
   }
 
   render() {
