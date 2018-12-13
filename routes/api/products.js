@@ -134,11 +134,19 @@ router.get("/search/all", (req, res) => {
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
   )
 
-  let foundProducts = products
+  let foundProducts = products;
   // check if query is in url
   if (req.query.gender) {
     // filter array with query
     foundProducts = foundProducts.filter(product => product.gender === req.query.gender);
+
+    if (foundProducts.lenght === 0) {
+      return res.status(404).json({ msg: "Product not found" });
+    }
+  }
+
+  if (req.query.subCategory) {
+    foundProducts = foundProducts.filter(product => product.subCategory === req.query.subCategory);
 
     if (foundProducts.lenght === 0) {
       return res.status(404).json({ msg: "Product not found" });
@@ -180,7 +188,8 @@ router.get("/search/all", (req, res) => {
   if (foundProducts.length === 0) {
     return res.status(404).json({ msg: "Product not found" });
   } else {
-    res.json(foundProducts);
+    console.log(foundProducts)
+    return res.json(foundProducts);
   }
 
 })

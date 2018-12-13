@@ -1,7 +1,5 @@
 const express     = require('express');
 const bodyParser  = require('body-parser');
-const cors        = require('cors');
-const fs          = require('fs');    // file writing
 
 const app         = express();
 
@@ -22,7 +20,7 @@ app.get('/', (req, res) => {
 // Use Routes
 app.use('/api/users', users);          // connecting endpoints of users.js to /api/users   ex: /api/users/test
 app.use('/api/admin', admin);              // nino
-app.use('/api/admin/products', products);    // gota
+app.use('/api/products', products);    // gota
 app.use('/api/users', cart);      // boria
 
 const port = process.env.PORT || 5000;
