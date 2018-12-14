@@ -84,6 +84,7 @@ a:hover {
   width: 100%;
   font-family: "Lobster", cursive;
   font-size: 3rem;
+  user-select: none;
 }
 
 @media screen and (max-width:700px) {
@@ -390,8 +391,8 @@ textarea {
   font-weight: bold;
 }
 
-/* ეს არ წაშალოთ
-  .navbar-nav li:hover .dropdown-menu {  
+/* ეს არ წაშალოთ */
+  /* .navbar-nav li:hover .dropdown-menu {  
   display: block;
 } */
 
@@ -430,7 +431,25 @@ form {
 .register-button {
   width: 120px;
   padding: 5px 10px;
+  margin: auto;
   margin-top: 25px;
+}
+
+.login-button {
+  padding: 7px 27px;
+}
+
+.login-form {
+  width: 350px;
+  margin: auto;
+}
+
+.form-signin {
+  width: 250px;
+}
+
+.login-form .form-control {
+  margin-bottom: 10px;
 }
 
 /* Products display styles */

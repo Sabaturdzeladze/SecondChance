@@ -51,7 +51,7 @@ export default class Register extends Component {
             <Redirect to="/" />
           ) : (
             <>
-              <h2 className="form-header">Register</h2>
+              <h2 className="form-header">Register New Account</h2>
 
               <form
                 onSubmit={this.onSubmitHandler}
@@ -200,7 +200,7 @@ export default class Register extends Component {
                 <div className="col-md-12 text-center">
                   <button
                     type="submit"
-                    className="btn btn-primary register-button"
+                    className="btn-lg btn-primary register-button"
                   >
                     Register
                   </button>
