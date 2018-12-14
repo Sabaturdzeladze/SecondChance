@@ -33,7 +33,7 @@ const Product = require("../../modules/products");
 // adding new products
 // PATH @/api/admin/products/addnew
 router.post("/addnew", upload, (req, res) => {
-  console.log(req.files)
+  // console.log(req.files)
   let products = JSON.parse(
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
   );
@@ -102,7 +102,7 @@ router.put("/:id", upload, (req, res) => {
   );
 
   let product = products.find(product => product.id === id);
-  console.log(product)
+  // console.log(product)
   if (!product) {
     return res.status(404).json({ msg: "Product not found" });
   }
@@ -188,7 +188,6 @@ router.get("/search/all", (req, res) => {
   if (foundProducts.length === 0) {
     return res.status(404).json({ msg: "Product not found" });
   } else {
-    console.log(foundProducts)
     return res.json(foundProducts);
   }
 

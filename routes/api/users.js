@@ -170,7 +170,7 @@ router.post("/login", (req, res) => {
       id,
       isAdmin
     } = user;
-    res.json({
+      return res.json({
       username,
       email,
       cart,
@@ -181,7 +181,7 @@ router.post("/login", (req, res) => {
       isAdmin
     });
 
-    return res.json({ username, email, cart, balance, boughtItems, messages });
+    // return res.json({ username, email, cart, balance, boughtItems, messages });
   }
 });
 
