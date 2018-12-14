@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Consumer } from "../../../context-api/Context";
 
 const Account = props => {
-  // console.log(!props.loggedIn)
   return !props.value.isLogged ? (
     <>
       <Link to="/login">Log in</Link>
@@ -324,22 +323,22 @@ class Header extends Component {
                       className="dropdown-menu"
                       aria-labelledby="navbarDropdownMenuLink"
                     >
-                      <Link className="dropdown-item" to="/">
+                      <Link className="dropdown-item" to="/products/search?subCategory=hats">
                         Hats
                       </Link>
-                      <Link className="dropdown-item" to="/">
+                      <Link className="dropdown-item" to="/products/search?subCategory=belts">
                         Belts
                       </Link>
-                      <Link className="dropdown-item" to="/">
+                      <Link className="dropdown-item" to="/products/search?subCategory=sunglasses">
                         Sunglasses
                       </Link>
-                      <Link className="dropdown-item" to="/">
+                      <Link className="dropdown-item" to="/products/search?subCategory=watches">
                         Watches
                       </Link>
-                      <Link className="dropdown-item" to="/">
+                      <Link className="dropdown-item" to="/products/search?subCategory=jewelry">
                         Jewelry
                       </Link>
-                      <Link className="dropdown-item" to="/">
+                      <Link className="dropdown-item" to="/products/search?subCategory=wallets">
                         Wallets
                       </Link>
                     </div>
@@ -360,19 +359,19 @@ class Header extends Component {
                       className="dropdown-menu"
                       aria-labelledby="navbarDropdownMenuLink"
                     >
-                      <Link className="dropdown-item" to="/">
+                      <Link className="dropdown-item" to="/products/search?subCategory=wallets">
                         Handbags
                       </Link>
-                      <Link className="dropdown-item" to="/">
+                      <Link className="dropdown-item" to="/products/search?subCategory=backpacks">
                         Backpacks
                       </Link>
-                      <Link className="dropdown-item" to="/">
+                      <Link className="dropdown-item" to="/products/search?subCategory=luggage">
                         Luggage
                       </Link>
                     </div>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/">
+                    <Link className="nav-link" to="/deals">
                       Deals & Sales
                     </Link>
                   </li>

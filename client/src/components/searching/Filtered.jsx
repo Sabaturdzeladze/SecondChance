@@ -7,6 +7,7 @@ class Filtered extends Component {
     array: [],
     url: ""
   };
+  
   componentDidMount() {
     const url = this.props.location.search;
     axios
