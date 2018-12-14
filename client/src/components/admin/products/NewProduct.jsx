@@ -238,21 +238,34 @@ export default class NewProduct extends Component {
           </div>
 
           <div className="form-row">
-            <label htmlFor="customFile">Product Images</label>
+            {/* <label htmlFor="customFile">Product Images</label> */}
 
-            <div className="custom-file col-md-12">
-              <input
+            {/* <div className="custom-file col-md-12"> */}
+              {/* <input
                 required
                 type="file"
                 className="custom-file-input"
                 id="customFile"
                 name="images"
+                multiple
                 onChange={this.onFileUpload}
               />
               <label className="custom-file-label" htmlFor="customFile">
                 Choose 4 photos
-              </label>
-            </div>
+              </label> */}
+              <input
+                style={{display: 'none'}}
+                required
+                type="file"
+                className="custom-file-input"
+                id="customFile"
+                name="images"
+                multiple
+                onChange={this.onFileUpload}
+                ref={fileInput => this.fileInput = fileInput}
+              />
+              <button className="btn" onClick={() => this.fileInput.click()}>Choose 4 Photos to Upload</button>
+            {/* </div> */}
           </div>
           <button type="submit" className="btn btn-primary">
             Add
