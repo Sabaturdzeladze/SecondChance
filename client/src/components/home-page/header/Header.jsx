@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { Consumer } from "../../../context-api/Context";
 
 const Account = props => {
-  let { isAdmin } = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem('user'));
+  let isAdmin = user ? user.isAdmin : false;
   return !props.value.isLogged ? (
     <>
       <Link to="/login">Log in</Link>
