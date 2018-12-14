@@ -1,1 +1,66 @@
-[{"gender": "men", "category": "clothing", "subCategory": "polos"}, {"gender": "men", "category": "clothing", "subCategory": "shirts"}]
+[
+  { "gender": "men", "category": "clothing", "subCategory": "polos" },
+  { "gender": "men", "category": "clothing", "subCategory": "shirts" },
+  { "gender": "men", "category": "clothing", "subCategory": "coats_outwears" },
+  {
+    "gender": "men",
+    "category": "clothing",
+    "subCategory": "sweaters_hoodies"
+  },
+  { "gender": "men", "category": "clothing", "subCategory": "shirts" },
+  { "gender": "men", "category": "clothing", "subCategory": "Tshirts_tops" },
+  { "gender": "men", "category": "clothing", "subCategory": "jeans" },
+  { "gender": "men", "category": "clothing", "subCategory": "pants" },
+  { "gender": "men", "category": "clothing", "subCategory": "joggers_shorts" },
+  { "gender": "men", "category": "clothing", "subCategory": "winter_pants" },
+  { "gender": "men", "category": "clothing", "subCategory": "winter_jacket" },
+  {
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "dresses_skirts"
+  },
+  {
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "coats_outwears"
+  },
+  {
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "sweaters_hoodies"
+  },
+  { "gender": "women", "category": "clothing", "subCategory": "shirts" },
+  { "gender": "women", "category": "clothing", "subCategory": "Tshirts_tops" },
+  { "gender": "women", "category": "clothing", "subCategory": "jeans" },
+  {
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "dresses_skirts"
+  },
+  { "gender": "women", "category": "clothing", "subCategory": "pants" },
+  {
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "joggers_shorts"
+  },
+  { "gender": "women", "category": "clothing", "subCategory": "winter_pants" },
+  { "gender": "women", "category": "clothing", "subCategory": "winter_jacket" },
+  {
+    "gender": "men",
+    "category": "clothing",
+    "subCategory": "sneakers_athletics"
+  },
+  { "gender": "men", "category": "clothing", "subCategory": "boots" },
+  { "gender": "men", "category": "clothing", "subCategory": "sandals" },
+  { "gender": "men", "category": "clothing", "subCategory": "flats" },
+  { "gender": "men", "category": "clothing", "subCategory": "heels" },
+  {
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "sneakers_athletics"
+  },
+  { "gender": "women", "category": "clothing", "subCategory": "boots" },
+  { "gender": "women", "category": "clothing", "subCategory": "sandals" },
+  { "gender": "women", "category": "clothing", "subCategory": "oxfords" },
+  { "gender": "women", "category": "clothing", "subCategory": "loafers" }
+]
