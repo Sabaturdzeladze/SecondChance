@@ -3,7 +3,8 @@ import axios from "axios";
 
 class Filtered extends Component {
   state = {
-    array: []
+    array: [],
+    url: ""
   };
   componentDidMount() {
     const url = this.props.location.search;
@@ -11,7 +12,7 @@ class Filtered extends Component {
       .get(`http://localhost:5000/api/products/search/all${url}`)
       .then(res => {
         console.log(res.data);
-        this.setState({ array: res.data });
+        this.setState({ array: res.data, url });
       })
       .catch(err => console.log(err));
   }
@@ -19,10 +20,15 @@ class Filtered extends Component {
   componentDidUpdate() {
     const url = this.props.location.search;
 
-    axios
-      .get(`http://localhost:5000/api/products/search/all${url}`)
-      .then(res => console.log(`update`))
-      .catch(err => console.log(err));
+    if (this.state.url !== url) {
+      axios
+        .get(`http://localhost:5000/api/products/search/all${url}`)
+        .then(res => {
+          console.log(res.data);
+          this.setState({ array: res.data, url });
+        })
+        .catch(err => console.log(err));
+    }
   }
 
   render() {
