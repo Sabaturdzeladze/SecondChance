@@ -10,7 +10,7 @@
   flex: 1;
   display: flex;
 }
-.logo-image {
+.header-heading {
   width: 350px;
   margin: auto;
 }
@@ -68,6 +68,10 @@ a:hover {
   border: 1px solid rgba(211, 211, 211, 0.432);
 }
 
+.headerTop--account-cart__items a {
+  margin: 0 10px;
+}
+
 /* edited logo */
 .headerTop--logo {
   justify-content: center;
@@ -79,6 +83,52 @@ a:hover {
   text-align: center;
   width: 100%;
   font-family: "Lobster", cursive;
+  font-size: 3rem;
+}
+
+@media screen and (max-width:700px) {
+  .headerTop {
+    flex-direction: column;
+    height: 150px;
+  }
+
+.headerTop--logo {
+  order: 1;
+  margin: 30px;
+}
+
+.headerTop--search,
+.headerTop--account-cart {
+  order:2;
+  width: 100%;
+}
+
+.headerTop--account-cart__items {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.headerTop--search form {
+  margin: auto;
+  width: 50%;
+}
+
+.headerTop--search form input {
+  width: 85%;
+}
+
+.headerTop--search form button {
+  width: 15%;
+}
+
+.navbar {
+  margin-top: 15px;
+}
+
+.header-heading {
+  font-size: 2.5rem;
+}
+
 }
 
 /* Main */
@@ -348,6 +398,20 @@ textarea {
 .dropdown-menu {
   background: #f1f1f1;
 }
+
+.dropdown-item:focus,
+.dropdown-item:hover,
+.dropdown-item:active {
+  background: none;
+  color: black;
+}
+
+@media screen and (max-width:380px) {
+  .dropdown-menu--flexed {
+    flex-direction: column;
+    width: 100%;
+  }
+  }
 
 /* Form Style */
 

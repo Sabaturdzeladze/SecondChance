@@ -53,7 +53,6 @@ class Header extends Component {
                 </form>
               </div>
               <div className="headerTop--logo">
-                {/* <img src="./logo.jpg" alt="" className="logo-image" /> */}
                 <h1 className="header-heading">Second Chance</h1>
               </div>
               <div className="headerTop--account-cart">
@@ -63,7 +62,7 @@ class Header extends Component {
               </div>
             </div>
 
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-md navbar-light bg-light">
               <button
                 className="navbar-toggler"
                 type="button"
@@ -489,7 +488,12 @@ class Header extends Component {
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link" to="/deals">
-                      Deals & Sales
+                      Sale
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/deals">
+                      Newest
                     </Link>
                   </li>
                 </ul>
