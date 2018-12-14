@@ -7,6 +7,8 @@ import Register from "./components/auth/Register";
 import Admin from "./components/admin/Admin";
 import Header from "./components/home-page/header/Header";
 import Filtered from "./components/searching/Filtered";
+import ProductDetails from "./components/searching/ProductDetails";
+import NewProduct from "./components/admin/products/NewProduct";
 
 import "./App.css";
 
@@ -18,10 +20,12 @@ class App extends Component {
           <>
             <Header />
             <ProtectedRoute path="/admin" component={Admin} />
-
+            
+            <ProtectedRoute path="/admin/product/add" component={NewProduct} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/products/search" component={Filtered} />
+            <Route path="/products/item/:id" component={ProductDetails} />
           </>
         </Router>
       </Provider>

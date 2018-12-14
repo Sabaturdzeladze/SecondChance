@@ -1,5 +1,5 @@
 [
-  { "gender": "men", "category": "clothing", "subCategory": "polos" },
+  { "id": "23", "gender": "men", "brand": "Tom Tailor", "category": "clothing", "subCategory": "polos", "price": "10", "desc": "Tom Tailor polo in good condition blabla","color": "red", "condition": "Like New", "size": "L"},
   { "gender": "men", "category": "clothing", "subCategory": "shirts" },
   { "gender": "men", "category": "clothing", "subCategory": "coats_outwears" },
   {

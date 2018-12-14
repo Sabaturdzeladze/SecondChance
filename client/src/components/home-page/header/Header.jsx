@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Consumer } from "../../../context-api/Context";
 
 const Account = props => {
+  let { isAdmin } = JSON.parse(localStorage.getItem('user'));
   return !props.value.isLogged ? (
     <>
       <Link to="/login">Log in</Link>
@@ -14,11 +15,12 @@ const Account = props => {
         to="/"
         onClick={() => {
           props.value.onStateChange({ user: {}, isLogged: false });
+          localStorage.removeItem("user");
         }}
       >
         Log out
       </Link>
-      <Link to="/dashboard">My Account</Link>
+      <Link to={isAdmin ? `/admin` : `/dashboard`}>My Account</Link>
     </>
   );
 };
@@ -114,47 +116,74 @@ class Header extends Component {
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=men&subCategory=coats_outwears">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=men&subCategory=coats_outwears"
+                            >
                               Coats & Outerwears
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=men&subCategory=sweaters_hoodies">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=men&subCategory=sweaters_hoodies"
+                            >
                               Sweaters & Hoodies
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=men&subCategory=shirts">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=men&subCategory=shirts"
+                            >
                               Shirts
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=men&subCategory=Tshirts_tops">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=men&subCategory=Tshirts_tops"
+                            >
                               T-shirts & Tops
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=men&subCategory=jeans">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=men&subCategory=jeans"
+                            >
                               Jeans
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=men&subCategory=pants">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=men&subCategory=pants"
+                            >
                               Pants
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=men&subCategory=joggers_shorts">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=men&subCategory=joggers_shorts"
+                            >
                               Joggers & Shorts
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=men&subCategory=winter_pants">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=men&subCategory=winter_pants"
+                            >
                               Winter Pants
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=men&subCategory=winter_jacket">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=men&subCategory=winter_jacket"
+                            >
                               Winter Jacket
                             </Link>
                           </li>
@@ -167,52 +196,82 @@ class Header extends Component {
                             Women
                           </Link>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=women&subCategory=dresses_skirts">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=women&subCategory=dresses_skirts"
+                            >
                               Dresses & Skirts
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=women&subCategory=coats_outwears">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=women&subCategory=coats_outwears"
+                            >
                               Coats & Outerwears
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=women&subCategory=sweaters_hoodies">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=women&subCategory=sweaters_hoodies"
+                            >
                               Sweaters & Hoodies
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=women&subCategory=shirts">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=women&subCategory=shirts"
+                            >
                               Shirts
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=women&subCategory=Tshirts_tops">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=women&subCategory=Tshirts_tops"
+                            >
                               T-shirts & Tops
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=women&subCategory=jeans">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=women&subCategory=jeans"
+                            >
                               Jeans
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=women&subCategory=pants">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=women&subCategory=pants"
+                            >
                               Pants
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=women&subCategory=joggers_shorts">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=women&subCategory=joggers_shorts"
+                            >
                               Joggers & Shorts
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=women&subCategory=winter_pants">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=women&subCategory=winter_pants"
+                            >
                               Winter Pants
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=women&subCategory=winter_jacket">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=women&subCategory=winter_jacket"
+                            >
                               Winter Jacket
                             </Link>
                           </li>
@@ -245,27 +304,42 @@ class Header extends Component {
                             Men
                           </Link>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=men&subCategory=sneakers_athletics">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=men&subCategory=sneakers_athletics"
+                            >
                               Sneakers & Athletics
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=men&subCategory=boots">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=men&subCategory=boots"
+                            >
                               Boots
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=men&subCategory=sandals">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=men&subCategory=sandals"
+                            >
                               Sandals
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=men&subCategory=flats">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=men&subCategory=flats"
+                            >
                               Flats
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=men&subCategory=heels">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=men&subCategory=heels"
+                            >
                               Heels
                             </Link>
                           </li>
@@ -278,27 +352,42 @@ class Header extends Component {
                             Women
                           </Link>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=women&subCategory=sneakers_athletics">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=women&subCategory=sneakers_athletics"
+                            >
                               Sneakers & Athletics
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=women&subCategory=boots">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=women&subCategory=boots"
+                            >
                               Boots
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=women&subCategory=sandals">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=women&subCategory=sandals"
+                            >
                               Sandals
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=women&subCategory=oxfords">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=women&subCategory=oxfords"
+                            >
                               Oxfords
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=women&subCategory=loafers">
+                            <Link
+                              className="dropdown-item"
+                              to="/products/search?gender=women&subCategory=loafers"
+                            >
                               Loafers
                             </Link>
                           </li>
@@ -323,22 +412,40 @@ class Header extends Component {
                       className="dropdown-menu"
                       aria-labelledby="navbarDropdownMenuLink"
                     >
-                      <Link className="dropdown-item" to="/products/search?subCategory=hats">
+                      <Link
+                        className="dropdown-item"
+                        to="/products/search?subCategory=hats"
+                      >
                         Hats
                       </Link>
-                      <Link className="dropdown-item" to="/products/search?subCategory=belts">
+                      <Link
+                        className="dropdown-item"
+                        to="/products/search?subCategory=belts"
+                      >
                         Belts
                       </Link>
-                      <Link className="dropdown-item" to="/products/search?subCategory=sunglasses">
+                      <Link
+                        className="dropdown-item"
+                        to="/products/search?subCategory=sunglasses"
+                      >
                         Sunglasses
                       </Link>
-                      <Link className="dropdown-item" to="/products/search?subCategory=watches">
+                      <Link
+                        className="dropdown-item"
+                        to="/products/search?subCategory=watches"
+                      >
                         Watches
                       </Link>
-                      <Link className="dropdown-item" to="/products/search?subCategory=jewelry">
+                      <Link
+                        className="dropdown-item"
+                        to="/products/search?subCategory=jewelry"
+                      >
                         Jewelry
                       </Link>
-                      <Link className="dropdown-item" to="/products/search?subCategory=wallets">
+                      <Link
+                        className="dropdown-item"
+                        to="/products/search?subCategory=wallets"
+                      >
                         Wallets
                       </Link>
                     </div>
@@ -359,13 +466,22 @@ class Header extends Component {
                       className="dropdown-menu"
                       aria-labelledby="navbarDropdownMenuLink"
                     >
-                      <Link className="dropdown-item" to="/products/search?subCategory=wallets">
+                      <Link
+                        className="dropdown-item"
+                        to="/products/search?subCategory=wallets"
+                      >
                         Handbags
                       </Link>
-                      <Link className="dropdown-item" to="/products/search?subCategory=backpacks">
+                      <Link
+                        className="dropdown-item"
+                        to="/products/search?subCategory=backpacks"
+                      >
                         Backpacks
                       </Link>
-                      <Link className="dropdown-item" to="/products/search?subCategory=luggage">
+                      <Link
+                        className="dropdown-item"
+                        to="/products/search?subCategory=luggage"
+                      >
                         Luggage
                       </Link>
                     </div>

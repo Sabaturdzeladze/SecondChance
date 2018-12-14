@@ -7,7 +7,7 @@ class Filtered extends Component {
     array: [],
     url: ""
   };
-  
+
   componentDidMount() {
     const url = this.props.location.search;
     axios
@@ -29,7 +29,9 @@ class Filtered extends Component {
           console.log(res.data);
           this.setState({ array: res.data, url });
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          this.setState({array: []})
+        });
     }
   }
 
@@ -38,14 +40,17 @@ class Filtered extends Component {
     return array.length === 0 ? (
       <h2>No Items found</h2>
     ) : (
-      array.map((item, index) => (
-        <FilteredItem
-          key={index}
-          gender={item.gender}
-          category={item.category}
-          subCategory={item.subCategory}
-        />
-      ))
+      <div className="row productsDisplay">
+        {array.map((item, index) => (
+          <FilteredItem
+            key={index}
+            {...item}
+            // gender={item.gender}
+            // category={item.category}
+            // subCategory={item.subCategory}
+          />
+        ))}
+      </div>
     );
   }
 }

@@ -44,7 +44,6 @@ router.post("/addnew", upload, (req, res) => {
   products = JSON.stringify(products);
   fs.writeFileSync(path.join(__dirname, "../../db") + "/products.json", products);
   return res.json(product);
-
 });
 
 // searching products by id

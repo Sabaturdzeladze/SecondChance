@@ -7,7 +7,8 @@ export default class Login extends Component {
   state = {
     email: "",
     password: "",
-    errors: {}
+    errors: {},
+    checked: false
   };
 
   onChangeHandler = e => {
@@ -20,10 +21,13 @@ export default class Login extends Component {
     const user = { email: this.state.email, password: this.state.password };
     axios
       .post("/api/users/login", user)
-      .then(res => change({ user: res.data, isLogged: true }))
+      .then(res => {
+        change({ user: res.data, isLogged: true });
+        localStorage.setItem("user", JSON.stringify(res.data));
+      })
       .catch(errors => {
-        console.log(errors.response)
-        this.setState({ errors: errors.response.data })
+        console.log(errors.response);
+        this.setState({ errors: errors.response.data });
       });
   };
 
@@ -64,16 +68,23 @@ export default class Login extends Component {
                     value={this.state.password}
                     onChange={this.onChangeHandler}
                   />
-                  {errors.password && <p className="invalid">{errors.password}</p> }
+                  {errors.password && (
+                    <p className="invalid">{errors.password}</p>
+                  )}
 
                   <div id="remember" className="checkbox">
                     <label>
-                      <input type="checkbox" value="remember-me" /> Remember me
+                      <input
+                        onChange={e =>
+                          this.setState({ checked: !this.state.checked })
+                        }
+                        type="checkbox"
+                        value="remember-me"
+                      />{" "}
+                      Remember me
                     </label>
                   </div>
-                  <button
-                    className="btn btn-lg btn-primary btn-block btn-signin"
-                  >
+                  <button className="btn btn-lg btn-primary btn-block btn-signin">
                     Sign in
                   </button>
                 </form>
