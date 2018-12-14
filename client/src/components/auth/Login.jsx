@@ -7,7 +7,7 @@ export default class Login extends Component {
   state = {
     email: "",
     password: "",
-    showError: true
+    errors: {}
   };
 
   onChangeHandler = e => {
@@ -22,12 +22,13 @@ export default class Login extends Component {
       .post("/api/users/login", user)
       .then(res => change({ user: res.data, isLogged: true }))
       .catch(errors => {
-        console.log(errors)
-        this.setState({ showError: true })
+        console.log(errors.response)
+        this.setState({ errors: errors.response.data })
       });
   };
 
   render() {
+    const { errors } = this.state;
     return (
       <Consumer>
         {value => {
@@ -60,10 +61,11 @@ export default class Login extends Component {
                     id="inputPassword"
                     className="form-control"
                     placeholder="Password"
-                    required
                     value={this.state.password}
                     onChange={this.onChangeHandler}
                   />
+                  {errors.password && <p className="invalid">{errors.password}</p> }
+
                   <div id="remember" className="checkbox">
                     <label>
                       <input type="checkbox" value="remember-me" /> Remember me
@@ -74,7 +76,6 @@ export default class Login extends Component {
                   >
                     Sign in
                   </button>
-                  {this.state.showError && <p className="invalid">User email or password is incorrect</p> }
                 </form>
               </div>
             </div>
