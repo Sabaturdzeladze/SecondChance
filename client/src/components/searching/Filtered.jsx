@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { FilteredItem } from "./FilteredItem";
 
 class Filtered extends Component {
   state = {
@@ -32,7 +33,19 @@ class Filtered extends Component {
   }
 
   render() {
-    return this.state.array.length && <h1>{this.state.array[0].gender}</h1>;
+    const { array } = this.state;
+    return array.length === 0 ? (
+      <h2>No Items found</h2>
+    ) : (
+      array.map((item, index) => (
+        <FilteredItem
+          key={index}
+          gender={item.gender}
+          category={item.category}
+          subCategory={item.subCategory}
+        />
+      ))
+    );
   }
 }
 
