@@ -58,7 +58,7 @@ export default class Register extends Component {
                       <label htmlFor="inputEmail">Email</label>
                       <div className="input-group">
                         <div className="input-group-prepend">
-                          <div className="input-group-text"><i class="fa fa-envelope fa" aria-hidden="true"></i></div>
+                          <div className="input-group-text"><i className="fa fa-envelope fa" aria-hidden="true"></i></div>
                         </div>
 
                         <input
@@ -79,7 +79,7 @@ export default class Register extends Component {
                     </label>
                       <div className="input-group">
                         <div className="input-group-prepend">
-                          <div className="input-group-text"><i class="fa fa-user fa" aria-hidden="true"></i></div>
+                          <div className="input-group-text"><i className="fa fa-user fa" aria-hidden="true"></i></div>
                         </div>
                         <input
                           type="text"
@@ -98,7 +98,7 @@ export default class Register extends Component {
                       <label htmlFor="inputPassword1">Password</label>
                       <div className="input-group">
                         <div className="input-group-prepend">
-                          <div className="input-group-text"><i class="fa fa-lock fa" aria-hidden="true"></i></div>
+                          <div className="input-group-text"><i className="fa fa-lock fa" aria-hidden="true"></i></div>
                         </div>
                         <input
                           type="password"
@@ -115,7 +115,7 @@ export default class Register extends Component {
                       <label htmlFor="inputPassword2">Confirm Password</label>
                       <div className="input-group">
                         <div className="input-group-prepend">
-                          <div className="input-group-text"><i class="fa fa-lock fa" aria-hidden="true"></i></div>
+                          <div className="input-group-text"><i className="fa fa-lock fa" aria-hidden="true"></i></div>
                         </div>
                         <input
                           type="password"
@@ -137,7 +137,7 @@ export default class Register extends Component {
                     </label>
                       <div className="input-group">
                         <div className="input-group-prepend">
-                          <div className="input-group-text"><i class="fas fa-calendar" aria-hidden="true"></i></div>
+                          <div className="input-group-text"><i className="fas fa-calendar" aria-hidden="true"></i></div>
                         </div>
                         <input
                           type="date"
@@ -154,7 +154,7 @@ export default class Register extends Component {
                       <label htmlFor="formGroupExampleInput2">Balance</label>
                       <div className="input-group">
                         <div className="input-group-prepend">
-                          <div className="input-group-text"><i class="fas fa-dollar-sign" aria-hidden="true"></i></div>
+                          <div className="input-group-text"><i className="fas fa-dollar-sign" aria-hidden="true"></i></div>
                         </div>
                         <input
                           type="text"
@@ -169,7 +169,7 @@ export default class Register extends Component {
                     </div>
                   </div>
                   
-                  <div class="col-md-12 text-center">
+                  <div className="col-md-12 text-center">
                     <button type="submit" className="btn btn-primary register-button">
                       Register
                     </button>

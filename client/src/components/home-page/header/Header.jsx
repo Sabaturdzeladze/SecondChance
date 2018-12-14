@@ -115,7 +115,7 @@ class Header extends Component {
                             </Link>
                           </li>
                           <li>
-                            <Link className="dropdown-item" to="/products/search?gender=men&subCategory=outerwear_coats">
+                            <Link className="dropdown-item" to="/products/search?gender=men&subCategory=coats_outwears">
                               Coats & Outerwears
                             </Link>
                           </li>
