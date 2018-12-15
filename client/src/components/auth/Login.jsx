@@ -24,9 +24,15 @@ export default class Login extends Component {
       .then(res => {
         change({ user: res.data, isLogged: true });
         localStorage.setItem("user", JSON.stringify(res.data));
+        if (this.state.checked) {
+          localStorage.setItem('remember', this.state.checked);
+        } else {
+          const expiration = JSON.stringify(new Date().setHours(new Date().getHours() + 1));
+          localStorage.setItem('expiration', expiration);
+        }
+
       })
       .catch(errors => {
-        console.log(errors.response);
         this.setState({ errors: errors.response.data });
       });
   };
@@ -40,68 +46,69 @@ export default class Login extends Component {
           return isLogged ? (
             <Redirect to="/" />
           ) : (
-              <div className="container">
-                <div className="card-container login-form">
+            <div className="container">
+              <div className="card-container login-form">
                 <h2 className="form-header">Log in to continue</h2>
 
-                  <p id="profile-name" className="profile-name-card" />
-                  <form
-                    className="form-signin"
-                    onSubmit={e => this.onSubmitHandler(e, onStateChange)}
-                  >
-                    <span id="reauth-email" className="reauth-email" />
-                    <label htmlFor="inputEmail">Email Address</label>
+                <p id="profile-name" className="profile-name-card" />
+                <form
+                  className="form-signin"
+                  onSubmit={e => this.onSubmitHandler(e, onStateChange)}
+                >
+                  <span id="reauth-email" className="reauth-email" />
+                  <label htmlFor="inputEmail">Email Address</label>
 
-                    <input
-                      type="email"
-                      name="email"
-                      id="inputEmail"
-                      className="form-control"
-                      placeholder="Enter Email"
-                      required
-                      autoFocus
-                      value={this.state.email}
-                      onChange={this.onChangeHandler}
-                    />
-                    <label htmlFor="inputPassword">Password</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="inputEmail"
+                    className="form-control"
+                    placeholder="Enter Email"
+                    required
+                    autoFocus
+                    value={this.state.email}
+                    onChange={this.onChangeHandler}
+                  />
+                  <label htmlFor="inputPassword">Password</label>
 
-                    <input
-                      type="password"
-                      name="password"
-                      id="inputPassword"
-                      className="form-control"
-                      placeholder="Enter Password"
-                      value={this.state.password}
-                      onChange={this.onChangeHandler}
-                    />
-                    {errors.password && (
-                      <p className="invalid">{errors.password}</p>
-                    )}
+                  <input
+                    type="password"
+                    name="password"
+                    id="inputPassword"
+                    className="form-control"
+                    placeholder="Enter Password"
+                    value={this.state.password}
+                    onChange={this.onChangeHandler}
+                  />
+                  {errors.password && (
+                    <p className="invalid">{errors.password}</p>
+                  )}
 
-                    <div id="remember" className="checkbox">
-                      <label>
-                        <input
-                          onChange={e =>
-                            this.setState({ checked: !this.state.checked })
-                          }
-                          type="checkbox"
-                          value="remember-me"
-                        />{" "}
-                        Remember me
+                  <div id="remember" className="checkbox">
+                    <label>
+                      <input
+                        onChange={e =>
+                          this.setState({ checked: !this.state.checked })
+                        }
+                        type="checkbox"
+                        checked={this.state.checked}
+                        value="remember-me"
+                      />{" "}
+                      Remember me
                     </label>
-                    </div>
-                    <div className="text-center">
-                      <button
-                        type="submit"
-                        className="btn-lg btn-primary login-button"
-                      >
-                        Log in
-                  </button>
-                    </div>
-                  </form>
-                </div>
+                  </div>
+                  <div className="text-center">
+                    <button
+                      type="submit"
+                      className="btn-lg btn-primary login-button"
+                    >
+                      Log in
+                    </button>
+                  </div>
+                </form>
               </div>
-            );
+            </div>
+          );
         }}
       </Consumer>
     );

@@ -12,6 +12,17 @@ import NewProduct from "./components/admin/products/NewProduct";
 
 import "./App.css";
 
+// clearing localstorage before app unloading
+window.onload = () => {
+  // if user haven't logged in for 1 hour, then log user out
+  if (
+    !JSON.parse(localStorage.getItem("remember")) &&
+    new Date() - JSON.parse(localStorage.getItem("expiration")) >= 0
+  ) {
+    localStorage.clear();
+  }
+};
+
 class App extends Component {
   render() {
     return (
@@ -20,7 +31,7 @@ class App extends Component {
           <>
             <Header />
             <ProtectedRoute path="/admin" component={Admin} />
-            
+
             <ProtectedRoute path="/admin/product/add" component={NewProduct} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />

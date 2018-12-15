@@ -16,7 +16,7 @@ const Account = props => {
         to="/"
         onClick={() => {
           props.value.onStateChange({ user: {}, isLogged: false });
-          localStorage.removeItem("user");
+          localStorage.clear();
         }}
       >
         Log out
