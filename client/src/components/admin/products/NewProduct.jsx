@@ -13,38 +13,49 @@ export default class NewProduct extends Component {
     priceSale: 0,
     desc: "",
     condition: "",
-    images: []
+    images: null
   };
   onSubmitHandler = e => {
     e.preventDefault();
 
-    const { product } = this.state;
+    const formData = new FormData();
+    formData.append('images', this.state.images);
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    }
 
-    axios
-      .post("/api/admin/products/addnew", product)
-      .then(res => {
-        this.setState({
-          gender: "",
-          category: "",
-          subCategory: "",
-          brand: "",
-          size: "",
-          color: "",
-          price: 0,
-          priceSale: 0,
-          desc: "",
-          condition: "",
-          images: []
-        });
-      })
-      .catch(err => console.log(err));
+    console.log(this.state.images)
+
+    // const { product } = this.state;
+
+    // axios
+    //   .post("/api/admin/products/addnew", product)
+    //   .then(res => {
+    //     this.setState({
+    //       gender: "",
+    //       category: "",
+    //       subCategory: "",
+    //       brand: "",
+    //       size: "",
+    //       color: "",
+    //       price: 0,
+    //       priceSale: 0,
+    //       desc: "",
+    //       condition: "",
+    //       images: null
+    //     });
+    //   })
+    //   .catch(err => console.log(err));
   };
   onChangeHandler = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
   onFileUpload = e => {
-    console.log(Array.from(e.target.files));
-    // this.setState(() => ({ images: e.target.files }))
+    this.setState(() => ({ images: e.target.files[0] }))
+    // const formData = new FormData();
+    // formData.append('images', this.state.files)
     // console.log(this.state.images);
   }
   render() {
@@ -57,7 +68,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput3">Gender</label>
               <select
-                required
+                // required
                 name="gender"
                 id="formGroupExampleInput3"
                 className="custom-select custom-select-m"
@@ -70,7 +81,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput4">Category</label>
               <select
-                required
+                // required
                 name="category"
                 id="formGroupExampleInput4"
                 className="custom-select custom-select-m"
@@ -85,7 +96,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput5">Sub-Category</label>
               <select
-                required
+                // required
                 name="subcategory"
                 id="formGroupExampleInput5"
                 className="custom-select custom-select-m"
@@ -145,7 +156,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput6">Brand</label>
               <input
-                required
+                // required
                 type="text"
                 className="form-control"
                 id="formGroupExampleInput6"
@@ -157,7 +168,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput7">Size</label>
               <input
-                required
+                // required
                 type="text"
                 className="form-control"
                 id="formGroupExampleInput7"
@@ -169,7 +180,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput8">Color</label>
               <input
-                required
+                // required
                 type="text"
                 className="form-control"
                 id="formGroupExampleInput8"
@@ -184,7 +195,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput9">Price</label>
               <input
-                required
+                // required
                 type="text"
                 className="form-control"
                 id="formGroupExampleInput9"
@@ -196,7 +207,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput10">Price Sale</label>
               <input
-                required
+                // required
                 type="text"
                 className="form-control"
                 id="formGroupExampleInput10"
@@ -208,7 +219,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput11">Condition</label>
               <select
-                required
+                // required
                 name="condition"
                 id="formGroupExampleInput11"
                 className="custom-select custom-select-m"
@@ -226,7 +237,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-12">
               <label htmlFor="formGroupExampleInput12">Description</label>
               <input
-                required
+                // required
                 type="text"
                 className="form-control"
                 id="formGroupExampleInput12"
@@ -238,11 +249,11 @@ export default class NewProduct extends Component {
           </div>
 
           <div className="form-row">
-            {/* <label htmlFor="customFile">Product Images</label> */}
+            <label htmlFor="customFile">Product Images</label>
 
-            {/* <div className="custom-file col-md-12"> */}
-              {/* <input
-                required
+            <div className="custom-file col-md-12">
+              <input
+                // required
                 type="file"
                 className="custom-file-input"
                 id="customFile"
@@ -252,20 +263,21 @@ export default class NewProduct extends Component {
               />
               <label className="custom-file-label" htmlFor="customFile">
                 Choose 4 photos
-              </label> */}
-              <input
+              </label>
+              {/* <input
                 style={{display: 'none'}}
-                required
+                // required
                 type="file"
                 className="custom-file-input"
                 id="customFile"
-                name="images"
-                multiple
+                name="aonse"
+                encType='multipart/formdata'
+                // multiple
                 onChange={this.onFileUpload}
-                ref={fileInput => this.fileInput = fileInput}
-              />
-              <button className="btn" onClick={() => this.fileInput.click()}>Choose 4 Photos to Upload</button>
-            {/* </div> */}
+                // ref={fileInput => this.fileInput = fileInput}
+              /> */}
+              {/* <button className="btn" onClick={() => this.fileInput.click()}>Choose 4 Photos to Upload</button> */}
+            </div>
           </div>
           <button type="submit" className="btn btn-primary">
             Add

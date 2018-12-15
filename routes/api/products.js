@@ -7,7 +7,7 @@ const multer = require('multer')
 
 const storage = multer.diskStorage({  // setting storage engine with multer
   destination: function (req, file, cb) {
-    cb(null, './uploads/'); // destination
+    cb(null, path.join(__dirname, '../../db/uploads')); // destination
   },
   filename: function (req, file, cb) { // setting filename
     cb(null, `${new Date().getDate()}-${new Date().getMonth() + 1}-${new Date().getFullYear()} - ${file.originalname}`);
