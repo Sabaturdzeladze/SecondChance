@@ -101,6 +101,28 @@ router.get("/:id", (req, res) => {
   });
 });
 
+router.get("/:id/conversation", (req, res) => {
+  // taking the id provided in url  (ex: /api/users/aojsnecpjn102enq2389hqnd)
+  let id = req.params.id;
+  // taking the array of users from our json file
+  const users = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
+  );
+
+  // searching the user in users array
+  const user = users.find(user => user.id === id);
+  // if NOT found
+  if (!user) {
+    return res.status(404).json({ msg: "User not found" });
+  }
+  // destructing the user to get the needed data to return as a json object
+  const {
+    conversation
+  } = user;
+
+  res.json(conversation);
+});
+
 // PATH @/api/users/all
 router.get("/all", (req, res) => {
   // taking the array of users from our json file
@@ -207,8 +229,7 @@ router.post("/contact/:id/message", (req, res) => {
 
   let message = {
     text: req.body.message,
-    username: user.username,
-    date: new Date().getTime(),
+    username: req.body.username,
     id: uuidv4()
   };
 

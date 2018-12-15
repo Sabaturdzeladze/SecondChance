@@ -24,9 +24,9 @@ export default class Login extends Component {
       .then(res => {
         change({ user: res.data, isLogged: true });
         localStorage.setItem("user", JSON.stringify(res.data));
-        if (this.state.checked) {
+        localStorage.setItem('remember', this.state.checked);
+        if (!this.state.checked) {
           localStorage.setItem('remember', this.state.checked);
-        } else {
           const expiration = JSON.stringify(new Date().setHours(new Date().getHours() + 1));
           localStorage.setItem('expiration', expiration);
         }

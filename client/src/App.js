@@ -9,6 +9,9 @@ import Header from "./components/home-page/header/Header";
 import Filtered from "./components/searching/Filtered";
 import ProductDetails from "./components/searching/ProductDetails";
 import NewProduct from "./components/admin/products/NewProduct";
+import { MainContent } from "./components/home-page/main/MainContent";
+import Conversation from "./components/home-page/conversation/Conversation";
+import Messenger from "./components/admin/Messenger/Messenger";
 
 import "./App.css";
 
@@ -31,8 +34,10 @@ class App extends Component {
           <>
             <Header />
             <ProtectedRoute path="/admin" component={Admin} />
-
+            <ProtectedRoute path="/admin/messenger" component={Messenger} />
             <ProtectedRoute path="/admin/product/add" component={NewProduct} />
+            <Route path="/" component={Conversation} />
+            <Route path="/" exact component={MainContent} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/products/search" component={Filtered} />
