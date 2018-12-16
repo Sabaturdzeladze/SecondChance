@@ -1,3 +1,7 @@
+* {
+  font-family: 'Nunito', sans-serif;
+}
+
 .headerTop {
   display: flex;
   width: 90%;
@@ -183,11 +187,11 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Lobster", cursive;
   font-size: 2em;
 }
 
 .main-products__list--item a {
+  font-family: "Lobster", cursive;
   color: white;
 }
 
@@ -279,39 +283,6 @@ a:hover {
   background: url("https://images.unsplash.com/photo-1530856021941-02c71be5926f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80")
     100% / cover no-repeat border-box;
 }
-
-.footer {
-  background: #362d2e;
-  color: #ffffff;
-  padding: 50px 20px;
-}
-
-.footer-header {
-  text-align: center;
-}
-
-.footer-container {
-  display: flex;
-  justify-content: center;
-  padding: 50px 0;
-}
-
-.footer-container p {
-  padding: 0 20px;
-}
-
-.footer-container a {
-  color: #dfdfdf;
-}
-
-.footer-container a:hover {
-  color: #999999;
-}
-
-.footer > p {
-  text-align: center;
-}
-
 /* messenger */
 
 /* .messenger-wrapper {
@@ -1094,3 +1065,120 @@ img {
     margin: 0;
   }
 }
+
+
+/* Footer CSS */
+.totop {
+  padding: 20px 0px;
+  text-align: center;
+  background-color: #282321;
+  color: white;
+}
+.totop:hover {
+  cursor: pointer;
+  background-color: wheat;
+  color: darkslateblue;
+}
+
+.footer-header{
+  font-size: 1.2em;
+  color: white;
+  padding-bottom: 10px;
+  font-family: 'Lobster', cursive;
+}
+
+.footer-container__header {
+  color: white;
+  font-size: 0.5em;
+}
+.footer-container__feedback {
+  text-align: center;
+  justify-content: space-around;
+}
+
+.footer--container {
+  display: flex;
+  padding: 50px 0;
+  background-color: #362d2e;
+  justify-content: space-evenly;
+}
+.my-account__logo:hover {
+  color: #f5a019;
+}
+.footer--container * {
+  margin: 2px;
+}
+
+.footer-container__shop--container{
+  width: 70%;
+  margin: 0 auto;
+  text-align: left;
+  align-items: center;
+}
+.footer-container__brand{
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+  font-size: 2em;
+}
+.footer--container-socialMedia{
+  text-align: center;
+  /* justify-content: center; */
+}
+.fa-pied-piper-hat {
+  font-size: 2em;
+  color: #f5a019;
+}
+.footerSM{
+  font-size: 2em;
+  /* color: white; */
+};
+.footerSM:hover {
+  color: #f5a019;
+}
+.footer-div{
+  color: white;
+}
+.footer {
+  background: #362d2e;
+  color: #ffffff;
+  padding: 50px 20px;
+}
+.aboutus {
+  color: white;
+  text-align: center;
+}
+.footer3 {
+  padding: 20px 150px 60px 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: #362d2e;
+}
+.footer-header {
+  text-align: center;
+  color: white;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+.footer-container p {
+  padding: 0 20px;
+}
+
+.footer-container a {
+  color: #dfdfdf;
+}
+
+.footer-container a:hover {
+  color: #999999;
+}
+
+.footer > p {
+  text-align: center;
+}
+
+/* Footer CSS END */

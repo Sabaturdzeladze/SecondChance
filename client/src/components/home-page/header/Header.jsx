@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Consumer } from "../../../context-api/Context";
 import { Account } from './Account';
-import Conversation from "../conversation/Conversation";
 
 class Header extends Component {
   state = {};
@@ -11,7 +10,7 @@ class Header extends Component {
     return (
       <Consumer>
         {value => (
-          <header>
+          <header id="header">
             <div className="shipping-info">
               <p>Free 2 day shipping & Return!</p>
             </div>
