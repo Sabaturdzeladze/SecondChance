@@ -542,12 +542,13 @@ h3.h3 {
   position: relative;
   transition: all 0.3s ease-in-out;
 }
-.product-grid .social li a:hover {
+.product-grid .social li button:hover {
   color: #fff;
   background-color: #ef5777;
+  cursor: pointer;
 }
-.product-grid .social li a:after,
-.product-grid .social li a:before {
+.product-grid .social li button:after,
+.product-grid .social li button:before {
   content: attr(data-tip);
   color: #fff;
   background-color: #000;
@@ -562,7 +563,7 @@ h3.h3 {
   left: 50%;
   top: -30px;
 }
-.product-grid .social li a:after {
+.product-grid .social li button:after {
   content: "";
   height: 15px;
   width: 15px;
@@ -571,8 +572,8 @@ h3.h3 {
   top: -20px;
   z-index: -1;
 }
-.product-grid .social li a:hover:after,
-.product-grid .social li a:hover:before {
+.product-grid .social li button:hover:after,
+.product-grid .social li button:hover:before {
   opacity: 1;
 }
 .product-grid .product-discount-label,

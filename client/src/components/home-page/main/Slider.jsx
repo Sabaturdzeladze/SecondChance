@@ -1,5 +1,5 @@
 import React from "react";
-import { FilteredItem } from "../../searching/FilteredItem";
+import FilteredItem from "../../searching/FilteredItem";
 
 export const Slider = props => {
   const { products } = props;

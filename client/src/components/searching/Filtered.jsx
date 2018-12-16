@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { FilteredItem } from "./FilteredItem";
+import FilteredItem from "./FilteredItem";
 
 class Filtered extends Component {
   state = {

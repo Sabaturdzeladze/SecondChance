@@ -66,7 +66,7 @@ export const Footer = () => {
             height="50px"
           />
         </div>
-        <div class="footer-container__icons">
+        <div className="footer-container__icons">
           <div className="footer-header">Follow SecondChance</div>
           <Link to="/">
             <i className="fab fa-pinterest footerSM" />

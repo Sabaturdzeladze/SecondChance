@@ -1,4 +1,5 @@
-[  {
+[
+  {
     "id": "23",
     "gender": "men",
     "brand": "Tom Tailor",
@@ -10,67 +11,190 @@
     "condition": "Like New",
     "size": "L"
   },
-  { "gender": "men", "category": "clothing", "subCategory": "shirts" },
-  { "gender": "men", "category": "clothing", "subCategory": "coats_outwears" },
   {
     "gender": "men",
     "category": "clothing",
-    "subCategory": "sweaters_hoodies"
+    "subCategory": "shirts",
+    "id": "12ib3d2"
   },
-  { "gender": "men", "category": "clothing", "subCategory": "shirts" },
-  { "gender": "men", "category": "clothing", "subCategory": "Tshirts_tops" },
-  { "gender": "men", "category": "clothing", "subCategory": "jeans" },
-  { "gender": "men", "category": "clothing", "subCategory": "pants" },
-  { "gender": "men", "category": "clothing", "subCategory": "joggers_shorts" },
-  { "gender": "men", "category": "clothing", "subCategory": "winter_pants" },
-  { "gender": "men", "category": "clothing", "subCategory": "winter_jacket" },
-  {
-    "gender": "women",
-    "category": "clothing",
-    "subCategory": "dresses_skirts"
-  },
-  {
-    "gender": "women",
-    "category": "clothing",
-    "subCategory": "coats_outwears"
-  },
-  {
-    "gender": "women",
-    "category": "clothing",
-    "subCategory": "sweaters_hoodies"
-  },
-  { "gender": "women", "category": "clothing", "subCategory": "shirts" },
-  { "gender": "women", "category": "clothing", "subCategory": "Tshirts_tops" },
-  { "gender": "women", "category": "clothing", "subCategory": "jeans" },
-  {
-    "gender": "women",
-    "category": "clothing",
-    "subCategory": "dresses_skirts"
-  },
-  { "gender": "women", "category": "clothing", "subCategory": "pants" },
-  {
-    "gender": "women",
-    "category": "clothing",
-    "subCategory": "joggers_shorts"
-  },
-  { "gender": "women", "category": "clothing", "subCategory": "winter_pants" },
-  { "gender": "women", "category": "clothing", "subCategory": "winter_jacket" },
   {
     "gender": "men",
     "category": "clothing",
-    "subCategory": "sneakers_athletics"
+    "subCategory": "coats_outwears",
+    "id": "8wgbca"
   },
-  { "gender": "men", "category": "clothing", "subCategory": "boots" },
-  { "gender": "men", "category": "clothing", "subCategory": "sandals" },
-  { "gender": "men", "category": "clothing", "subCategory": "flats" },
-  { "gender": "men", "category": "clothing", "subCategory": "heels" },
+  {
+    "gender": "men",
+    "category": "clothing",
+    "subCategory": "sweaters_hoodies",
+    "id": "8wgbcasecon"
+  },
+  {
+    "gender": "men",
+    "category": "clothing",
+    "subCategory": "shirts",
+    "id": "8wgbcaawsec"
+  },
+  {
+    "gender": "men",
+    "category": "clothing",
+    "subCategory": "Tshirts_tops",
+    "id": "8wasecgbca"
+  },
+  {
+    "gender": "men",
+    "category": "clothing",
+    "subCategory": "jeans",
+    "id": "8wasefdgbca"
+  },
+  {
+    "gender": "men",
+    "category": "clothing",
+    "subCategory": "pants",
+    "id": "8wgberbsdfca"
+  },
+  {
+    "gender": "men",
+    "category": "clothing",
+    "subCategory": "joggers_shorts",
+    "id": "8wgbbfdzsvcca"
+  },
+  {
+    "gender": "men",
+    "category": "clothing",
+    "subCategory": "winter_pants",
+    "id": "8wiuhjggbca"
+  },
+  {
+    "gender": "men",
+    "category": "clothing",
+    "subCategory": "winter_jacket",
+    "id": "qwefads8wgbca"
+  },
   {
     "gender": "women",
     "category": "clothing",
-    "subCategory": "sneakers_athletics"
+    "subCategory": "dresses_skirts",
+    "id": "8wgbca9uhon"
   },
-  { "gender": "women", "category": "clothing", "subCategory": "boots" },
-  { "gender": "women", "category": "clothing", "subCategory": "sandals" },
-  { "gender": "women", "category": "clothing", "subCategory": "oxfords" },
-  { "gender": "women", "category": "clothing", "subCategory": "loafers" }
+  {
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "coats_outwears",
+    "id": "8wgbca198jnvf"
+  },
+  {
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "sweaters_hoodies",
+    "id": "8wg3qgwbfddzbca"
+  },
+  {
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "shirts",
+    "id": "8wgbcapojmc"
+  },
+  {
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "Tshirts_tops",
+    "id": "8asrbgvda"
+  },
+  {
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "jeans",
+    "id": "8wgbca561327"
+  },
+  {
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "dresses_skirts",
+    "id": "8wgbca083inhawmf"
+  },
+  {
+    "id": "8wgbca0i1kmdw",
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "pants"
+  },
+  {
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "joggers_shorts",
+    "id": "8wgbca0k1omedw"
+  },
+  {
+    "id": "8w651321scmgbca",
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "winter_pants"
+  },
+  {
+    "id": "8wgbca-19iujnda",
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "winter_jacket"
+  },
+  {
+    "gender": "men",
+    "category": "clothing",
+    "subCategory": "sneakers_athletics",
+    "id": "8wgbca1-jmdc[ahgwnqadc"
+  },
+  {
+    "id": "8wgbca=o1lkowcmnasv",
+    "gender": "men",
+    "category": "clothing",
+    "subCategory": "boots"
+  },
+  {
+    "id": "8wgb+15612edwcbca",
+    "gender": "men",
+    "category": "clothing",
+    "subCategory": "sandals"
+  },
+  {
+    "id": "8wgbca10jh2nfe",
+    "gender": "men",
+    "category": "clothing",
+    "subCategory": "flats"
+  },
+  {
+    "id": "8wgaoinwsmvs",
+    "gender": "men",
+    "category": "clothing",
+    "subCategory": "heels"
+  },
+  {
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "sneakers_athletics",
+    "id": "8wgbq0-32j-fowmca"
+  },
+  {
+    "id": "8wgbca019jhfdkcs",
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "boots"
+  },
+  {
+    "id": "8wgbca019jawehfdkcs",
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "sandals"
+  },
+  {
+    "id": "8wgbca019jasdc hfdkcs",
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "oxfords"
+  },
+  {
+    "id": "8wgbca019jhfdkc1q12ed32as",
+    "gender": "women",
+    "category": "clothing",
+    "subCategory": "loafers"
+  }
 ]
