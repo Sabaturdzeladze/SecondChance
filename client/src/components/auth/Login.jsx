@@ -30,7 +30,7 @@ export default class Login extends Component {
           const expiration = JSON.stringify(new Date().setHours(new Date().getHours() + 1));
           localStorage.setItem('expiration', expiration);
         }
-
+        window.location = '/';
       })
       .catch(errors => {
         this.setState({ errors: errors.response.data });

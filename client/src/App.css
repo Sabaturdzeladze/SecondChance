@@ -299,10 +299,10 @@ textarea {
 .main-contact {
   max-width: 300px;
   margin: 0 auto;
-  background: #eeeeee;
+  background: #ebebeb;
   padding: 10px;
   border: 1px solid #ffffff;
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
 }
 .main-contact__conversation {
   max-height: 400px;

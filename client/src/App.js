@@ -18,7 +18,7 @@ import "./App.css";
 
 // clearing localstorage before app unloading
 window.onload = () => {
-  // if user haven't logged in for 1 hour, then log user out
+  // if user hasn't logged in for 1 hour, then log user out
   if (
     !JSON.parse(localStorage.getItem("remember")) &&
     new Date() - JSON.parse(localStorage.getItem("expiration")) >= 0
