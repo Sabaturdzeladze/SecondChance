@@ -14,7 +14,7 @@ export const MainContent = () => {
               <div className="main-layer__container">
                 <h1>Second Chance for Products</h1>
                 <Link to="/products/search?gender=women">Shop Women's</Link>
-                <Link to="/products/search?gender=men">Shop Women's</Link>
+                <Link to="/products/search?gender=men">Shop Men's</Link>
               </div>
             </section>
             <section className="row productsDisplay">

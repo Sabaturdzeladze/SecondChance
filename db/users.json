@@ -109,5 +109,35 @@
     "email": "saba@gmail.com",
     "password": "41f415465473651590ca5211104615ef574837afb129b920c69ddc7865d7ca94",
     "balance": "1000"
+  },
+  {
+    "id": "ea098e92-4adc-4159-9b31-ba96a315a702",
+    "cart": [
+      {
+        "id": "23",
+        "gender": "men",
+        "brand": "Tom Tailor",
+        "category": "clothing",
+        "subCategory": "polos",
+        "price": "10",
+        "desc": "Tom Tailor polo in good condition blabla",
+        "color": "red",
+        "condition": "Like New",
+        "size": "L"
+      }
+    ],
+    "conversation": [
+      {
+        "text": "",
+        "username": "boreka",
+        "id": "67b26a07-802e-4469-8537-2c94a37d8d3d"
+      }
+    ],
+    "boughtItems": [],
+    "birthday": "2019-02-01",
+    "username": "boreka",
+    "email": "boreka@yahoo.com",
+    "password": "2a0b48b7a99a6aa2ed4e1533d49c09318049b2ad1eebb29881cd697cd4b5744e",
+    "balance": "1110"
   }
 ]

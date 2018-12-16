@@ -13,7 +13,8 @@ import { MainContent } from "./components/home-page/main/MainContent";
 import Conversation from "./components/home-page/conversation/Conversation";
 import Messenger from "./components/admin/Messenger/Messenger";
 import { Footer } from "./components/home-page/footer/Footer";
-
+import { Cart } from "./components/cart/Cart"
+ 
 import "./App.css";
 
 // clearing localstorage before app unloading
@@ -43,6 +44,7 @@ class App extends Component {
             <Route path="/register" component={Register} />
             <Route path="/products/search" component={Filtered} />
             <Route path="/products/item/:id" component={ProductDetails} />
+            <Route path="/user/:id/cart" component={Cart}/>
             <Footer />
           </>
         </Router>
