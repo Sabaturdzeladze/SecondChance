@@ -32,10 +32,12 @@ class FilteredItem extends Component {
               <div className="product-image">
                 <Link to={`/products/item/${this.props.id}`}>
                   <img
+                    alt="Product"
                     className="pic-1"
                     src="http://bestjquery.com/tutorial/product-grid/demo9/images/img-1.jpg"
                   />
                   <img
+                    alt="Product"
                     className="pic-2"
                     src="http://bestjquery.com/tutorial/product-grid/demo9/images/img-2.jpg"
                   />
