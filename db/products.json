@@ -20,13 +20,13 @@
   {
     "gender": "men",
     "category": "clothing",
-    "subCategory": "coats_outwears",
+    "subCategory": "coats and outwears",
     "id": "8wgbca"
   },
   {
     "gender": "men",
     "category": "clothing",
-    "subCategory": "sweaters_hoodies",
+    "subCategory": "sweaters and hoodies",
     "id": "8wgbcasecon"
   },
   {
@@ -38,7 +38,7 @@
   {
     "gender": "men",
     "category": "clothing",
-    "subCategory": "Tshirts_tops",
+    "subCategory": "Tshirts and tops",
     "id": "8wasecgbca"
   },
   {
@@ -56,37 +56,37 @@
   {
     "gender": "men",
     "category": "clothing",
-    "subCategory": "joggers_shorts",
+    "subCategory": "joggers and shorts",
     "id": "8wgbbfdzsvcca"
   },
   {
     "gender": "men",
     "category": "clothing",
-    "subCategory": "winter_pants",
+    "subCategory": "winter pants",
     "id": "8wiuhjggbca"
   },
   {
     "gender": "men",
     "category": "clothing",
-    "subCategory": "winter_jacket",
+    "subCategory": "winter jackets",
     "id": "qwefads8wgbca"
   },
   {
     "gender": "women",
     "category": "clothing",
-    "subCategory": "dresses_skirts",
+    "subCategory": "dresses and skirts",
     "id": "8wgbca9uhon"
   },
   {
     "gender": "women",
     "category": "clothing",
-    "subCategory": "coats_outwears",
+    "subCategory": "coats and outwears",
     "id": "8wgbca198jnvf"
   },
   {
     "gender": "women",
     "category": "clothing",
-    "subCategory": "sweaters_hoodies",
+    "subCategory": "sweaters and hoodies",
     "id": "8wg3qgwbfddzbca"
   },
   {
@@ -98,7 +98,7 @@
   {
     "gender": "women",
     "category": "clothing",
-    "subCategory": "Tshirts_tops",
+    "subCategory": "Tshirts and tops",
     "id": "8asrbgvda"
   },
   {
@@ -110,7 +110,7 @@
   {
     "gender": "women",
     "category": "clothing",
-    "subCategory": "dresses_skirts",
+    "subCategory": "dresses and skirts",
     "id": "8wgbca083inhawmf"
   },
   {
@@ -122,25 +122,25 @@
   {
     "gender": "women",
     "category": "clothing",
-    "subCategory": "joggers_shorts",
+    "subCategory": "joggers and shorts",
     "id": "8wgbca0k1omedw"
   },
   {
     "id": "8w651321scmgbca",
     "gender": "women",
     "category": "clothing",
-    "subCategory": "winter_pants"
+    "subCategory": "winter pants"
   },
   {
     "id": "8wgbca-19iujnda",
     "gender": "women",
     "category": "clothing",
-    "subCategory": "winter_jacket"
+    "subCategory": "winter jackets"
   },
   {
     "gender": "men",
     "category": "clothing",
-    "subCategory": "sneakers_athletics",
+    "subCategory": "sneakers and athletics",
     "id": "8wgbca1-jmdc[ahgwnqadc"
   },
   {
@@ -170,7 +170,7 @@
   {
     "gender": "women",
     "category": "clothing",
-    "subCategory": "sneakers_athletics",
+    "subCategory": "sneakers and athletics",
     "id": "8wgbq0-32j-fowmca"
   },
   {

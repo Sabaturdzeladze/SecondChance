@@ -95,7 +95,7 @@ class Header extends Component {
                           <li>
                             <Link
                               className="dropdown-item"
-                              to="/products/search?gender=men&subCategory=coats_outwears"
+                              to="/products/search?gender=men&subCategory=coats and outwears"
                             >
                               Coats & Outerwears
                             </Link>
@@ -103,7 +103,7 @@ class Header extends Component {
                           <li>
                             <Link
                               className="dropdown-item"
-                              to="/products/search?gender=men&subCategory=sweaters_hoodies"
+                              to="/products/search?gender=men&subCategory=sweaters and hoodies"
                             >
                               Sweaters & Hoodies
                             </Link>
@@ -119,7 +119,7 @@ class Header extends Component {
                           <li>
                             <Link
                               className="dropdown-item"
-                              to="/products/search?gender=men&subCategory=Tshirts_tops"
+                              to="/products/search?gender=men&subCategory=Tshirts and tops"
                             >
                               T-shirts & Tops
                             </Link>
@@ -143,7 +143,7 @@ class Header extends Component {
                           <li>
                             <Link
                               className="dropdown-item"
-                              to="/products/search?gender=men&subCategory=joggers_shorts"
+                              to="/products/search?gender=men&subCategory=joggers and shorts"
                             >
                               Joggers & Shorts
                             </Link>
@@ -151,7 +151,7 @@ class Header extends Component {
                           <li>
                             <Link
                               className="dropdown-item"
-                              to="/products/search?gender=men&subCategory=winter_pants"
+                              to="/products/search?gender=men&subCategory=winter pants"
                             >
                               Winter Pants
                             </Link>
@@ -175,7 +175,7 @@ class Header extends Component {
                           <li>
                             <Link
                               className="dropdown-item"
-                              to="/products/search?gender=women&subCategory=dresses_skirts"
+                              to="/products/search?gender=women&subCategory=dresses and skirts"
                             >
                               Dresses & Skirts
                             </Link>
@@ -183,7 +183,7 @@ class Header extends Component {
                           <li>
                             <Link
                               className="dropdown-item"
-                              to="/products/search?gender=women&subCategory=coats_outwears"
+                              to="/products/search?gender=women&subCategory=coats and outwears"
                             >
                               Coats & Outerwears
                             </Link>
@@ -191,7 +191,7 @@ class Header extends Component {
                           <li>
                             <Link
                               className="dropdown-item"
-                              to="/products/search?gender=women&subCategory=sweaters_hoodies"
+                              to="/products/search?gender=women&subCategory=sweaters and hoodies"
                             >
                               Sweaters & Hoodies
                             </Link>
@@ -207,7 +207,7 @@ class Header extends Component {
                           <li>
                             <Link
                               className="dropdown-item"
-                              to="/products/search?gender=women&subCategory=Tshirts_tops"
+                              to="/products/search?gender=women&subCategory=Tshirts and tops"
                             >
                               T-shirts & Tops
                             </Link>
@@ -231,7 +231,7 @@ class Header extends Component {
                           <li>
                             <Link
                               className="dropdown-item"
-                              to="/products/search?gender=women&subCategory=joggers_shorts"
+                              to="/products/search?gender=women&subCategory=joggers and shorts"
                             >
                               Joggers & Shorts
                             </Link>
@@ -239,7 +239,7 @@ class Header extends Component {
                           <li>
                             <Link
                               className="dropdown-item"
-                              to="/products/search?gender=women&subCategory=winter_pants"
+                              to="/products/search?gender=women&subCategory=winter pants"
                             >
                               Winter Pants
                             </Link>
@@ -247,7 +247,7 @@ class Header extends Component {
                           <li>
                             <Link
                               className="dropdown-item"
-                              to="/products/search?gender=women&subCategory=winter_jacket"
+                              to="/products/search?gender=women&subCategory=winter jackets"
                             >
                               Winter Jacket
                             </Link>
@@ -283,7 +283,7 @@ class Header extends Component {
                           <li>
                             <Link
                               className="dropdown-item"
-                              to="/products/search?gender=men&subCategory=sneakers_athletics"
+                              to="/products/search?gender=men&subCategory=sneakers and athletics"
                             >
                               Sneakers & Athletics
                             </Link>
@@ -331,7 +331,7 @@ class Header extends Component {
                           <li>
                             <Link
                               className="dropdown-item"
-                              to="/products/search?gender=women&subCategory=sneakers_athletics"
+                              to="/products/search?gender=women&subCategory=sneakers and athletics"
                             >
                               Sneakers & Athletics
                             </Link>
