@@ -919,7 +919,7 @@ img {
 
 .admin-main__messages {
   padding: 40px 0;
-  width: 40%;
+  width: 35%;
   height: 500px;
   margin-left: 10px;
 }
@@ -958,16 +958,23 @@ img {
   background: #ffffff;
 }
 
+.current-conversation { 
+  height: 10%;
+  text-align: center;
+  font-weight: bold;
+  background-color: #eeeeee;
+  padding: 7px;
+  border-radius: 2px;
+}
+
 .admin-main__messages--text {
-  max-height: 280px;
-  /* width: 100%; */
+  max-height: 55%;
   overflow-y: auto;
   border: 2px solid #ffffff;
   background: #ffffff;
   padding: 5px;
   display: flex;
   flex-wrap: wrap;
-  /* flex-direction: column; */
   overflow-y: auto;
 }
 
@@ -1002,7 +1009,10 @@ img {
 }
 
 .admin-main__messages--form {
-  height: 220px;
+  height: 20%;
+  max-width: 100%;
+  width: 100%;
+  margin: 10px 0;
 }
 
 .admin-main__messages--form textarea {

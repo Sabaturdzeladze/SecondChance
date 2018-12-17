@@ -51,6 +51,7 @@ export default class Messanger extends Component {
             </section>
             <section className="admin-main__messages">
               <div className="admin-main__messages--wrapper">
+              <p className="current-conversation">Conversation With {this.state.currentUser.username}</p>
                 <div className="admin-main__messages--text">
                   <Messages user={currentUser} />
                 </div>

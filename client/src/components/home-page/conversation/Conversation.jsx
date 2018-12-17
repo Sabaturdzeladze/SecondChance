@@ -65,6 +65,7 @@ export default class Conversation extends Component {
                     ? "btn conversation-open"
                     : "conversation-hide"
                 }
+                disabled={value.user.isAdmin}
               >
                 Conversation
               </button>
