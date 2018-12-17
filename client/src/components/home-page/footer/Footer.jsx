@@ -5,9 +5,6 @@ import { Link } from "react-router-dom";
 export const Footer = () => {
   return (
     <footer>
-      <div className="totop">
-        <a href="#header">Back to top</a>
-      </div>
       <div className="footer--container">
         <div className="footer--container-shop">
           <div className="footer-header">SHOP</div>

@@ -26,9 +26,20 @@ const upload = multer({
   storage,
   fileFilter,
   limits: { fileSize: 1024 * 1024 * 2 } // limit filesize to 2MB
-}).array('images')
+}).single('myImage')
 
 const Product = require("../../modules/products");
+
+
+// adding new products
+// PATH @/api/products/add
+router.post("/add", upload, (req, res) => {
+  upload(req, res, (err) => {
+    if (err) return res.status(400).json({msg: 'Fail'})
+    return res.status(200).json({msg: 'Success'})
+  })
+}
+)
 
 // adding new products
 // PATH @/api/admin/products/addnew
@@ -37,7 +48,7 @@ router.post("/addnew", upload, (req, res) => {
   let products = JSON.parse(
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
   );
-
+    
   const product = new Product(req.body, req.files, uuidv4());
   // modifying products array and writing it to products.json file
   products.unshift(product);
@@ -119,7 +130,6 @@ router.put("/:id", upload, (req, res) => {
   if (req.body.condition) product.condition = req.body.condition;
 
   products = JSON.stringify(products);
-  console.log(upload)
   fs.writeFileSync(path.join(__dirname, "../../db") + "/products.json", products);
 
   const { gender, images, category, subCategory, brand, size, color, price, priceSale, desc, condition } = product;

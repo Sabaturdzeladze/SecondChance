@@ -8,7 +8,7 @@ class FilteredItem extends Component {
     e.preventDefault();
 
     if (!user_id) {
-      window.location = '/login';
+      window.location = "/login";
     } else {
       axios
         .post(`/api/users/${user_id}/cart/${id}`, {})
@@ -17,11 +17,9 @@ class FilteredItem extends Component {
           user.cart = res.data;
           localStorage.setItem("user", JSON.stringify(user));
           callback({ user });
-          console.log(user.cart);
         })
         .catch(err => console.log(err.response.data.msg));
     }
-    
   };
   render() {
     return (
@@ -77,7 +75,14 @@ class FilteredItem extends Component {
                       : `${this.props.subCategory}`}
                   </Link>
                 </h3>
-                <div className="price">{this.props.price}$</div>
+                <div>
+                  <span className={this.props.priceSale ? "reduced" : "price"}>
+                    {this.props.price}$
+                  </span>{" "}
+                  {this.props.priceSale && (
+                    <span className="price">{this.props.priceSale}$</span>
+                  )}
+                </div>
                 <button
                   onClick={e =>
                     this.onSubmitHandler(

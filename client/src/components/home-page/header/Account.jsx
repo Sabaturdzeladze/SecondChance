@@ -1,9 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 export const Account = props => {
-  const user = JSON.parse(localStorage.getItem('user'));
-  let isAdmin = user ? user.isAdmin : false;
+  const user = props.user;
   return !props.value.isLogged ? (
     <>
       <Link to="/login">Log in</Link>
@@ -11,6 +10,12 @@ export const Account = props => {
     </>
   ) : (
     <>
+      {(user.username !== 'Admin' && <Link
+        to="/dashboard/cart"
+        className="cart-link"
+      >
+        <i className="fas fa-shopping-cart"></i> <span className="cart-length">{user.cart.length}</span>
+      </Link>)}
       <Link
         to="/"
         onClick={() => {
@@ -20,7 +25,7 @@ export const Account = props => {
       >
         Log out
       </Link>
-      <Link to={isAdmin ? `/admin` : `/dashboard`}>My Account</Link>
+      <Link to={user.isAdmin ? `/admin` : `/dashboard`}>My Account</Link>
     </>
   );
 };

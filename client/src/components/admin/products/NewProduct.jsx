@@ -13,25 +13,45 @@ export default class NewProduct extends Component {
     priceSale: 0,
     desc: "",
     condition: "",
-    images: null
+    images: [],
+    file: null
   };
   onSubmitHandler = e => {
     e.preventDefault();
+    console.log(`submit`);
 
+    console.log(this.state.file);
     const formData = new FormData();
-    formData.append('images', this.state.images);
+    formData.append("myImage", this.state.file);
     const config = {
       headers: {
-        'content-type': 'multipart/form-data'
+        "content-type": "multipart/form-data"
       }
-    }
+    };
 
-    console.log(this.state.images)
+    axios
+      .post("/api/products/add", formData, config)
+      .then(res => {
+        console.log(res.data.msg);
+      })
+      .catch(error => {
+        console.log(error);
+      });
 
-    // const { product } = this.state;
+    // const formData = new FormData();
+    // formData.append("images", this.state.images);
+    // const config = {
+    //   headers: {
+    //     "content-type": "multipart/form-data"
+    //   }
+    // };
+
+    // console.log(this.state.images);
+
+    // const product = this.state;
 
     // axios
-    //   .post("/api/admin/products/addnew", product)
+    //   .post("/api/products/addnew", product)
     //   .then(res => {
     //     this.setState({
     //       gender: "",
@@ -44,7 +64,8 @@ export default class NewProduct extends Component {
     //       priceSale: 0,
     //       desc: "",
     //       condition: "",
-    //       images: null
+    //       images: null,
+    //       file: null
     //     });
     //   })
     //   .catch(err => console.log(err));
@@ -53,11 +74,9 @@ export default class NewProduct extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   onFileUpload = e => {
-    this.setState(() => ({ images: e.target.files[0] }))
-    // const formData = new FormData();
-    // formData.append('images', this.state.files)
-    // console.log(this.state.images);
-  }
+    // e.persist()
+    this.setState({ file: e.target.files[0] });
+  };
   render() {
     return (
       <>
@@ -253,33 +272,22 @@ export default class NewProduct extends Component {
 
             <div className="custom-file col-md-12">
               <input
-                // required
+                onClick={this.onFileUpload}
                 type="file"
                 className="custom-file-input"
                 id="customFile"
                 name="images"
-                multiple
-                onChange={this.onFileUpload}
               />
               <label className="custom-file-label" htmlFor="customFile">
                 Choose 4 photos
               </label>
-              {/* <input
-                style={{display: 'none'}}
-                // required
-                type="file"
-                className="custom-file-input"
-                id="customFile"
-                name="aonse"
-                encType='multipart/formdata'
-                // multiple
-                onChange={this.onFileUpload}
-                // ref={fileInput => this.fileInput = fileInput}
-              /> */}
-              {/* <button className="btn" onClick={() => this.fileInput.click()}>Choose 4 Photos to Upload</button> */}
             </div>
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button
+            onClick={this.onSubmitHandler}
+            type="submit"
+            className="btn btn-primary"
+          >
             Add
           </button>
         </form>

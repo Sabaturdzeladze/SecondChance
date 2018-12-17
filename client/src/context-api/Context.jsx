@@ -8,6 +8,7 @@ export default class Provider extends Component {
     user: {},
     errors: {},
     newest: [],
+    saleItems: [],
     isLogged: false
   };
 
@@ -18,7 +19,12 @@ export default class Provider extends Component {
   componentDidMount() {
     axios
       .get("/api/products/search/all")
-      .then(res => this.setState({ newest: res.data.slice(0, 4) }));
+      .then(res => {
+        const saled = res.data.filter(item => item.priceSale > 0).slice(0, 4);
+        // console.log(res.data.filer(item => item.priceSale > 0))
+        this.setState({ newest: res.data.slice(0, 4), saleItems: saled });
+      })
+      .catch(err => console.log(err));
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
       this.setState({ user, isLogged: true });
@@ -26,7 +32,7 @@ export default class Provider extends Component {
   }
 
   render() {
-    const { user, errors, newest, isLogged } = this.state;
+    const { user, errors, newest, isLogged, saleItems } = this.state;
     return (
       <Context.Provider
         value={{
@@ -34,7 +40,8 @@ export default class Provider extends Component {
           errors,
           newest,
           isLogged,
-          onStateChange: this.onChangeHandler
+          onStateChange: this.onChangeHandler,
+          saleItems
         }}
       >
         {this.props.children}

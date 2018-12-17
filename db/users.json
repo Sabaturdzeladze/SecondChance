@@ -2,6 +2,7 @@
   {
     "id": "cc1c9786-4478-4dfb-92a8-548b47232517",
     "conversation": [],
+    "cart": [],
     "username": "Admin",
     "email": "admin@gmail.com",
     "password": "41f415465473651590ca5211104615ef574837afb129b920c69ddc7865d7ca94",
@@ -20,13 +21,24 @@
         "desc": "Tom Tailor polo in good condition blabla",
         "color": "red",
         "condition": "Like New",
-        "size": "L"
+        "size": "L",
+        "priceSale": 5
       },
       {
         "gender": "men",
         "category": "clothing",
         "subCategory": "shirts",
-        "id": "12ib3d2"
+        "id": "6951",
+        "price": 10,
+        "priceSale": 5
+      },
+      {
+        "gender": "men",
+        "category": "clothing",
+        "subCategory": "coats and outwears",
+        "id": "985123",
+        "price": 10,
+        "priceSale": 5
       }
     ],
     "conversation": [
@@ -73,12 +85,12 @@
         "id": "302f7cb6-8c28-4e87-becc-f4d7dd0cb3b0"
       }
     ],
+    "balance": 855.01,
     "boughtItems": [],
     "birthday": "",
     "username": "saba",
     "email": "saba@gmail.com",
-    "password": "41f415465473651590ca5211104615ef574837afb129b920c69ddc7865d7ca94",
-    "balance": "1000"
+    "password": "41f415465473651590ca5211104615ef574837afb129b920c69ddc7865d7ca94"
   },
   {
     "id": "8db35455-d17a-4bef-a4f5-e7f48fba2",

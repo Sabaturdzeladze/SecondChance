@@ -13,7 +13,7 @@ app.use(cors('*'));
 // to use post methods         (req.body to work)
 // Body parser middleware
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '5mb'}));
 
 app.get('/', (req, res) => {
   res.json({ loaded: true });

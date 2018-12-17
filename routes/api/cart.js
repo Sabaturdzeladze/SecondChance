@@ -49,11 +49,39 @@ router.delete("/:id/cart/:product_id", (req, res) => {
       msg: "User on this id not found"
     });
   }
-  const index = users.cart.findIndex(prod => prod.id === product_id);
+  const index = user.cart.findIndex(prod => prod.id === product_id);
   user.cart.splice(index, 1);
   users = JSON.stringify(users);
   fs.writeFileSync(path.join(__dirname, "../../db") + "/users.json", users);
   return res.json(user.cart);
+});
+
+router.post("/:id/dashboard/checkout", (req, res) => {
+  const id = req.params.id;
+  let products = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
+  );
+  let users = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
+  );
+  let user = users.find(user => user.id === id);
+  products.forEach((prod, index) => {
+    for (let i = 0; i < user.cart.length; i++) {
+      if (prod.id == user.cart[i].id) {
+        products.splice(index, 1);
+      }
+    }
+  });
+  user.boughtItems = [...user.cart, ...user.boughtItems];
+  user.cart = [];
+  user.balance = req.body.balance;
+  users = JSON.stringify(users);
+  fs.writeFileSync(
+    path.join(__dirname, "../../db") + "/products.json",
+    JSON.stringify(products)
+  );
+  fs.writeFileSync(path.join(__dirname, "../../db") + "/users.json", users);
+  return res.json({user, products});
 });
 
 module.exports = router;

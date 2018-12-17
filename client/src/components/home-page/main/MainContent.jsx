@@ -22,7 +22,7 @@ export const MainContent = () => {
             </section>
             <CategoryProducts />
             <section className="row productsDisplay">
-                <Slider products={value.newest} />
+                <Slider products={value.saleItems} />
             </section>
           </main>
         );

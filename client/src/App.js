@@ -13,6 +13,8 @@ import { MainContent } from "./components/home-page/main/MainContent";
 import Conversation from "./components/home-page/conversation/Conversation";
 import Messenger from "./components/admin/Messenger/Messenger";
 import { Footer } from "./components/home-page/footer/Footer";
+import Cart from "./components/cart/Cart";
+import Checkout from "./components/cart/Checkout";
 
 import "./App.css";
 
@@ -37,6 +39,8 @@ class App extends Component {
             <ProtectedRoute path="/admin" component={Admin} />
             <ProtectedRoute path="/admin/messenger" component={Messenger} />
             <ProtectedRoute path="/admin/product/add" component={NewProduct} />
+            <Route path="/dashboard/checkout" component={Checkout}/>
+            <Route path="/dashboard/cart" component={Cart} />
             <Route path="/" component={Conversation} />
             <Route path="/" exact component={MainContent} />
             <Route path="/login" component={Login} />

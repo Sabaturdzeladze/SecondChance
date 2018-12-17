@@ -34,7 +34,7 @@ class Header extends Component {
               </div>
               <div className="headerTop--account-cart">
                 <div className="headerTop--account-cart__items">
-                  <Account value={value} />
+                  <Account user={value.user} value={value} />
                 </div>
               </div>
             </div>

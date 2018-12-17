@@ -9,43 +9,56 @@
     "desc": "Tom Tailor polo in good condition blabla",
     "color": "red",
     "condition": "Like New",
-    "size": "L"
+    "size": "L",
+    "priceSale": 5
   },
   {
     "gender": "men",
     "category": "clothing",
     "subCategory": "shirts",
-    "id": "12ib3d2"
+    "id": "6951",
+    "price": 10,
+    "priceSale": 5
   },
   {
     "gender": "men",
     "category": "clothing",
     "subCategory": "coats and outwears",
-    "id": "8wgbca"
+    "id": "985123",
+    "price": 10,
+    "priceSale": 5
   },
   {
     "gender": "men",
     "category": "clothing",
     "subCategory": "sweaters and hoodies",
-    "id": "8wgbcasecon"
+    "id": "8wgbcasecon",
+    "price": 10,
+    "priceSale": 5
   },
   {
     "gender": "men",
     "category": "clothing",
     "subCategory": "shirts",
-    "id": "8wgbcaawsec"
+    "id": "8wgbcaawsec",
+    "price": 10,
+    "priceSale": 5
   },
   {
     "gender": "men",
     "category": "clothing",
     "subCategory": "Tshirts and tops",
-    "id": "8wasecgbca"
+    "id": "8wasecgbca",
+    "price": 10,
+    "priceSale": 5
   },
   {
     "gender": "men",
     "category": "clothing",
     "subCategory": "jeans",
-    "id": "8wasefdgbca"
+    "id": "8wasefdgbca",
+    "price": 10,
+    "priceSale": 5
   },
   {
     "gender": "men",
