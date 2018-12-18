@@ -469,7 +469,7 @@ class Header extends Component {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/deals">
+                    <Link className="nav-link" to="/newest">
                       Newest
                     </Link>
                   </li>
