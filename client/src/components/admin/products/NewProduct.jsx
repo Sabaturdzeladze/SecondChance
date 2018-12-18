@@ -59,9 +59,9 @@ export default class NewProduct extends Component {
     const { brand, selectedFile } = this.state
     return (
       <>
-        <h2 style={{ textAlign: "center" }}>New Product Form</h2>
+        <h2 style={{ textAlign: "center", marginTop: "20px" }}>New Product Form</h2>
 
-        <form onSubmit={this.onSubmitHandler}>
+        <form className="form-product" onSubmit={this.onSubmitHandler}>
           <div className="form-row">
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput3">Gender</label>
@@ -267,12 +267,15 @@ export default class NewProduct extends Component {
               </label>
             </div>
           </div>
+        
+          <div class="col-md-12 text-center"> 
           <button
-            type="submit"
-            className="btn btn-primary"
-          >
-            Add
-          </button>
+          type="submit"
+          className="btn btn-primary new-product-button"
+        >
+          Add
+        </button>
+          </div>
         </form>
       </>
     );

@@ -397,7 +397,6 @@ textarea {
 
 .dropdown-menu--flexed {
   display: flex;
-  width: 330px;
 }
 
 .dropdown-menu--flexed ul {
@@ -449,8 +448,7 @@ textarea {
 form {
   width: 600px;
   max-width: 90%;
-  margin: auto;
-  margin-top: 25px;
+  margin: 25px auto;
 }
 
 .form-header {
@@ -1451,3 +1449,20 @@ form {
   margin: 0;
 }
 /* Cart CSS END  */
+
+.admin-dashboard {
+  background: rgb(196, 195, 195)!important;
+  border: 1px solid gray;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.form-product {
+  margin-bottom: 25px;
+}
+
+.new-product-button {
+  margin: 20px;
+}

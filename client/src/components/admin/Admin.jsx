@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+import AdminNavigation from "./AdminNavigation"
 
 class Admin extends Component {
     render() {
         return (
-            <h1>Admin Page</h1>
+            <div>
+                <AdminNavigation />
+            </div>
         );
     }
 }
