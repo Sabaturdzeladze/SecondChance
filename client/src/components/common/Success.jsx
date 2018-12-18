@@ -6,7 +6,7 @@ const Success = ({style}) => {
       <img
         src={success}
         alt="Successfully Done"
-        {...style}
+        style={{...style}}
       />
   );
 };
@@ -14,8 +14,7 @@ const Success = ({style}) => {
 Success.defaultProps = {
   style: {
     width: "50px",
-    margin: "0 0 0 150px",
-    display: "inline-block",
+    display: "inline-block"
   }
 };
 

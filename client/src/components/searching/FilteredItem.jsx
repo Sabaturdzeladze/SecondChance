@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { Consumer } from "../../context-api/Context";
 import Success from "../common/Success";
+import Spinner from "../common/Spinner";
 
 class FilteredItem extends Component {
   state = {
-    added: false
+    added: false,
+    loading: false
   };
   onSubmitHandler = (e, user_id, id, callback) => {
     e.preventDefault();
@@ -14,18 +16,23 @@ class FilteredItem extends Component {
     if (!user_id) {
       window.location = "/login";
     } else {
-      axios
-        .post(`/api/users/${user_id}/cart/${id}`, {})
-        .then(res => {
-          let user = JSON.parse(localStorage.getItem("user"));
-          user.cart = res.data;
-          localStorage.setItem("user", JSON.stringify(user));
-          callback({ user });
-          setTimeout(() => {
-            this.setState({ added: true });
-          }, 50);
-        })
-        .catch(err => console.log(err.response.data.msg));
+      this.setState(() => ({ loading: true }));
+
+      setTimeout(() => {
+        axios
+          .post(`/api/users/${user_id}/cart/${id}`, {})
+          .then(res => {
+            let user = JSON.parse(localStorage.getItem("user"));
+            user.cart = res.data;
+            localStorage.setItem("user", JSON.stringify(user));
+            callback({ user });
+            this.setState({ added: true, loading: false });
+          })
+          .catch(err => {
+            console.log(err.response.data.msg);
+            this.setState({ loading: false });
+          });
+      }, 500);
     }
   };
   render() {
@@ -89,14 +96,17 @@ class FilteredItem extends Component {
                   {this.props.priceSale && (
                     <span className="price">{this.props.priceSale}$</span>
                   )}
-                  {this.state.added && (
+                  {this.state.added ? (
                     <Success
                       style={{
                         width: "25px",
-                        position: "absolute",
-                        right: "25px"
+                        marginleft: '20px'
                       }}
                     />
+                  ) : (
+                    this.state.loading && (
+                      <Spinner width="75px" />
+                    )
                   )}
                 </div>
                 <button
