@@ -2,82 +2,61 @@ import React, { Component } from "react";
 import axios from "axios";
 
 export default class NewProduct extends Component {
-  state = {
-    gender: "",
-    category: "",
-    subCategory: "",
-    brand: "",
-    size: "",
-    color: "",
-    price: 0,
-    priceSale: 0,
-    desc: "",
-    condition: "",
-    images: [],
-    file: null
+  constructor() {
+    super()
+    this.state = {
+      gender: "",
+      category: "",
+      subCategory: "",
+      brand: "",
+      size: "",
+      color: "",
+      price: 0,
+      priceSale: 0,
+      desc: "",
+      condition: "",
+      images: [],
+      selectedFile: ''
+    };
+  }
+
+  onChangeHandler = e => {
+    switch (e.target.name) {
+      case 'selectedFile':
+        this.setState({ selectedFile: e.target.files[0] })
+        break
+      default:
+        this.setState({ [e.target.name]: e.target.value });
+    }
   };
+
   onSubmitHandler = e => {
     e.preventDefault();
-    console.log(`submit`);
-
-    console.log(this.state.file);
-    const formData = new FormData();
-    formData.append("myImage", this.state.file);
-    const config = {
-      headers: {
-        "content-type": "multipart/form-data"
-      }
-    };
+    const { gender, brand, category, subCategory, size, color, price, priceSale, desc, condition, selectedFile } = this.state;
+    let formData = new FormData();
+    formData.append('gender', gender);
+    formData.append('category', category);
+    formData.append('subCategory', subCategory);
+    formData.append('brand', brand);
+    formData.append('size', size);
+    formData.append('color', color);
+    formData.append('price', price);
+    formData.append('priceSale', priceSale);
+    formData.append('desc', desc);
+    formData.append('condition', condition);
+    formData.append('selectedFile', selectedFile);
 
     axios
-      .post("/api/products/add", formData, config)
+      .post("/api/products/addnew", formData)
       .then(res => {
-        console.log(res.data.msg);
+
+        console.log(formData)
       })
-      .catch(error => {
-        console.log(error);
-      });
+      .catch(err => console.log(err));
+  }
 
-    // const formData = new FormData();
-    // formData.append("images", this.state.images);
-    // const config = {
-    //   headers: {
-    //     "content-type": "multipart/form-data"
-    //   }
-    // };
-
-    // console.log(this.state.images);
-
-    // const product = this.state;
-
-    // axios
-    //   .post("/api/products/addnew", product)
-    //   .then(res => {
-    //     this.setState({
-    //       gender: "",
-    //       category: "",
-    //       subCategory: "",
-    //       brand: "",
-    //       size: "",
-    //       color: "",
-    //       price: 0,
-    //       priceSale: 0,
-    //       desc: "",
-    //       condition: "",
-    //       images: null,
-    //       file: null
-    //     });
-    //   })
-    //   .catch(err => console.log(err));
-  };
-  onChangeHandler = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-  onFileUpload = e => {
-    // e.persist()
-    this.setState({ file: e.target.files[0] });
-  };
   render() {
+    const { brand, selectedFile } = this.state
     return (
       <>
         <h2 style={{ textAlign: "center" }}>New Product Form</h2>
@@ -91,6 +70,7 @@ export default class NewProduct extends Component {
                 name="gender"
                 id="formGroupExampleInput3"
                 className="custom-select custom-select-m"
+                onChange={this.onChangeHandler}
               >
                 <option defaultValue />
                 <option value="men">Men</option>
@@ -104,6 +84,7 @@ export default class NewProduct extends Component {
                 name="category"
                 id="formGroupExampleInput4"
                 className="custom-select custom-select-m"
+                onChange={this.onChangeHandler}
               >
                 <option defaultValue />
                 <option value="clothing">Clothing</option>
@@ -116,9 +97,10 @@ export default class NewProduct extends Component {
               <label htmlFor="formGroupExampleInput5">Sub-Category</label>
               <select
                 // required
-                name="subcategory"
+                name="subCategory"
                 id="formGroupExampleInput5"
                 className="custom-select custom-select-m"
+                onChange={this.onChangeHandler}
               >
                 <option defaultValue />
                 <optgroup label="Clothing">
@@ -181,6 +163,7 @@ export default class NewProduct extends Component {
                 id="formGroupExampleInput6"
                 name="brand"
                 placeholder="adidas / nike"
+                value={brand}
                 onChange={this.onChangeHandler}
               />
             </div>
@@ -242,6 +225,7 @@ export default class NewProduct extends Component {
                 name="condition"
                 id="formGroupExampleInput11"
                 className="custom-select custom-select-m"
+                onChange={this.onChangeHandler}
               >
                 <option defaultValue />
                 <option value="bad">Bad</option>
@@ -260,7 +244,7 @@ export default class NewProduct extends Component {
                 type="text"
                 className="form-control"
                 id="formGroupExampleInput12"
-                name="password"
+                name="desc"
                 placeholder="Product Description"
                 onChange={this.onChangeHandler}
               />
@@ -272,11 +256,11 @@ export default class NewProduct extends Component {
 
             <div className="custom-file col-md-12">
               <input
-                onClick={this.onFileUpload}
                 type="file"
                 className="custom-file-input"
                 id="customFile"
-                name="images"
+                name="selectedFile"
+                onChange={this.onChangeHandler}
               />
               <label className="custom-file-label" htmlFor="customFile">
                 Choose 4 photos
@@ -284,7 +268,6 @@ export default class NewProduct extends Component {
             </div>
           </div>
           <button
-            onClick={this.onSubmitHandler}
             type="submit"
             className="btn btn-primary"
           >

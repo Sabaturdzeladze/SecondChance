@@ -5,51 +5,29 @@ const fs = require("fs");
 const uuidv4 = require("uuid/v4"); // creating random id
 const multer = require('multer')
 
-const storage = multer.diskStorage({  // setting storage engine with multer
-  destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, '../../db/uploads')); // destination
+ // configure storage
+ const storage = multer.diskStorage({
+  destination: (req, file, cb) => { //uploaded files destination
+    cb(null, './db/uploads');
   },
-  filename: function (req, file, cb) { // setting filename
-    cb(null, `${new Date().getDate()}-${new Date().getMonth() + 1}-${new Date().getFullYear()} - ${file.originalname}`);
-  }
-})
+  filename: (req, file, cb) => { //upload files name
+    const newFilename = `${new Date().getDate()}-${new Date().getMonth() + 1}-${new Date().getFullYear()} - ${file.originalname}`;
+    cb(null, newFilename);
+  },
+});
 
-const fileFilter = (req, file, cb) => { // filter file by mimetype
-  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-    cb(null, true)
-  } else { // reject a file
-    cb(null, false)
-  }
-}
-
-const upload = multer({ 
-  storage,
-  fileFilter,
-  limits: { fileSize: 1024 * 1024 * 2 } // limit filesize to 2MB
-}).single('myImage')
+const upload = multer({ storage });
 
 const Product = require("../../modules/products");
 
-
-// adding new products
-// PATH @/api/products/add
-router.post("/add", upload, (req, res) => {
-  upload(req, res, (err) => {
-    if (err) return res.status(400).json({msg: 'Fail'})
-    return res.status(200).json({msg: 'Success'})
-  })
-}
-)
-
 // adding new products
 // PATH @/api/admin/products/addnew
-router.post("/addnew", upload, (req, res) => {
-  // console.log(req.files)
+router.post("/addnew", upload.single('selectedFile'), (req, res) => {
   let products = JSON.parse(
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
   );
     
-  const product = new Product(req.body, req.files, uuidv4());
+  const product = new Product(req.body, req.file, uuidv4());
   // modifying products array and writing it to products.json file
   products.unshift(product);
   products = JSON.stringify(products);
@@ -105,7 +83,7 @@ router.delete("/:id", (req, res) => {
 
 // editing products by id
 // PATH @/api/admin/products/:id
-router.put("/:id", upload, (req, res) => {
+router.put("/:id", upload.single('selectedFile'), (req, res) => {
   let id = req.params.id;
   let products = JSON.parse(
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
