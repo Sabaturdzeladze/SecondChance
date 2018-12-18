@@ -7,27 +7,29 @@ export const Footer = () => {
     <footer>
       <div className="footer--container">
         <div className="footer--container-shop">
-          <div className="footer-header">SHOP</div>
-          <div className="footer-container__shop--container">
+          <div className="footer-header">Shop</div>
+          
+          <div>
             <div className="footer-div">
-              <Link to="/products/search?gender=women">WOMEN</Link>
+              <Link to="/products/search?gender=women">Women</Link>
             </div>
             <div className="footer-div">
-              <Link to="/products/search?gender=men">MEN</Link>
+              <Link to="/products/search?gender=men">Men</Link>
             </div>
             <div className="footer-div">
-              <Link to="/products/search?category=bags">BAGS</Link>
+              <Link to="/products/search?category=bags">Bags</Link>
             </div>
             <div className="footer-div">
               <Link to="/products/search?category=accessories">
-                ACCESSORIES
+                Accessories
               </Link>
             </div>
             <div className="footer-div">
-              <Link to="/">SALE</Link>
+              <Link to="/">Sale</Link>
             </div>
           </div>
         </div>
+        
         <div className="footer-container__brand">
           <div>
             <i className="fab fa-pied-piper-hat" />
@@ -37,53 +39,55 @@ export const Footer = () => {
             Clothes worth living for
           </div>
         </div>
+        
         <div className="footer-contact">
           <div className="footer-header">My Account</div>
-          <div className="footer-div">
-            <i className="fas fa-shopping-cart my-account__logo"> My Cart</i>
+          <div>
+            <div className="footer-div">
+              <Link to=""><i className="fas fa-shopping-cart"></i> My Cart</Link>
+            </div>
+            <div className="footer-div">
+              <Link to=""><i className="fas fa-history my-account__logo" /> Order History</Link>
+            </div>
+            <div className="footer-div">
+              <Link to=""><i className="far fa-heart my-account__logo" /> Wishlist</Link>
+            </div>
+            <div className="footer-div">
+              <Link to=""><i className="fas fa-sign-out-alt my-account__logo" /> Log out</Link>
+            </div>
           </div>
-          <div className="footer-div">
-            <i className="fas fa-history my-account__logo" /> Order History{" "}
-          </div>
-          <div className="footer-div">
-            <i className="far fa-heart my-account__logo" /> Wishlist{" "}
-          </div>
-          <div className="footer-div">
-            <i className="fas fa-sign-out-alt my-account__logo" /> Log out{" "}
-          </div>
+
         </div>
       </div>
       <div className="footer3">
-        <div>
-          <div className="aboutus">SECURE ONLINE SHOPPING</div>
+        <div className="footer-container__payments">
+          <div className="aboutus">Secure Online Shopping</div>
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9xFHOvT3ccJ1u-I2mbjc1AiaT-qyREcmoam-V9V-7UpNV_PzVjQ"
+            src="https://www.martinlawgroupllc.com/wp-content/uploads/sites/2557/2018/01/Payment-Methods.png"
             alt="visa/master"
-            width="250px"
-            height="50px"
           />
         </div>
         <div className="footer-container__icons">
           <div className="footer-header">Follow SecondChance</div>
-          <Link to="/">
-            <i className="fab fa-pinterest footerSM" />
-          </Link>
-          <Link to="/">
-            <i className="fab fa-twitter footerSM" />
-          </Link>
-          <Link to="/">
-            <i className="fab fa-instagram footerSM" />
-          </Link>
-          <Link to="/">
-            <i className="fab fa-facebook footerSM" />
-          </Link>
-          <Link to="/">
-            <i className="fab fa-youtube footerSM" />
-          </Link>
+          <div className="footer-container__icons-items">
+            <Link to="/">
+              <i className="fab fa-pinterest footerSM" />
+            </Link>
+            <Link to="/">
+              <i className="fab fa-twitter footerSM" />
+            </Link>
+            <Link to="/">
+              <i className="fab fa-instagram footerSM" />
+            </Link>
+            <Link to="/">
+              <i className="fab fa-facebook footerSM" />
+            </Link>
+            <Link to="/">
+              <i className="fab fa-youtube footerSM" />
+            </Link></div>
         </div>
         <div className="aboutus">
-          <div>About Us</div>
-          <div>&copy;TecHub {new Date().getFullYear()}</div>
+          <div>&copy; TecHub {new Date().getFullYear()}</div>
         </div>
       </div>
     </footer>
