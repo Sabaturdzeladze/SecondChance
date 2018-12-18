@@ -2,8 +2,14 @@ import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
 import axios from "axios";
 import { Consumer } from "../../context-api/Context";
+import Spinner from "../common/Spinner";
+import Success from "../common/Success";
 
 export default class Checkout extends Component {
+  state = {
+    loading: false
+  };
+
   totalCalculator = cart => {
     let total = 0;
     cart.forEach(item => {
@@ -18,17 +24,22 @@ export default class Checkout extends Component {
   };
 
   onClickHandler = value => {
+    this.setState(() => ({ loading: true }));
     let user = value.user;
     user.balance = parseInt(user.balance);
     user.balance -= this.grandTotal(this.totalCalculator(value.user.cart));
     user.boughtItems = [...user.cart, ...user.boughtItems];
     user.cart = [];
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem("user", JSON.stringify(user));
     axios
-      .post(`/api/users/${value.user.id}/dashboard/checkout`, {balance: user.balance})
+      .post(`/api/users/${value.user.id}/dashboard/checkout`, {
+        balance: user.balance
+      })
       .then(res => {
         const newest = res.data.products.slice(0, 4);
-        const saleItems = res.data.products.filter(item => item.priceSale > 0).slice(0, 4);
+        const saleItems = res.data.products
+          .filter(item => item.priceSale > 0);
+        this.setState(() => ({ loading: false }));
         value.onStateChange({ user: res.data.user, newest, saleItems });
       });
   };
@@ -400,20 +411,15 @@ export default class Checkout extends Component {
 
               <div>
                 <p>
-                  <b>Total Price:</b> {this.totalCalculator(value.user.cart)}$
+                  <b>Total Price:</b> {this.totalCalculator(user.cart)}$
                 </p>
                 <p>
                   <b>Shipping:</b>{" "}
-                  {this.totalCalculator(value.user.cart) >= 25
-                    ? "0.00$"
-                    : "4.99$"}{" "}
+                  {this.totalCalculator(user.cart) >= 25 ? "0.00$" : "4.99$"}{" "}
                 </p>
                 <p>
                   <b>Grand Total:</b>{" "}
-                  {this.grandTotal(
-                    this.totalCalculator(value.user.cart)
-                  ).toFixed(2)}
-                  $
+                  {this.grandTotal(this.totalCalculator(user.cart)).toFixed(2)}$
                 </p>
 
                 <button onClick={e => this.onClickHandler(value)}>
@@ -421,15 +427,22 @@ export default class Checkout extends Component {
                 </button>
               </div>
             </div>
+          ) : this.state.loading ? (
+            <Spinner />
           ) : (
             <div
               style={{ width: "50%", margin: "0 auto", textAlign: "center" }}
             >
-              <h2 style={{ margin: "20px 0" }}>Your order has been placed successfully</h2>
+              <h2 style={{ margin: "20px 0" }}>
+                Your order has been placed successfully <br/>
+                <Success />
+              </h2>
               <Link style={{ display: "block" }} to="/">
                 Home
               </Link>
-              <Link style={{ display: "block" }} to="/dashboard">My Account</Link>
+              <Link style={{ display: "block" }} to="/dashboard">
+                My Account
+              </Link>
             </div>
           );
         }}

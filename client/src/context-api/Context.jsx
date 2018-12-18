@@ -20,9 +20,8 @@ export default class Provider extends Component {
     axios
       .get("/api/products/search/all")
       .then(res => {
-        const saled = res.data.filter(item => item.priceSale > 0).slice(0, 4);
-        // console.log(res.data.filer(item => item.priceSale > 0))
-        this.setState({ newest: res.data.slice(0, 4), saleItems: saled });
+        const saled = res.data.filter(item => item.priceSale > 0);
+        this.setState({ newest: res.data, saleItems: saled });
       })
       .catch(err => console.log(err));
     const user = JSON.parse(localStorage.getItem("user"));

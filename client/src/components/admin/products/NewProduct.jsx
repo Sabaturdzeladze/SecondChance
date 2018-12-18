@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Spinner from "../../common/Spinner";
 
 export default class NewProduct extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       gender: "",
       category: "",
@@ -16,15 +17,16 @@ export default class NewProduct extends Component {
       desc: "",
       condition: "",
       images: [],
-      selectedFile: ''
+      selectedFile: "",
+      loading: false
     };
   }
 
   onChangeHandler = e => {
     switch (e.target.name) {
-      case 'selectedFile':
-        this.setState({ selectedFile: e.target.files[0] })
-        break
+      case "selectedFile":
+        this.setState({ selectedFile: e.target.files[0] });
+        break;
       default:
         this.setState({ [e.target.name]: e.target.value });
     }
@@ -32,41 +34,61 @@ export default class NewProduct extends Component {
 
   onSubmitHandler = e => {
     e.preventDefault();
-    const { gender, brand, category, subCategory, size, color, price, priceSale, desc, condition, selectedFile } = this.state;
+    this.setState(() => ({ loading: true }));
+    const {
+      gender,
+      brand,
+      category,
+      subCategory,
+      size,
+      color,
+      price,
+      priceSale,
+      desc,
+      condition,
+      selectedFile
+    } = this.state;
     let formData = new FormData();
-    formData.append('gender', gender);
-    formData.append('category', category);
-    formData.append('subCategory', subCategory);
-    formData.append('brand', brand);
-    formData.append('size', size);
-    formData.append('color', color);
-    formData.append('price', price);
-    formData.append('priceSale', priceSale);
-    formData.append('desc', desc);
-    formData.append('condition', condition);
-    formData.append('selectedFile', selectedFile);
+    formData.append("gender", gender);
+    formData.append("category", category);
+    formData.append("subCategory", subCategory);
+    formData.append("brand", brand);
+    formData.append("size", size);
+    formData.append("color", color);
+    formData.append("price", price);
+    formData.append("priceSale", priceSale);
+    formData.append("desc", desc);
+    formData.append("condition", condition);
+    formData.append("selectedFile", selectedFile);
 
     axios
       .post("/api/products/addnew", formData)
       .then(res => {
-
-        console.log(formData)
+        console.log(formData);
+        this.setState({ loading: false });
       })
-      .catch(err => console.log(err));
-  }
+      .catch(err => {
+        console.log(err);
+        this.setState(() => ({ loading: false }));
+      });
+  };
 
   render() {
-    const { brand, selectedFile } = this.state
-    return (
+    const { brand /* , selectedFile */, loading } = this.state;
+    return loading ? (
+      <Spinner />
+    ) : (
       <>
-        <h2 style={{ textAlign: "center", marginTop: "20px" }}>New Product Form</h2>
+        <h2 style={{ textAlign: "center", marginTop: "20px" }}>
+          New Product Form
+        </h2>
 
         <form className="form-product" onSubmit={this.onSubmitHandler}>
           <div className="form-row">
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput3">Gender</label>
               <select
-                // required
+                required
                 name="gender"
                 id="formGroupExampleInput3"
                 className="custom-select custom-select-m"
@@ -80,7 +102,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput4">Category</label>
               <select
-                // required
+                required
                 name="category"
                 id="formGroupExampleInput4"
                 className="custom-select custom-select-m"
@@ -96,7 +118,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput5">Sub-Category</label>
               <select
-                // required
+                required
                 name="subCategory"
                 id="formGroupExampleInput5"
                 className="custom-select custom-select-m"
@@ -157,7 +179,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput6">Brand</label>
               <input
-                // required
+                required
                 type="text"
                 className="form-control"
                 id="formGroupExampleInput6"
@@ -170,7 +192,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput7">Size</label>
               <input
-                // required
+                required
                 type="text"
                 className="form-control"
                 id="formGroupExampleInput7"
@@ -182,7 +204,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput8">Color</label>
               <input
-                // required
+                required
                 type="text"
                 className="form-control"
                 id="formGroupExampleInput8"
@@ -197,7 +219,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput9">Price</label>
               <input
-                // required
+                required
                 type="text"
                 className="form-control"
                 id="formGroupExampleInput9"
@@ -209,7 +231,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput10">Price Sale</label>
               <input
-                // required
+                required
                 type="text"
                 className="form-control"
                 id="formGroupExampleInput10"
@@ -221,7 +243,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput11">Condition</label>
               <select
-                // required
+                required
                 name="condition"
                 id="formGroupExampleInput11"
                 className="custom-select custom-select-m"
@@ -240,7 +262,7 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-12">
               <label htmlFor="formGroupExampleInput12">Description</label>
               <input
-                // required
+                required
                 type="text"
                 className="form-control"
                 id="formGroupExampleInput12"
@@ -267,14 +289,14 @@ export default class NewProduct extends Component {
               </label>
             </div>
           </div>
-        
-          <div class="col-md-12 text-center"> 
-          <button
-          type="submit"
-          className="btn btn-primary new-product-button"
-        >
-          Add
-        </button>
+
+          <div className="col-md-12 text-center">
+            <button
+              type="submit"
+              className="btn btn-primary new-product-button"
+            >
+              Add
+            </button>
           </div>
         </form>
       </>

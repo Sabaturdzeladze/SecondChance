@@ -15,6 +15,8 @@ import Messenger from "./components/admin/Messenger/Messenger";
 import { Footer } from "./components/home-page/footer/Footer";
 import Cart from "./components/cart/Cart";
 import Checkout from "./components/cart/Checkout";
+import { Deals } from "./components/deals/Deals";
+import { Newest } from "./components/deals/Newest";
 
 import "./App.css";
 
@@ -47,6 +49,8 @@ class App extends Component {
             <Route path="/register" component={Register} />
             <Route path="/products/search" component={Filtered} />
             <Route path="/products/item/:id" component={ProductDetails} />
+            <Route path="/deals" component={Deals} />
+            <Route path="/newest" component={Newest} />
             <Footer />
           </>
         </Router>

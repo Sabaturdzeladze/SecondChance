@@ -1,36 +1,43 @@
 import React, { Component } from "react";
-import { Redirect, Link} from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { Consumer } from "../../context-api/Context";
 import { CartItem } from "./CartItem";
 import axios from "axios";
+import Spinner from "../common/Spinner";
 
 export default class Cart extends Component {
   state = {
     total: 0,
-    grandTotal: 0
+    grandTotal: 0,
+    loading: false
   };
 
   onDelete = (e, user_id, product_id, value) => {
-    axios.delete(`/api/users/${user_id}/cart/${product_id}`).then(res => {
-      let user = value.user;
-      user.cart = res.data;
-      localStorage.setItem("user", JSON.stringify(user));
-      value.onStateChange({ user });
-    });
+    this.setState(() => ({ loading: true }));
+    axios
+      .delete(`/api/users/${user_id}/cart/${product_id}`)
+      .then(res => {
+        let user = value.user;
+        user.cart = res.data;
+        localStorage.setItem("user", JSON.stringify(user));
+        value.onStateChange({ user });
+        this.setState(() => ({ loading: false }));
+      })
+      .catch(err => console.log(err));
   };
 
-  totalCalculator = (cart) => {
+  totalCalculator = cart => {
     let total = 0;
     cart.forEach(item => {
       let increment = item.priceSale ? item.priceSale : item.price;
       total += parseInt(increment);
     });
     return total;
-  }
+  };
 
-  grandTotal = (total) => {
+  grandTotal = total => {
     return total >= 25 ? total : total + 4.99;
-  }
+  };
 
   render() {
     return (
@@ -39,6 +46,8 @@ export default class Cart extends Component {
           const { user } = value;
           return !user.username ? (
             <Redirect to="/login" />
+          ) : this.state.loading ? (
+            <Spinner />
           ) : user.cart.length ? (
             <main>
               <div className="checkout">
@@ -61,9 +70,22 @@ export default class Cart extends Component {
                   />
                 </div>
                 <div>
-                  <p><b>Total Price:</b> {this.totalCalculator(value.user.cart)}$</p>
-                  <p><b>Shipping:</b> { this.totalCalculator(value.user.cart) >= 25 ? '0.00$' : '4.99$'} </p>
-                  <p><b>Grand Total:</b> {this.grandTotal(this.totalCalculator(value.user.cart)).toFixed(2)}$</p>
+                  <p>
+                    <b>Total Price:</b> {this.totalCalculator(value.user.cart)}$
+                  </p>
+                  <p>
+                    <b>Shipping:</b>{" "}
+                    {this.totalCalculator(value.user.cart) >= 25
+                      ? "0.00$"
+                      : "4.99$"}{" "}
+                  </p>
+                  <p>
+                    <b>Grand Total:</b>{" "}
+                    {this.grandTotal(
+                      this.totalCalculator(value.user.cart)
+                    ).toFixed(2)}
+                    $
+                  </p>
                 </div>
                 <div className="checkout--buttons">
                   <Link to="/">
@@ -77,7 +99,10 @@ export default class Cart extends Component {
               </div>
             </main>
           ) : (
-            <h2>No items in Cart</h2>
+            <div style={{textAlign: 'center', padding: '30px'}}>
+              <h2 style={{padding: '50px'}}>No items in Cart</h2>
+              <Link to="/">Go Home</Link>
+            </div>
           );
         }}
       </Consumer>

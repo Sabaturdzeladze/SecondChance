@@ -2,8 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Consumer } from "../../context-api/Context";
+import Success from "../common/Success";
 
 class FilteredItem extends Component {
+  state = {
+    added: false
+  };
   onSubmitHandler = (e, user_id, id, callback) => {
     e.preventDefault();
 
@@ -17,6 +21,9 @@ class FilteredItem extends Component {
           user.cart = res.data;
           localStorage.setItem("user", JSON.stringify(user));
           callback({ user });
+          setTimeout(() => {
+            this.setState({ added: true });
+          }, 50);
         })
         .catch(err => console.log(err.response.data.msg));
     }
@@ -25,7 +32,7 @@ class FilteredItem extends Component {
     return (
       <Consumer>
         {value => (
-          <div className="col-md-3 col-sm-6">
+          <div style={{ marginBottom: "10px" }} className="col-md-3 col-sm-6">
             <div className="product-grid">
               <div className="product-image">
                 <Link to={`/products/item/${this.props.id}`}>
@@ -81,6 +88,15 @@ class FilteredItem extends Component {
                   </span>{" "}
                   {this.props.priceSale && (
                     <span className="price">{this.props.priceSale}$</span>
+                  )}
+                  {this.state.added && (
+                    <Success
+                      style={{
+                        width: "25px",
+                        position: "absolute",
+                        right: "25px"
+                      }}
+                    />
                   )}
                 </div>
                 <button

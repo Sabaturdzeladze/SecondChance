@@ -14,15 +14,33 @@ export const MainContent = () => {
               <div className="main-layer__container">
                 <h1>Second Chance for Products</h1>
                 <Link to="/products/search?gender=women">Shop Women's</Link>
-                <Link to="/products/search?gender=men">Shop Women's</Link>
+                <Link to="/products/search?gender=men">Shop Men's</Link>
               </div>
             </section>
             <section className="row productsDisplay">
-                <Slider products={value.newest} />
+              <h2
+                style={{
+                  width: "100%",
+                  textAlign: "center",
+                  paddingBottom: "20px"
+                }}
+              >
+                Our Newest Products
+              </h2>
+              <Slider products={value.newest.slice(0, 4)} />
             </section>
             <CategoryProducts />
             <section className="row productsDisplay">
-                <Slider products={value.saleItems} />
+              <h2
+                style={{
+                  width: "100%",
+                  textAlign: "center",
+                  paddingBottom: "20px"
+                }}
+              >
+                Products on Sale
+              </h2>
+              <Slider products={value.saleItems.slice(0, 4)} />
             </section>
           </main>
         );
