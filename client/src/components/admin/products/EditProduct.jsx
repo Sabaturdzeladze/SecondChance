@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Spinner from "../../common/Spinner";
 
-export default class NewProduct extends Component {
+export default class EditProduct extends Component {
   state = {
     gender: "",
     category: "",
@@ -18,6 +18,12 @@ export default class NewProduct extends Component {
     selectedFile: "",
     loading: false
   };
+  componentDidMount() {
+    const id = this.props.match.params.id;
+    axios.get(`/api/products/${id}`).then(res => {
+      this.setState({ ...res.data });
+    });
+  }
   onChangeHandler = e => {
     switch (e.target.name) {
       case "selectedFile":
@@ -30,6 +36,7 @@ export default class NewProduct extends Component {
 
   onSubmitHandler = e => {
     e.preventDefault();
+    const id = this.props.match.params.id;
     this.setState(() => ({ loading: true }));
     const {
       gender,
@@ -58,7 +65,7 @@ export default class NewProduct extends Component {
     formData.append("selectedFile", selectedFile);
 
     axios
-      .post("/api/products/addnew", formData)
+      .put(`/api/products/${id}`, formData)
       .then(res => {
         console.log(formData);
         this.setState({ loading: false });
@@ -76,7 +83,7 @@ export default class NewProduct extends Component {
     ) : (
       <>
         <h2 style={{ textAlign: "center", marginTop: "20px" }}>
-          New Product Form
+          Edit Product Form
         </h2>
 
         <form className="form-product" onSubmit={this.onSubmitHandler}>
@@ -89,8 +96,8 @@ export default class NewProduct extends Component {
                 id="formGroupExampleInput3"
                 className="custom-select custom-select-m"
                 onChange={this.onChangeHandler}
+                value={this.state.gender}
               >
-                <option defaultValue />
                 <option value="men">Men</option>
                 <option value="women">Women</option>
               </select>
@@ -103,8 +110,9 @@ export default class NewProduct extends Component {
                 id="formGroupExampleInput4"
                 className="custom-select custom-select-m"
                 onChange={this.onChangeHandler}
+                value={this.state.category}
+                
               >
-                <option defaultValue />
                 <option value="clothing">Clothing</option>
                 <option value="shoes">Shoes</option>
                 <option value="bags">Bags</option>
@@ -119,8 +127,9 @@ export default class NewProduct extends Component {
                 id="formGroupExampleInput5"
                 className="custom-select custom-select-m"
                 onChange={this.onChangeHandler}
+                value={this.state.subCategory}
               >
-                <option defaultValue />
+                
                 <optgroup label="Clothing">
                   <option value="jeans">Jeans</option>
                   <option value="pants">Pants</option>
@@ -183,6 +192,7 @@ export default class NewProduct extends Component {
                 placeholder="adidas / nike"
                 value={brand}
                 onChange={this.onChangeHandler}
+                value={this.state.brand}
               />
             </div>
             <div className="form-group col-md-4">
@@ -195,6 +205,7 @@ export default class NewProduct extends Component {
                 name="size"
                 placeholder="s / m / 37 / 43"
                 onChange={this.onChangeHandler}
+                value={this.state.size}
               />
             </div>
             <div className="form-group col-md-4">
@@ -207,6 +218,7 @@ export default class NewProduct extends Component {
                 name="color"
                 placeholder="red / black / multi-color"
                 onChange={this.onChangeHandler}
+                value={this.state.color}
               />
             </div>
           </div>
@@ -222,6 +234,7 @@ export default class NewProduct extends Component {
                 name="price"
                 placeholder="Price"
                 onChange={this.onChangeHandler}
+                value={this.state.price}
               />
             </div>
             <div className="form-group col-md-4">
@@ -234,6 +247,7 @@ export default class NewProduct extends Component {
                 name="priceSale"
                 placeholder="Price Sale"
                 onChange={this.onChangeHandler}
+                value={this.state.priceSale}
               />
             </div>
             <div className="form-group col-md-4">
@@ -244,8 +258,9 @@ export default class NewProduct extends Component {
                 id="formGroupExampleInput11"
                 className="custom-select custom-select-m"
                 onChange={this.onChangeHandler}
+                value={this.state.condition}
               >
-                <option defaultValue />
+               
                 <option value="bad">Bad</option>
                 <option value="normal">Normal</option>
                 <option value="good">Good</option>
@@ -265,6 +280,7 @@ export default class NewProduct extends Component {
                 name="desc"
                 placeholder="Product Description"
                 onChange={this.onChangeHandler}
+                value={this.state.desc}
               />
             </div>
           </div>
@@ -291,7 +307,7 @@ export default class NewProduct extends Component {
               type="submit"
               className="btn btn-primary new-product-button"
             >
-              Add
+              Edit
             </button>
           </div>
         </form>

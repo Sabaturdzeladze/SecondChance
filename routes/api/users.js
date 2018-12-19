@@ -116,20 +116,17 @@ router.get("/:id/conversation", (req, res) => {
     return res.status(404).json({ msg: "User not found" });
   }
   // destructing the user to get the needed data to return as a json object
-  const {
-    conversation
-  } = user;
+  const { conversation } = user;
 
   res.json(conversation);
 });
 
 // PATH @/api/users/all
-router.get("/all", (req, res) => {
+router.get("/all/list", (req, res) => {
   // taking the array of users from our json file
   const users = JSON.parse(
     fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
   );
-
   res.json(users);
   // getting all the members of users array
 });
@@ -146,11 +143,23 @@ router.put("/:id", (req, res) => {
     return res.status(404).json({ msg: "User not found" });
   }
 
-  if (req.body.username) user.username = req.body.username;
+  if (req.body.username) {
+    let admin = users[0];
+    admin.reviews.forEach(review => {
+      if (review.username === user.username) {
+        review.username = req.body.username;
+      }
+    });
+    user.conversation.forEach(message => {
+      if (message.username === user.username) {
+        message.username = req.body.username;
+      }
+    })
+    user.username = req.body.username;
+  }
   if (req.body.birthday) user.birthday = req.body.birthday;
   if (req.body.balance) user.balance = req.body.balance;
   if (req.body.email) user.email = req.body.email;
-
   users = JSON.stringify(users);
 
   fs.writeFileSync(path.join(__dirname, "../../db") + "/users.json", users);
@@ -190,9 +199,10 @@ router.post("/login", (req, res) => {
       boughtItems,
       messages,
       id,
-      isAdmin
+      isAdmin,
+      reviewText
     } = user;
-      return res.json({
+    return res.json({
       username,
       email,
       cart,
@@ -200,7 +210,8 @@ router.post("/login", (req, res) => {
       boughtItems,
       messages,
       id,
-      isAdmin
+      isAdmin,
+      reviewText
     });
 
     // return res.json({ username, email, cart, balance, boughtItems, messages });

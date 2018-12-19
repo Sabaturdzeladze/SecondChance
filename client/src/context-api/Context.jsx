@@ -17,6 +17,17 @@ export default class Provider extends Component {
   };
 
   componentDidMount() {
+    if (
+      !JSON.parse(localStorage.getItem("remember")) &&
+      new Date() - JSON.parse(localStorage.getItem("expiration")) >= 0
+    ) {
+      localStorage.clear();
+    }
+    const user = JSON.parse(localStorage.getItem("user"));
+    
+    if (user) {
+      this.setState({ user, isLogged: true });
+    }
     axios
       .get("/api/products/search/all")
       .then(res => {
@@ -24,10 +35,7 @@ export default class Provider extends Component {
         this.setState({ newest: res.data, saleItems: saled });
       })
       .catch(err => console.log(err));
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (user) {
-      this.setState({ user, isLogged: true });
-    }
+    
   }
 
   render() {

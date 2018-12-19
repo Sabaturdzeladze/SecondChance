@@ -9,5 +9,6 @@ module.exports = class User {
     this.email = body.email;
     this.password = body.password;
     this.balance = body.balance;
+    this.reviewText = '';
   }
 };

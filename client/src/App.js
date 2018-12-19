@@ -17,6 +17,11 @@ import Cart from "./components/cart/Cart";
 import Checkout from "./components/cart/Checkout";
 import { Deals } from "./components/deals/Deals";
 import { Newest } from "./components/deals/Newest";
+import Dashboard from "./components/user/Dashboard";
+import ShowProducts from "./components/admin/products/ShowProducts";
+import EditProduct from "./components/admin/products/EditProduct";
+import ShowUsers from "./components/admin/Users/ShowUsers";
+import EditUser from "./components/admin/Users/EditUser";
 
 import "./App.css";
 
@@ -39,10 +44,15 @@ class App extends Component {
           <>
             <Header />
             <ProtectedRoute path="/admin" component={Admin} />
+            <ProtectedRoute path="/admin/products" component={ShowProducts} />
             <ProtectedRoute path="/admin/messenger" component={Messenger} />
             <ProtectedRoute path="/admin/product/add" component={NewProduct} />
+            <ProtectedRoute path="/admin/product/edit/:id" component={EditProduct} />
+            <ProtectedRoute path="/admin/users" exact component={ShowUsers} />
+            <ProtectedRoute path="/admin/users/edit/:id" component={EditUser} />
             <Route path="/dashboard/checkout" component={Checkout}/>
             <Route path="/dashboard/cart" component={Cart} />
+            <Route path="/dashboard" exact component={Dashboard}  />
             <Route path="/" component={Conversation} />
             <Route path="/" exact component={MainContent} />
             <Route path="/login" component={Login} />
