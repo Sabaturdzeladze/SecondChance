@@ -7,9 +7,9 @@ export const Footer = () => {
     <footer>
       <div className="footer--container">
         <div className="footer--container-shop">
-          <div className="footer-header">Shop</div>
+          <div className="footer-header">Shopping</div>
           
-          <div>
+          <div className="footer--container-shop-items">
             <div className="footer-div">
               <Link to="/products/search?gender=women">Women</Link>
             </div>
@@ -36,13 +36,13 @@ export const Footer = () => {
           </div>
           <small className="footer-header">SecondChance</small>
           <div className="footer-container__header">
-            Clothes worth living for
+            Clothes Worth Living 
           </div>
         </div>
         
         <div className="footer-contact">
           <div className="footer-header">My Account</div>
-          <div>
+          <div className="footer-contact__items">
             <div className="footer-div">
               <Link to=""><i className="fas fa-shopping-cart"></i> My Cart</Link>
             </div>

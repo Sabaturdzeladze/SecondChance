@@ -1,5 +1,8 @@
 * {
-  font-family: "Nunito", sans-serif;
+
+
+  font-family: 'Roboto', serif;
+
 }
 
 .headerTop {
@@ -104,7 +107,7 @@ a:hover {
 
   .headerTop--logo {
     order: 1;
-    margin: 30px;
+    margin: 10px;
   }
 
   .headerTop--search,
@@ -142,6 +145,13 @@ a:hover {
   .navbar-expand-md {
     margin-top: 30px;
   }
+}
+
+@media screen and (max-width: 300px) {
+  .header-heading {
+    font-size: 2rem;
+  }
+
 }
 
 .cart-link {
@@ -1165,6 +1175,12 @@ img {
   font-family: "Lobster", cursive;
 }
 
+.footer-container__brand .footer-container__header {
+  font-family: "Lobster", cursive;
+  font-size: 1.4rem;
+  margin-top: -10px;
+}
+
 .footer-container__header {
   color: white;
   font-size: 0.5em;
@@ -1175,24 +1191,31 @@ img {
 }
 
 .footer--container {
-  display: flex;
-  padding: 10px 0;
+  display: grid;
+  grid-template-columns: 33.3% 33.3% 33.3%;
+  grid-auto-rows: minmax(180px, auto);
+  grid-template-areas:
+  "shop brand account";
+  padding: 20px 0;
   background-color: #362d2e;
-  justify-content: space-evenly;
 }
 
-.footer--container-shop,
-.footer-container__brand,
+.footer-contact__items, 
+.footer--container-shop-items {
+  width: 130px;
+  margin: auto
+}
+
+.footer--container-shop {
+  grid-area: shop;
+}
+
+.footer-container__brand {
+  grid-area: brand;
+}
+
 .footer-contact {
-  flex: 33.33%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer--container * {
-  margin: 2px;
+  grid-area: account;
 }
 
 .footer-container__brand {
@@ -1235,7 +1258,7 @@ img {
 }
 
 .footer3 {
-  padding: 10px;
+  padding: 20px 0 35px 0;
   display: flex;
   background-color: #282321;
   justify-content: space-around;
@@ -1273,12 +1296,9 @@ img {
   color: #dfdfdf;
 }
 
-/* .footer-container a:hover {
-  color: #999999; 
-} */
-
 .footer-container__icons .footer-header {
-  padding-bottom: 0;
+  font-size: 1rem;
+  font-family: 'Roboto', serif
 }
 
 .footer > p {
@@ -1303,7 +1323,14 @@ img {
 
 /* Responsive Footer */
 @media screen and (max-width: 768px) {
-  .footer--container,
+
+  .footer--container {
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+    "brand brand"
+    "shop account";
+  }
+
   .footer3 {
     flex-direction: column;
   }
@@ -1313,13 +1340,11 @@ img {
   }
 
   .footer-container__brand {
-    order: 1;
     margin-bottom: 10px;
   }
 
   .footer--container-shop,
   .footer-contact {
-    order: 2;
     margin-bottom: 10px;
   }
 
