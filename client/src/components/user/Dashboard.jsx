@@ -78,7 +78,7 @@ export default class Dashboard extends Component {
                                 />
                               </div>
                               <div className="profile-header-info">
-                                <h4 className="m-t-10 m-b-5">John Doe</h4>
+                                <h4 className="m-t-10 m-b-5">{value.user.username}</h4>
                               </div>
                             </div>
                             <ul className="profile-header-tab nav nav-tabs">
@@ -201,7 +201,7 @@ export default class Dashboard extends Component {
                             <div className="col-12 col-sm-6 mb-3">
                               <form
                                 onSubmit={e =>
-                                  this.onSubmitHandler(e, value)
+                                  this.onSubmitHandler(e, value.user.id)
                                 }
                               >
                                 <div className="feedback">

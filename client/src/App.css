@@ -1553,7 +1553,7 @@ form {
 }
 /* Cart CSS END  */
 
-.admin-dashboard {
+.admin-dashboard, .user-dashboard {
   background: rgb(196, 195, 195) !important;
   border: 1px solid gray;
 }

@@ -21,7 +21,10 @@ router.delete("/users/:id", (req, res) => {
   const index = users.indexOf(user);
   users.splice(index, 1);
 
-  fs.writeFileSync(path.join(__dirname, "../../db") + "/users.json", JSON.stringify(users));
+  fs.writeFileSync(
+    path.join(__dirname, "../../db") + "/users.json",
+    JSON.stringify(users)
+  );
 
   res.json(users);
 });
@@ -53,42 +56,10 @@ router.put("/:id", (req, res) => {
 });
 // updating user details by id
 
-// router.get("/contact/:id", (req, res) => {
-//   let id = req.params.id;
-//   let messages = JSON.parse(
-//     fs.readFileSync(path.join(__dirname, "../../db") + "/messages.json")
-//   );
-//   myMessages = [];
-//   // all the messages from the user with given id
-//   messages.forEach(message => {
-//     if (message.id.includes(id)) {
-//       myMessages.push(message.text);
-//     }
-//   });
-//   if (!myMessages) {
-//     return res.status(404).json({ msg: "Message with this Id not found" });
-//   }
-//   res.json({ myMessages });
-// });
-
-// router.post("/contact/:id", (req, res) => {
-//   let id = req.params.id;
-//   let messages = JSON.parse(
-//     fs.readFileSync(path.join(__dirname, "../../db") + "/messages.json")
-//   );
-//   const message = messages.find(message => message.id === id);
-//   // will choose first question and give an answer to it
-//   message.answer = req.body.answer;
-//   // giving unswers to the user with given id
-//   messages = JSON.stringify(messages);
-//   fs.writeFileSync(path.join(__dirname, "../../db") + "/messages.json", messages);
-//   return res.json(message);
-// });
-
 router.post("/review/:id", (req, res) => {
   const errors = {};
   const id = req.params.id;
-
+  console.log(`object`);
   let users = JSON.parse(
     fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
   );
@@ -123,6 +94,20 @@ router.post("/review/:id", (req, res) => {
     path.join(__dirname, "../../db") + "/users.json",
     JSON.stringify(users)
   );
+});
+
+// Path @ /api/admin/reviews
+router.get("/reviews", (req, res) => {
+  let users = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
+  );
+
+  const admin = users[0];
+  if (admin.reviews) {
+    return res.json(admin.reviews);
+  } else {
+    return res.status(404).json({ msg: "No reviews to display" });
+  }
 });
 
 module.exports = router;

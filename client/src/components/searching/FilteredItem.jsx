@@ -23,7 +23,7 @@ class FilteredItem extends Component {
           .post(`/api/users/${user_id}/cart/${id}`, {})
           .then(res => {
             let user = JSON.parse(localStorage.getItem("user"));
-            user.cart = res.data;
+            user.cart = res.data.cart;
             localStorage.setItem("user", JSON.stringify(user));
             callback({ user });
             this.setState({ added: true, loading: false });

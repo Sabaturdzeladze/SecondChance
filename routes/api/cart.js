@@ -30,11 +30,12 @@ router.post("/:id/cart/:product_id", (req, res) => {
     return res.status(400).json({ msg: "Product already added" });
   } else {
     user.cart.push(product);
+    user.wishlist = user.wishlist.filter(prod => prod.id !== product_id);
     users = JSON.stringify(users);
     fs.writeFileSync(path.join(__dirname, "../../db") + "/users.json", users);
   }
 
-  return res.json(user.cart);
+  return res.json({cart: user.cart, wishlist: user.wishlist});
 });
 
 router.delete("/:id/cart/:product_id", (req, res) => {

@@ -499,6 +499,11 @@ class Header extends Component {
                       Newest
                     </Link>
                   </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/reviews">
+                      Reviews
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </nav>

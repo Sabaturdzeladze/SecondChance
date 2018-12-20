@@ -22,7 +22,10 @@ import ShowProducts from "./components/admin/products/ShowProducts";
 import EditProduct from "./components/admin/products/EditProduct";
 import ShowUsers from "./components/admin/Users/ShowUsers";
 import EditUser from "./components/admin/Users/EditUser";
-import Wishlist from "./components/admin/Users/Wishlist/Wishlist";
+import Wishlist from './components/user/Wishlist/Wishlist';
+import UserNavbar from './components/user/UserNavbar';
+import BoughtItems from "./components/user/bought-items/BoughtItems";
+import Reviews from "./components/reviews/Reviews";
 
 import "./App.css";
 
@@ -51,7 +54,9 @@ class App extends Component {
             <ProtectedRoute path="/admin/product/edit/:id" component={EditProduct} />
             <ProtectedRoute path="/admin/users" exact component={ShowUsers} />
             <ProtectedRoute path="/admin/users/edit/:id" component={EditUser} />
+            <Route path="/dashboard" component={UserNavbar} />
             <Route path="/dashboard/checkout" component={Checkout}/>
+            <Route path="/dashboard/history" component={BoughtItems} />
             <Route path="/dashboard/cart" component={Cart} />
             <Route path="/dashboard/wishlist" component={Wishlist} />
             <Route path="/dashboard" exact component={Dashboard}  />
@@ -63,6 +68,7 @@ class App extends Component {
             <Route path="/products/item/:id" component={ProductDetails} />
             <Route path="/deals" component={Deals} />
             <Route path="/newest" component={Newest} />
+            <Route path="/reviews" component={Reviews} />
             <Footer />
           </>
         </Router>
