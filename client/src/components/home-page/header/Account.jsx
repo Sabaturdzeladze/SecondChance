@@ -21,6 +21,8 @@ export const Account = props => {
         onClick={() => {
           props.value.onStateChange({ user: {}, isLogged: false });
           localStorage.clear();
+          document.getElementById('conversationText').className = "conversation-hide";
+          document.getElementById('conversationBtn').className = "btn conversation-open";
         }}
       >
         Log out

@@ -84,6 +84,7 @@ export default class Conversation extends Component {
                 onClick={e => {
                   this.onClickHandler(e, isLogged, user.id);
                 }}
+                id="conversationBtn"
                 className={
                   this.state.button
                     ? "btn conversation-open"
@@ -98,6 +99,7 @@ export default class Conversation extends Component {
                 className={
                   !this.state.button ? "messenger-wrapper" : "conversation-hide"
                 }
+                id="conversationText"
               >
                 <section className="main-contact">
                   <button
