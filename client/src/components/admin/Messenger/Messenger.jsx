@@ -13,23 +13,31 @@ export default class Messanger extends Component {
   componentDidMount() {
     axios
       .get("/api/users/contact/all")
-      .then(res => this.setState({ users: res.data, currentUser: res.data[0] }))
+      .then(res => this.setState({ users: res.data }))
       .catch(err => console.log(err));
   }
   userChange = currentUser => {
-    this.setState({ currentUser });
+    axios
+      .put(`/api/users/${currentUser.id}/conversation`, { user: "admin" })
+      .then(res => {
+        currentUser.conversation = res.data;
+        this.setState({ currentUser });
+      })
+      .catch(err => console.log(err));
+    // this.setState({ currentUser });
   };
   onSubmitHandler = (e, value) => {
     e.preventDefault();
     axios
       .post(`/api/users/contact/${this.state.currentUser.id}/message`, {
         message: this.state.text,
-        username: value.user.username
+        username: value.user.username,
+        seenBy: { user: false }
       })
       .then(res => {
         this.state.currentUser.conversation.push(res.data);
         const currentUser = this.state.currentUser;
-        this.setState({ currentUser, text: '' });
+        this.setState({ currentUser, text: "" });
       })
       .catch(err => console.log(err));
   };
@@ -51,13 +59,10 @@ export default class Messanger extends Component {
             </section>
             <section className="admin-main__messages">
               <div className="admin-main__messages--wrapper">
-              <p className="current-conversation">Conversation With {this.state.currentUser.username}</p>
-                <div className="admin-main__messages--text">
-                  <Messages user={currentUser} />
-                </div>
+                <Messages user={currentUser} />
                 <form
                   className="admin-main__messages--form"
-                  onSubmit={(e) => this.onSubmitHandler(e, value)}
+                  onSubmit={e => this.onSubmitHandler(e, value)}
                 >
                   <textarea
                     onChange={this.onChangeHandler}

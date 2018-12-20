@@ -7,6 +7,7 @@ export default class Conversation extends Component {
   state = {
     button: true,
     messages: [],
+    seenByUser: true,
     text: ""
   };
 
@@ -17,17 +18,36 @@ export default class Conversation extends Component {
       axios
         .get(`/api/users/${id}/conversation`)
         .then(res => {
-          this.setState({ messages: res.data });
+          let seenByUser = true;
+          res.data.forEach(message => {
+            if (message.seenBy.user === false) {
+              seenByUser = false;
+            }
+          });
+          this.setState({ messages: res.data, seenByUser });
         })
         .catch(err => console.log(err));
     }
   }
 
-  onClickHandler = (e, logged) => {
-    if (logged) {
+  onClickHandler = (e, logged, id = 0) => {
+    if (!id && logged) {
       this.setState({ button: !this.state.button });
     } else {
-      this.props.history.push("/login");
+      if (logged) {
+        axios
+          .put(`/api/users/${id}/conversation`, { user: "user" })
+          .then(res => {
+            this.setState({
+              messages: res.data,
+              seenByUser: true,
+              button: !this.state.button
+            });
+          })
+          .catch(err => console.log(err));
+      } else {
+        this.props.history.push("/login");
+      }
     }
   };
 
@@ -36,10 +56,14 @@ export default class Conversation extends Component {
     axios
       .post(`/api/users/contact/${value.user.id}/message`, {
         message: this.state.text,
-        username: value.user.username
+        username: value.user.username,
+        seenBy: { admin: false }
       })
       .then(res => {
-        this.setState({ messages: [...this.state.messages, res.data] });
+        this.setState({
+          messages: [...this.state.messages, res.data],
+          text: ""
+        });
       })
       .catch(err => console.log(err));
   };
@@ -58,7 +82,7 @@ export default class Conversation extends Component {
             <div className="conversation">
               <button
                 onClick={e => {
-                  this.onClickHandler(e, isLogged);
+                  this.onClickHandler(e, isLogged, user.id);
                 }}
                 className={
                   this.state.button
@@ -67,7 +91,8 @@ export default class Conversation extends Component {
                 }
                 disabled={value.user.isAdmin}
               >
-                Conversation
+                Conversation{" "}
+                {!this.state.seenByUser && <span className="seenState" />}
               </button>
               <div
                 className={

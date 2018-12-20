@@ -1,20 +1,31 @@
 import React from "react";
 
 export const Messages = props => {
-  const { user } = props;
+  const { user } = props; 
   return Object.keys(user).length
-    ? user.conversation.map((message, index) =>
-        message.username === "Admin" ? (
-          <span key={message.id} className="admin-span">
-            <p className="admin-main__admin">
-              {message.text}
-            </p>
-          </span>
-        ) : (
-          <span key={message.id}>
-            <p className="admin-main__user">{message.text}</p>
-          </span>
+    ? (
+      <>
+      <p className="current-conversation">
+        Conversation With {user.username}
+      </p>
+      <div className="admin-main__messages--text">
+        {
+          user.conversation.map((message, index) =>
+          message.username === "Admin" ? (
+            <span key={message.id} className="admin-span">
+              <p className="admin-main__admin">
+                {message.text}
+              </p>
+            </span>
+          ) : (
+            <span key={message.id}>
+              <p className="admin-main__user">{message.text}</p>
+            </span>
+          )
         )
-      )
-    : <h1>No Conversatins</h1>;
+        }
+      </div>
+      </>
+    )
+    : <h2>Choose User to see the Conversation</h2>;
 };

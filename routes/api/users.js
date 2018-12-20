@@ -121,6 +121,45 @@ router.get("/:id/conversation", (req, res) => {
   res.json(conversation);
 });
 
+// editing users conversation, seenBy: true
+router.put("/:id/conversation", (req, res) => {
+  // taking the id provided in url  (ex: /api/users/aojsnecpjn102enq2389hqnd)
+  let id = req.params.id;
+  // taking the array of users from our json file
+  const users = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
+  );
+
+  // searching the user in users array
+  const user = users.find(user => user.id === id);
+  // if NOT found
+  if (!user) {
+    return res.status(404).json({ msg: "User not found" });
+  }
+  if (req.body.user === "user") {
+    user.conversation.forEach(message => {
+      // Checking if messages seenBy property has user and its false
+      // Doesn't work if it hasn't got property of user
+      if (message.seenBy.user === false) message.seenBy.user = true;
+    });
+  } else {
+    // Checking if messages seenBy property has admin and its false
+    // Doesn't work if it hasn't got property of admin
+    user.conversation.forEach(message => {
+      if (message.seenBy.admin === false) message.seenBy.admin = true;
+    });
+  }
+  // destructing the user to get the needed data to return as a json object
+  const { conversation } = user;
+
+  fs.writeFileSync(
+    path.join(__dirname, "../../db") + "/users.json",
+    JSON.stringify(users)
+  );
+
+  res.json(conversation);
+});
+
 // PATH @/api/users/all
 router.get("/all/list", (req, res) => {
   // taking the array of users from our json file
@@ -154,7 +193,7 @@ router.put("/:id", (req, res) => {
       if (message.username === user.username) {
         message.username = req.body.username;
       }
-    })
+    });
     user.username = req.body.username;
   }
   if (req.body.birthday) user.birthday = req.body.birthday;
@@ -241,7 +280,8 @@ router.post("/contact/:id/message", (req, res) => {
   let message = {
     text: req.body.message,
     username: req.body.username,
-    id: uuidv4()
+    id: uuidv4(),
+    seenBy: req.body.seenBy
   };
 
   user.conversation.push(message);
