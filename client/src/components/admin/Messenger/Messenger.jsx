@@ -60,22 +60,24 @@ export default class Messanger extends Component {
             <section className="admin-main__messages">
               <div className="admin-main__messages--wrapper">
                 <Messages user={currentUser} />
-                <form
-                  className="admin-main__messages--form"
-                  onSubmit={e => this.onSubmitHandler(e, value)}
-                >
-                  <textarea
-                    onChange={this.onChangeHandler}
-                    value={text}
-                    required
-                    name="message"
-                    id="message"
-                    cols="30"
-                    rows="3"
-                    placeholder="Message"
-                  />
-                  <button>Submit</button>
-                </form>
+                {currentUser.username && (
+                  <form
+                    className="admin-main__messages--form"
+                    onSubmit={e => this.onSubmitHandler(e, value)}
+                  >
+                    <textarea
+                      onChange={this.onChangeHandler}
+                      value={text}
+                      required
+                      name="message"
+                      id="message"
+                      cols="30"
+                      rows="3"
+                      placeholder="Message"
+                    />
+                    <button>Submit</button>
+                  </form>
+                )}
               </div>
             </section>
           </div>

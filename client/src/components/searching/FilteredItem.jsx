@@ -35,6 +35,32 @@ class FilteredItem extends Component {
       }, 500);
     }
   };
+
+  onWishlistAdd = (e, user_id, id, callback) => {
+    e.preventDefault();
+
+    if (!user_id) {
+      window.location = "/login";
+    } else {
+      this.setState(() => ({ loading: true }));
+
+      setTimeout(() => {
+        axios
+          .post(`/api/users/${user_id}/wishlist/${id}`, {})
+          .then(res => {
+            let user = JSON.parse(localStorage.getItem("user"));
+            user.wishlist = res.data;
+            localStorage.setItem("user", JSON.stringify(user));
+            callback({ user });
+            this.setState({ added: true, loading: false });
+          })
+          .catch(err => {
+            console.log(err.response.data.msg);
+            this.setState({ loading: false });
+          });
+      }, 500);
+    }
+  };
   render() {
     return (
       <Consumer>
@@ -59,6 +85,7 @@ class FilteredItem extends Component {
                     <button
                       className="add-to-cart wishlist"
                       data-tip="Add to Wishlist"
+                      onClick={e => this.onWishlistAdd(e, value.user.id, this.props.id, value.onStateChange)}
                     >
                       <i className="fa fa-shopping-bag" />
                     </button>

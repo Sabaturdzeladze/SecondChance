@@ -239,7 +239,8 @@ router.post("/login", (req, res) => {
       messages,
       id,
       isAdmin,
-      reviewText
+      reviewText,
+      wishlist
     } = user;
     return res.json({
       username,
@@ -250,7 +251,8 @@ router.post("/login", (req, res) => {
       messages,
       id,
       isAdmin,
-      reviewText
+      reviewText,
+      wishlist
     });
 
     // return res.json({ username, email, cart, balance, boughtItems, messages });

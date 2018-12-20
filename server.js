@@ -7,6 +7,7 @@ const app         = express();
 const users       = require('./routes/api/users');
 const admin       = require('./routes/api/admin'); // Admin initialization
 const cart        = require('./routes/api/cart');
+const wishlist        = require('./routes/api/wishlist');
 const products     = require('./routes/api/products');
 
 app.use(cors('*'));
@@ -20,10 +21,11 @@ app.get('/', (req, res) => {
 });
 
 // Use Routes
-app.use('/api/users', users);          // connecting endpoints of users.js to /api/users   ex: /api/users/test
-app.use('/api/admin', admin);              // nino
-app.use('/api/products', products);    // gota
-app.use('/api/users', cart);      // boria
+app.use('/api/users', users);      
+app.use('/api/admin', admin);      
+app.use('/api/products', products);
+app.use('/api/users', cart);      
+app.use('/api/users', wishlist);      
 
 const port = process.env.PORT || 5000;
 

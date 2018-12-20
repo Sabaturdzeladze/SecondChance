@@ -81,7 +81,7 @@ router.post("/:id/dashboard/checkout", (req, res) => {
     JSON.stringify(products)
   );
   fs.writeFileSync(path.join(__dirname, "../../db") + "/users.json", users);
-  return res.json({user, products});
+  return res.json({ user, products });
 });
 
 module.exports = router;

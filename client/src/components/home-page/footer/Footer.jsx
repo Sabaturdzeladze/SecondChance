@@ -50,7 +50,7 @@ export const Footer = () => {
               <Link to=""><i className="fas fa-history my-account__logo" /> Order History</Link>
             </div>
             <div className="footer-div">
-              <Link to=""><i className="far fa-heart my-account__logo" /> Wishlist</Link>
+              <Link to="/dashboard/wishlist"><i className="far fa-heart my-account__logo" /> Wishlist</Link>
             </div>
             <div className="footer-div">
               <Link to=""><i className="fas fa-sign-out-alt my-account__logo" /> Log out</Link>

@@ -1,11 +1,37 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Consumer } from "../../../context-api/Context";
-import { Account } from './Account';
+import { Account } from "./Account";
 
 class Header extends Component {
-  state = {};
-
+  onSubmitHandler = (e, products) => {
+    e.preventDefault();
+    let input = e.target.children.search.value.toLowerCase().trim();
+    let url = "/products/search?";
+    if (input) {
+      input = input.split(" ");
+      let brandFound = false;
+      let categoryFound = false;
+      let subCategoryFound = false;
+      for (const item of input) {
+        for (const i of products) {
+          if (i.brand && i.brand.toLowerCase().includes(item) && !brandFound) {
+            url += `brand=${item}&`;
+            brandFound = true;
+          } else if (i.category && i.category.toLowerCase().includes(item) && !categoryFound) {
+            url += `category=${item}&`;
+            categoryFound = true;
+          } else if (i.subCategory && i.subCategory.toLowerCase().includes(item) && !subCategoryFound) {
+            url += `subCategory=${item}&`;
+            subCategoryFound = true;
+          }
+        }
+      }
+      // if url did not change after iterations giving it notFound query, and getting 404 status from back end
+      url = url === "/products/search?" ? "/products/search?notFound='notFound'" : url;
+      window.location = url;
+    }
+  };
   render() {
     return (
       <Consumer>
@@ -17,7 +43,7 @@ class Header extends Component {
 
             <div className="headerTop">
               <div className="headerTop--search">
-                <form>
+                <form onSubmit={e => this.onSubmitHandler(e, value.newest)}>
                   <input
                     type="text"
                     placeholder="Search for products"

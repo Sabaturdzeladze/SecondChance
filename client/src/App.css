@@ -1,8 +1,5 @@
 * {
-
-
   font-family: 'Roboto', serif;
-
 }
 
 .headerTop {
@@ -1543,8 +1540,8 @@ form {
 
 .fa-trash-alt {
   font-size: 1.3em;
-  padding-top: 20px;
-  color: red;
+  padding-top: 2px;
+  color: white;
 }
 
 .fa-trash-alt:hover {

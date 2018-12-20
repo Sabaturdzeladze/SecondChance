@@ -10,5 +10,6 @@ module.exports = class User {
     this.password = body.password;
     this.balance = body.balance;
     this.reviewText = '';
+    this.wishList = [];
   }
 };

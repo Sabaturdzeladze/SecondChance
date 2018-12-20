@@ -15,13 +15,13 @@ export default class NewProduct extends Component {
     desc: "",
     condition: "",
     images: [],
-    selectedFile: "",
+    files: "",
     loading: false
   };
   onChangeHandler = e => {
     switch (e.target.name) {
-      case "selectedFile":
-        this.setState({ selectedFile: e.target.files[0] });
+      case "files":
+        this.setState({ files: e.target.files[0] });
         break;
       default:
         this.setState({ [e.target.name]: e.target.value });
@@ -42,7 +42,7 @@ export default class NewProduct extends Component {
       priceSale,
       desc,
       condition,
-      selectedFile
+      files
     } = this.state;
     let formData = new FormData();
     formData.append("gender", gender);
@@ -55,7 +55,7 @@ export default class NewProduct extends Component {
     formData.append("priceSale", priceSale);
     formData.append("desc", desc);
     formData.append("condition", condition);
-    formData.append("selectedFile", selectedFile);
+    formData.append("files", files);
 
     axios
       .post("/api/products/addnew", formData)
@@ -70,7 +70,7 @@ export default class NewProduct extends Component {
   };
 
   render() {
-    const { brand /* , selectedFile */, loading } = this.state;
+    const { brand /* , files */, loading } = this.state;
     return loading ? (
       <Spinner />
     ) : (
@@ -274,10 +274,12 @@ export default class NewProduct extends Component {
 
             <div className="custom-file col-md-12">
               <input
+                multiple
                 type="file"
+                encType="multipart/form-data"
                 className="custom-file-input"
                 id="customFile"
-                name="selectedFile"
+                name="files"
                 onChange={this.onChangeHandler}
               />
               <label className="custom-file-label" htmlFor="customFile">

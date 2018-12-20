@@ -101,7 +101,7 @@ export default class Cart extends Component {
           ) : (
             <div style={{textAlign: 'center', padding: '30px'}}>
               <h2 style={{padding: '50px'}}>No items in Cart</h2>
-              <Link to="/">Go Home</Link>
+              <Link to="/">Go Back To Shopping</Link>
             </div>
           );
         }}

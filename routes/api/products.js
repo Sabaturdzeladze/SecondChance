@@ -3,35 +3,42 @@ const router = express.Router();
 const path = require("path");
 const fs = require("fs");
 const uuidv4 = require("uuid/v4"); // creating random id
-const multer = require('multer')
+const multer = require("multer");
 
- // configure storage
- const storage = multer.diskStorage({
-  destination: (req, file, cb) => { //uploaded files destination
-    cb(null, './db/uploads');
+// configure storage
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    //uploaded files destination
+    cb(null, "./db/uploads");
   },
-  filename: (req, file, cb) => { //upload files name
-    const newFilename = `${new Date().getDate()}-${new Date().getMonth() + 1}-${new Date().getFullYear()} - ${file.originalname}`;
+  filename: (req, file, cb) => {
+    //upload files name
+    const newFilename = `${new Date().getDate()}-${new Date().getMonth() +
+      1}-${new Date().getFullYear()} - ${file.originalname}`;
     cb(null, newFilename);
-  },
+  }
 });
 
-const upload = multer({ storage });
+const upload = multer({ storage }).array("files", 4);
 
 const Product = require("../../modules/products");
 
 // adding new products
 // PATH @/api/admin/products/addnew
-router.post("/addnew", upload.single('selectedFile'), (req, res) => {
+router.post("/addnew", upload, (req, res) => {
   let products = JSON.parse(
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
   );
-    
-  const product = new Product(req.body, req.file, uuidv4());
+
+  const product = new Product(req.body, req.files, uuidv4());
   // modifying products array and writing it to products.json file
   products.unshift(product);
   products = JSON.stringify(products);
-  fs.writeFileSync(path.join(__dirname, "../../db") + "/products.json", products);
+  console.log(req.files);
+  fs.writeFileSync(
+    path.join(__dirname, "../../db") + "/products.json",
+    products
+  );
   return res.json(product);
 });
 
@@ -51,9 +58,34 @@ router.get("/:id", (req, res) => {
     return res.status(404).json({ msg: "Product not found" });
   }
   // destructing the product to get the needed data to return as a json object
-  const { gender, images, category, subCategory, brand, size, color, price, priceSale, desc, condition } = product;
+  const {
+    gender,
+    images,
+    category,
+    subCategory,
+    brand,
+    size,
+    color,
+    price,
+    priceSale,
+    desc,
+    condition
+  } = product;
 
-  res.json({ gender, images, category, subCategory, brand, size, color, price, priceSale, desc, condition, id });
+  res.json({
+    gender,
+    images,
+    category,
+    subCategory,
+    brand,
+    size,
+    color,
+    price,
+    priceSale,
+    desc,
+    condition,
+    id
+  });
 });
 
 // deleting products by id
@@ -75,15 +107,43 @@ router.delete("/:id", (req, res) => {
   products.splice(index, 1);
   products = JSON.stringify(products);
 
-  fs.writeFileSync(path.join(__dirname, "../../db") + "/products.json", products);
+  fs.writeFileSync(
+    path.join(__dirname, "../../db") + "/products.json",
+    products
+  );
 
-  const { gender, images, category, subCategory, brand, size, color, price, priceSale, desc, condition } = product;
-  res.json({ gender, images, category, subCategory, brand, size, color, price, priceSale, desc, condition, id });
+  const {
+    gender,
+    images,
+    category,
+    subCategory,
+    brand,
+    size,
+    color,
+    price,
+    priceSale,
+    desc,
+    condition
+  } = product;
+  res.json({
+    gender,
+    images,
+    category,
+    subCategory,
+    brand,
+    size,
+    color,
+    price,
+    priceSale,
+    desc,
+    condition,
+    id
+  });
 });
 
 // editing products by id
 // PATH @/api/admin/products/:id
-router.put("/:id", upload.single('selectedFile'), (req, res) => {
+router.put("/:id", upload, (req, res) => {
   let id = req.params.id;
   let products = JSON.parse(
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
@@ -108,10 +168,38 @@ router.put("/:id", upload.single('selectedFile'), (req, res) => {
   if (req.body.condition) product.condition = req.body.condition;
 
   products = JSON.stringify(products);
-  fs.writeFileSync(path.join(__dirname, "../../db") + "/products.json", products);
+  fs.writeFileSync(
+    path.join(__dirname, "../../db") + "/products.json",
+    products
+  );
 
-  const { gender, images, category, subCategory, brand, size, color, price, priceSale, desc, condition } = product;
-  res.json({ gender, images, category, subCategory, brand, size, color, price, priceSale, desc, condition, id });
+  const {
+    gender,
+    images,
+    category,
+    subCategory,
+    brand,
+    size,
+    color,
+    price,
+    priceSale,
+    desc,
+    condition
+  } = product;
+  res.json({
+    gender,
+    images,
+    category,
+    subCategory,
+    brand,
+    size,
+    color,
+    price,
+    priceSale,
+    desc,
+    condition,
+    id
+  });
 });
 
 // Searching products by parameters
@@ -119,13 +207,27 @@ router.put("/:id", upload.single('selectedFile'), (req, res) => {
 router.get("/search/all", (req, res) => {
   const products = JSON.parse(
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
-  )
+  );
 
   let foundProducts = products;
   // check if query is in url
   if (req.query.gender) {
     // filter array with query
-    foundProducts = foundProducts.filter(product => product.gender === req.query.gender);
+    foundProducts = foundProducts.filter(
+      product => product.gender === req.query.gender
+    );
+
+    if (foundProducts.lenght === 0) {
+      return res.status(404).json({ msg: "Product not found" });
+    }
+  }
+
+  // check if query is in url
+  if (req.query.brand) {
+    // filter array with query
+    foundProducts = foundProducts.filter(
+      product => product.brand === req.query.brand
+    );
 
     if (foundProducts.lenght === 0) {
       return res.status(404).json({ msg: "Product not found" });
@@ -133,7 +235,9 @@ router.get("/search/all", (req, res) => {
   }
 
   if (req.query.subCategory) {
-    foundProducts = foundProducts.filter(product => product.subCategory === req.query.subCategory);
+    foundProducts = foundProducts.filter(product =>
+      product.subCategory.includes(req.query.subCategory)
+    );
 
     if (foundProducts.lenght === 0) {
       return res.status(404).json({ msg: "Product not found" });
@@ -141,7 +245,9 @@ router.get("/search/all", (req, res) => {
   }
 
   if (req.query.category) {
-    foundProducts = foundProducts.filter(product => product.category === req.query.category);
+    foundProducts = foundProducts.filter(
+      product => product.category === req.query.category
+    );
 
     if (foundProducts.lenght === 0) {
       return res.status(404).json({ msg: "Product not found" });
@@ -149,7 +255,9 @@ router.get("/search/all", (req, res) => {
   }
 
   if (req.query.size) {
-    foundProducts = foundProducts.filter(product => product.size === req.query.size);
+    foundProducts = foundProducts.filter(
+      product => product.size === req.query.size
+    );
 
     if (foundProducts.lenght === 0) {
       return res.status(404).json({ msg: "Product not found" });
@@ -157,7 +265,9 @@ router.get("/search/all", (req, res) => {
   }
 
   if (req.query.color) {
-    foundProducts = foundProducts.filter(product => product.color === req.query.color);
+    foundProducts = foundProducts.filter(
+      product => product.color === req.query.color
+    );
 
     if (foundProducts.lenght === 0) {
       return res.status(404).json({ msg: "Product not found" });
@@ -165,19 +275,20 @@ router.get("/search/all", (req, res) => {
   }
 
   if (req.query.condition) {
-    foundProducts = foundProducts.filter(product => product.condition === req.query.condition);
+    foundProducts = foundProducts.filter(
+      product => product.condition === req.query.condition
+    );
 
     if (foundProducts.lenght === 0) {
       return res.status(404).json({ msg: "Product not found" });
     }
   }
 
-  if (foundProducts.length === 0) {
+  if (foundProducts.length === 0 || req.query.notFound) {
     return res.status(404).json({ msg: "Product not found" });
   } else {
     return res.json(foundProducts);
   }
-
-})
+});
 
 module.exports = router;

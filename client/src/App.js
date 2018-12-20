@@ -22,6 +22,7 @@ import ShowProducts from "./components/admin/products/ShowProducts";
 import EditProduct from "./components/admin/products/EditProduct";
 import ShowUsers from "./components/admin/Users/ShowUsers";
 import EditUser from "./components/admin/Users/EditUser";
+import Wishlist from "./components/admin/Users/Wishlist/Wishlist";
 
 import "./App.css";
 
@@ -52,6 +53,7 @@ class App extends Component {
             <ProtectedRoute path="/admin/users/edit/:id" component={EditUser} />
             <Route path="/dashboard/checkout" component={Checkout}/>
             <Route path="/dashboard/cart" component={Cart} />
+            <Route path="/dashboard/wishlist" component={Wishlist} />
             <Route path="/dashboard" exact component={Dashboard}  />
             <Route path="/" component={Conversation} />
             <Route path="/" exact component={MainContent} />
