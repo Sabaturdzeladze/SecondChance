@@ -139,7 +139,7 @@ export default class Checkout extends Component {
                         autoComplete="country"
                         className="form-control"
                       >
-                        <option value="" value="selected">
+                        <option value="selected">
                           (please select a country)
                         </option>
                         <option value="AF">Afghanistan</option>

@@ -190,9 +190,8 @@ export default class EditProduct extends Component {
                 id="formGroupExampleInput6"
                 name="brand"
                 placeholder="adidas / nike"
-                value={brand}
                 onChange={this.onChangeHandler}
-                value={this.state.brand}
+                value={brand}
               />
             </div>
             <div className="form-group col-md-4">
