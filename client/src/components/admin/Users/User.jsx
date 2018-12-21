@@ -18,6 +18,12 @@ export default ({ users, onDelete }) => {
               >
                 <i className="fa fa-edit" />
               </Link>
+              <Link
+                to={`/admin/users/cart/edit/${user.id}`}
+                className="btn btn-warning"
+              >
+                <i className="fa fa-shopping-cart" />
+              </Link>
               <button
                 className="btn btn-danger"
                 onClick={() => onDelete(user.id)}

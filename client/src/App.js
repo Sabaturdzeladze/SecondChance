@@ -22,10 +22,12 @@ import ShowProducts from "./components/admin/products/ShowProducts";
 import EditProduct from "./components/admin/products/EditProduct";
 import ShowUsers from "./components/admin/Users/ShowUsers";
 import EditUser from "./components/admin/Users/EditUser";
+import UserCart from "./components/admin/Users/carts/UserCart";
 import Wishlist from './components/user/Wishlist/Wishlist';
 import UserNavbar from './components/user/UserNavbar';
 import BoughtItems from "./components/user/bought-items/BoughtItems";
 import Reviews from "./components/reviews/Reviews";
+
 
 import "./App.css";
 
@@ -54,6 +56,7 @@ class App extends Component {
             <ProtectedRoute path="/admin/product/edit/:id" component={EditProduct} />
             <ProtectedRoute path="/admin/users" exact component={ShowUsers} />
             <ProtectedRoute path="/admin/users/edit/:id" component={EditUser} />
+            <ProtectedRoute path="/admin/users/cart/edit/:id" component={UserCart} />
             <Route path="/dashboard" component={UserNavbar} />
             <Route path="/dashboard/checkout" component={Checkout}/>
             <Route path="/dashboard/history" component={BoughtItems} />
