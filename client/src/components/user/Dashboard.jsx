@@ -7,10 +7,10 @@ export default class Dashboard extends Component {
   state = {
     star: 0,
     reviewText: "",
-    username: '',
-    email: '',
+    username: "",
+    email: "",
     balance: 0,
-    birthday: '',
+    birthday: "",
     errors: {}
   };
   onChangeHandler = e => {
@@ -36,21 +36,26 @@ export default class Dashboard extends Component {
 
     balance = parseInt(balance);
     axios
-      .put(`/api/users/${value.user.id}`, { username, birthday, balance, email })
+      .put(`/api/users/${value.user.id}`, {
+        username,
+        birthday,
+        balance,
+        email
+      })
       .then(res => {
         let user = value.user;
         user = {
           ...user,
           ...res.data
-        }
-        value.onStateChange({user})
-        user = JSON.parse(localStorage.getItem('user'));
+        };
+        value.onStateChange({ user });
+        user = JSON.parse(localStorage.getItem("user"));
         user = {
           ...user,
           ...res.data
-        }
+        };
         console.log(user);
-        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem("user", JSON.stringify(user));
       })
       .catch(err => this.setState({ errors: err.response.data }));
   };
@@ -63,7 +68,7 @@ export default class Dashboard extends Component {
           return user.username ? (
             <main className="container dashboard">
               <div className="row">
-                <div className="col-md-12">
+                <div className="col-md-12 user-dashboard__header">
                   <div className="row">
                     <div className="col-md-12">
                       <div id="content" className="content content-full-width">
@@ -78,29 +83,11 @@ export default class Dashboard extends Component {
                                 />
                               </div>
                               <div className="profile-header-info">
-                                <h4 className="m-t-10 m-b-5">{value.user.username}</h4>
+                                <h4 className="m-t-10 m-b-5">
+                                  {value.user.username}
+                                </h4>
                               </div>
                             </div>
-                            <ul className="profile-header-tab nav nav-tabs">
-                              <li className="nav-item">
-                                <a
-                                  href="#profile-post"
-                                  className="nav-link"
-                                  data-toggle="tab"
-                                >
-                                  About
-                                </a>
-                              </li>
-                              <li className="nav-item">
-                                <a
-                                  href="#profile-about"
-                                  className="nav-link active show"
-                                  data-toggle="tab"
-                                >
-                                  Edit Profile
-                                </a>
-                              </li>
-                            </ul>
                           </div>
                         </div>
                         <div className="profile-content">
@@ -147,7 +134,8 @@ export default class Dashboard extends Component {
                                           name="email"
                                           className="form-control"
                                           type="text"
-                                          placeholder={value.user.email}                                        />
+                                          placeholder={value.user.email}
+                                        />
                                       </td>
                                     </tr>
                                     <tr>
@@ -184,10 +172,7 @@ export default class Dashboard extends Component {
                                           type="submit"
                                           className="btn btn-primary width-150"
                                           onClick={e =>
-                                            this.infoSubmitHandler(
-                                              e,
-                                              value
-                                            )
+                                            this.infoSubmitHandler(e, value)
                                           }
                                         >
                                           Update
@@ -198,7 +183,7 @@ export default class Dashboard extends Component {
                                 </table>
                               </div>
                             </div>
-                            <div className="col-12 col-sm-6 mb-3">
+                            <div className="col-12 col-sm-6 mb-3 dashboard-textarea">
                               <form
                                 onSubmit={e =>
                                   this.onSubmitHandler(e, value.user.id)

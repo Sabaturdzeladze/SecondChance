@@ -9,17 +9,17 @@ const multer = require("multer");
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     //uploaded files destination
-    cb(null, "./db/uploads");
+    cb(null, "./client/public/images");
   },
   filename: (req, file, cb) => {
     //upload files name
     const newFilename = `${new Date().getDate()}-${new Date().getMonth() +
-      1}-${new Date().getFullYear()} - ${file.originalname}`;
+      1}-${new Date().getFullYear()}-${file.originalname}`;
     cb(null, newFilename);
   }
 });
 
-const upload = multer({ storage }).array("files", 4);
+const upload = multer({ storage }).single("files");
 
 const Product = require("../../modules/products");
 
@@ -30,11 +30,10 @@ router.post("/addnew", upload, (req, res) => {
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
   );
 
-  const product = new Product(req.body, req.files, uuidv4());
+  const product = new Product(req.body, req.file, uuidv4());
   // modifying products array and writing it to products.json file
   products.unshift(product);
   products = JSON.stringify(products);
-  console.log(req.files);
   fs.writeFileSync(
     path.join(__dirname, "../../db") + "/products.json",
     products
@@ -69,7 +68,9 @@ router.get("/:id", (req, res) => {
     price,
     priceSale,
     desc,
-    condition
+    condition,
+    url1,
+    url2
   } = product;
 
   res.json({
@@ -84,7 +85,9 @@ router.get("/:id", (req, res) => {
     priceSale,
     desc,
     condition,
-    id
+    id,
+    url1,
+    url2
   });
 });
 
@@ -156,7 +159,7 @@ router.put("/:id", upload, (req, res) => {
   }
 
   if (req.body.gender) product.gender = req.body.gender;
-  if (req.files) product.images = req.files;
+  if (req.file) product.images = req.file;
   if (req.body.category) product.category = req.body.category;
   if (req.body.category) product.subCategory = req.body.subCategory;
   if (req.body.brand) product.brand = req.body.brand;

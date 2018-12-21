@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Consumer } from "../../../context-api/Context";
 import { Product } from "./Product";
+import axios from "axios";
 
 export default class ShowProducts extends Component {
   state = {
@@ -15,11 +16,13 @@ export default class ShowProducts extends Component {
       this.setState({ products, filtered: false });
     } else {
       products = products.filter(prod => {
-        if (prod.brand && prod.brand.toLowerCase().includes(input)) return true;    // To remove (prod.brand)
-        else if (prod.category && prod.category.toLowerCase().includes(input))      //
+        if (prod.brand && prod.brand.toLowerCase().includes(input)) return true;
+        // To remove (prod.brand)
+        else if (prod.category && prod.category.toLowerCase().includes(input))
+          //
           return true;
         else if (
-          prod.subCategory &&                                                       //
+          prod.subCategory && //
           prod.subCategory.toLowerCase().includes(input)
         )
           return true;
@@ -29,6 +32,23 @@ export default class ShowProducts extends Component {
       this.setState(() => ({ products, filtered: true }));
     }
   };
+
+  onDelete = (prod_id, value) => {
+    // console.log(value.newest);
+    axios
+      .delete(`/api/products/${prod_id}`)
+      .then(res => {
+        let products = value.newest.filter(
+          prod => {
+            console.log(prod.id !== res.data.id)
+            return prod.id !== res.data.id
+          }
+        );
+        value.onStateChange({newest: products})
+      })
+      .catch(err => console.log(err));
+  };
+
   render() {
     return (
       <Consumer>

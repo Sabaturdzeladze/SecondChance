@@ -31,7 +31,7 @@ export const Product = props => {
         </b>
         <button
           onClick={e =>
-            props.onDelete(e, props.value.user.id, item.id, props.value)
+            props.onDelete(item.id, props.value)
           }
           className="btn btn-danger"
         >

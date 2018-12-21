@@ -72,12 +72,12 @@ class FilteredItem extends Component {
                   <img
                     alt="Product"
                     className="pic-1"
-                    src="http://bestjquery.com/tutorial/product-grid/demo9/images/img-1.jpg"
+                    src={`/images/${this.props.images.filename}`}
                   />
                   <img
                     alt="Product"
                     className="pic-2"
-                    src="http://bestjquery.com/tutorial/product-grid/demo9/images/img-2.jpg"
+                    src={this.props.url1}
                   />
                 </Link>
                 <ul className="social">
@@ -85,7 +85,14 @@ class FilteredItem extends Component {
                     <button
                       className="add-to-cart wishlist"
                       data-tip="Add to Wishlist"
-                      onClick={e => this.onWishlistAdd(e, value.user.id, this.props.id, value.onStateChange)}
+                      onClick={e =>
+                        this.onWishlistAdd(
+                          e,
+                          value.user.id,
+                          this.props.id,
+                          value.onStateChange
+                        )
+                      }
                     >
                       <i className="fa fa-shopping-bag" />
                     </button>
@@ -117,23 +124,21 @@ class FilteredItem extends Component {
                   </Link>
                 </h3>
                 <div>
-                  <span className={this.props.priceSale ? "reduced" : "price"}>
-                    {this.props.price}$
-                  </span>{" "}
                   {this.props.priceSale && (
                     <span className="price">{this.props.priceSale}$</span>
-                  )}
+                  )}{" "}
+                  <span className={this.props.priceSale ? "reduced" : "price"}>
+                    {this.props.price}$
+                  </span>
                   {this.state.added ? (
                     <Success
                       style={{
                         width: "25px",
-                        marginleft: '20px'
+                        marginleft: "20px"
                       }}
                     />
                   ) : (
-                    this.state.loading && (
-                      <Spinner width="75px" />
-                    )
+                    this.state.loading && <Spinner width="75px" />
                   )}
                 </div>
                 <button

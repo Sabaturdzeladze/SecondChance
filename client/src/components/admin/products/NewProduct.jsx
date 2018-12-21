@@ -15,6 +15,8 @@ export default class NewProduct extends Component {
     desc: "",
     condition: "",
     images: [],
+    url1: "",
+    url2: "",
     files: "",
     loading: false
   };
@@ -22,6 +24,7 @@ export default class NewProduct extends Component {
     switch (e.target.name) {
       case "files":
         this.setState({ files: e.target.files[0] });
+        console.log(this.state.files);
         break;
       default:
         this.setState({ [e.target.name]: e.target.value });
@@ -42,7 +45,9 @@ export default class NewProduct extends Component {
       priceSale,
       desc,
       condition,
-      files
+      files,
+      url1,
+      url2
     } = this.state;
     let formData = new FormData();
     formData.append("gender", gender);
@@ -55,6 +60,8 @@ export default class NewProduct extends Component {
     formData.append("priceSale", priceSale);
     formData.append("desc", desc);
     formData.append("condition", condition);
+    formData.append("url1", url1);
+    formData.append("url2", url2);
     formData.append("files", files);
 
     axios
@@ -79,7 +86,11 @@ export default class NewProduct extends Component {
           New Product Form
         </h2>
 
-        <form className="form-product" onSubmit={this.onSubmitHandler}>
+        <form
+          className="form-product"
+          encType="multipart/form-data"
+          onSubmit={this.onSubmitHandler}
+        >
           <div className="form-row">
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput3">Gender</label>
@@ -274,20 +285,42 @@ export default class NewProduct extends Component {
 
             <div className="custom-file col-md-12">
               <input
-                multiple
                 type="file"
-                encType="multipart/form-data"
                 className="custom-file-input"
                 id="customFile"
                 name="files"
                 onChange={this.onChangeHandler}
               />
               <label className="custom-file-label" htmlFor="customFile">
-                Choose 4 photos
+                Choose Main Photo
               </label>
             </div>
           </div>
 
+          <div className="form-row" style={{ marginTop: "15px" }}>
+            <div className="form-group col-md-12">
+              <input
+                className="form-control"
+                id="formGroupExampleInput12"
+                type="text"
+                name="url1"
+                placeholder="Second Image"
+                onChange={this.onChangeHandler}
+              />
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="form-group col-md-12">
+              <input
+                className="form-control"
+                id="formGroupExampleInput12"
+                type="text"
+                name="url2"
+                placeholder="Third Image"
+                onChange={this.onChangeHandler}
+              />
+            </div>
+          </div>
           <div className="col-md-12 text-center">
             <button
               type="submit"

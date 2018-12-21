@@ -16,6 +16,7 @@ export const Account = props => {
           <span className="cart-length">{user.cart.length}</span>
         </Link>
       )}
+      <Link to={user.isAdmin ? `/admin/messenger` : `/dashboard`}>Dashboard</Link>
       <Link
         to="/"
         onClick={() => {
@@ -27,9 +28,8 @@ export const Account = props => {
             "btn conversation-open";
         }}
       >
-        Logout
+        <i className="fas fa-sign-out-alt" style={{fontSize: '16px'}}></i> Logout
       </Link>
-      <Link to={user.isAdmin ? `/admin` : `/dashboard`}>My Account</Link>
     </>
   );
 };

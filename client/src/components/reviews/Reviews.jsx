@@ -28,7 +28,7 @@ export default class Reviews extends Component {
       <div className="feed">
         <div className="container">
           <div className="row">
-            <div className="posts" style={{ width: "100%" }}>
+            <div className="posts" style={{ width: "80%", margin: "0 auto" }}>
               <h2 style={{ textAlign: "center", paddingTop: "20px" }}>
                 Average Rating - <strong>{this.state.average}</strong>
               </h2>

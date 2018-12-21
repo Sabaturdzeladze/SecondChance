@@ -65,7 +65,7 @@ class Header extends Component {
               </div>
             </div>
 
-            <nav className="navbar navbar-expand-md navbar-light bg-light">
+            <nav className="navbar navbar-expand-md navbar-light bg-light main-navbar">
               <button
                 className="navbar-toggler"
                 type="button"
@@ -497,11 +497,6 @@ class Header extends Component {
                   <li className="nav-item">
                     <Link className="nav-link" to="/newest">
                       Newest
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/reviews">
-                      Reviews
                     </Link>
                   </li>
                 </ul>

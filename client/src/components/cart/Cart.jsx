@@ -69,16 +69,25 @@ export default class Cart extends Component {
                     cart={value.user.cart}
                   />
                 </div>
-                <div>
+                <div className="cart-price">
                   <p>
-                    <b>Total Price:</b> {this.totalCalculator(value.user.cart)}$
+                  
+                    <b>Total Price:</b> {this.totalCalculator(value.user.cart).toFixed(2)}$
                   </p>
                   <p>
+
                     <b>Shipping:</b>{" "}
+
                     {this.totalCalculator(value.user.cart) >= 25
                       ? "0.00$"
-                      : "4.99$"}{" "}
+                      : (
+                        <>
+                        4.99$ <br/> <small style={{color: "red"}}>Add {25 - this.totalCalculator(value.user.cart)}$ worth items and get free shipping</small>
+                        </>
+                      ) } 
+                 
                   </p>
+
                   <p>
                     <b>Grand Total:</b>{" "}
                     {this.grandTotal(
