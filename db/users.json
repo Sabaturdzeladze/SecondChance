@@ -24,24 +24,7 @@
   },
   {
     "id": "8db35455-d17a-4bef-a4f5-e7f48fba77b2",
-    "cart": [
-      {
-        "gender": "men",
-        "category": "clothing",
-        "subCategory": "coats and outwears",
-        "id": "985123",
-        "price": 10,
-        "priceSale": 5
-      },
-      {
-        "gender": "men",
-        "category": "clothing",
-        "subCategory": "sweaters and hoodies",
-        "id": "8wgbcasecon",
-        "price": 10,
-        "priceSale": 5
-      }
-    ],
+    "cart": [],
     "conversation": [
       {
         "text": "Hello Admin",
@@ -56,49 +39,7 @@
         "seenBy": { "user": true }
       }
     ],
-    "wishlist": [
-      {
-        "gender": "men",
-        "category": "clothing",
-        "subCategory": "shirts",
-        "id": "6951",
-        "price": 10,
-        "priceSale": 5
-      },
-      {
-        "gender": "men",
-        "category": "clothing",
-        "subCategory": "coats and outwears",
-        "id": "985123",
-        "price": 10,
-        "priceSale": 5
-      },
-      {
-        "id": "eae7e1a7-999c-4aaa-8e48-d654beda9ed1",
-        "gender": "men",
-        "images": [
-          {
-            "fieldname": "files",
-            "originalname": "shoe.jpg",
-            "encoding": "7bit",
-            "mimetype": "image/jpeg",
-            "destination": "./db/uploads",
-            "filename": "20-12-2018 - shoe.jpg",
-            "path": "db\\uploads\\20-12-2018 - shoe.jpg",
-            "size": 37830
-          }
-        ],
-        "category": "shoes",
-        "subCategory": "sneakers/athletics",
-        "brand": "adidas",
-        "size": "36",
-        "color": "red",
-        "price": "100",
-        "priceSale": "85",
-        "desc": "The real adibas Shoes, Like new ",
-        "condition": "like-new"
-      }
-    ],
+    "wishlist": [],
     "balance": 855,
     "boughtItems": [],
     "birthday": "",
@@ -112,12 +53,38 @@
     "cart": [],
     "conversation": [],
     "wishlist": [],
-    "boughtItems": [],
+    "boughtItems": [
+      {
+        "id": "158eccc4-2eb3-4941-9791-5a7ecf4d46da",
+        "gender": "men",
+        "images": [
+          {
+            "fieldname": "files",
+            "originalname": "images.jpg",
+            "encoding": "7bit",
+            "mimetype": "image/jpeg",
+            "destination": "./db/uploads",
+            "filename": "21-12-2018 - images.jpg",
+            "path": "db\\uploads\\21-12-2018 - images.jpg",
+            "size": 3196
+          }
+        ],
+        "category": "clothing",
+        "subCategory": "jeans",
+        "brand": "Tom Tailor",
+        "size": "L",
+        "color": "red",
+        "price": "10",
+        "priceSale": "5",
+        "desc": "Tom Tailor polo in good condition blabla",
+        "condition": "normal"
+      }
+    ],
     "birthday": "",
     "username": "nino",
     "email": "nino@gmail.com",
     "password": "41f415465473651590ca5211104615ef574837afb129b920c69ddc7865d7ca94",
-    "balance": "1000",
+    "balance": 990.01,
     "reviewText": "END THIS SITE I LOVE, IT IS E VERRRI GUDDDD SITE"
   },
   {

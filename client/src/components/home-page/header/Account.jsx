@@ -5,7 +5,7 @@ export const Account = props => {
   const {user} = props;
   return !props.value.isLogged ? (
     <>
-      <Link to="/login">Log in</Link>
+      <Link to="/login">Login</Link>
       <Link to="/register">Register</Link>
     </>
   ) : (
@@ -27,7 +27,7 @@ export const Account = props => {
             "btn conversation-open";
         }}
       >
-        Log out
+        Logout
       </Link>
       <Link to={user.isAdmin ? `/admin` : `/dashboard`}>My Account</Link>
     </>

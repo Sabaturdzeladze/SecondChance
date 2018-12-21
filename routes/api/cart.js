@@ -35,7 +35,7 @@ router.post("/:id/cart/:product_id", (req, res) => {
     fs.writeFileSync(path.join(__dirname, "../../db") + "/users.json", users);
   }
 
-  return res.json({cart: user.cart, wishlist: user.wishlist});
+  return res.json({ cart: user.cart, wishlist: user.wishlist });
 });
 
 router.delete("/:id/cart/:product_id", (req, res) => {
@@ -74,6 +74,16 @@ router.post("/:id/dashboard/checkout", (req, res) => {
     }
   });
   user.boughtItems = [...user.cart, ...user.boughtItems];
+  users.forEach(person => {
+    if (person !== user && !person.isAdmin) {
+      person.cart = person.cart.filter(
+        product => !user.cart.map(item => item.id).includes(product.id)
+      );
+      person.wishlist = person.wishlist.filter(
+        product => !user.cart.map(item => item.id).includes(product.id)
+      );
+    }
+  });
   user.cart = [];
   user.balance = req.body.balance;
   users = JSON.stringify(users);
