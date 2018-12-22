@@ -1,0 +1,37 @@
+main {
+    margin: 10px 0;
+  }
+  
+  .main-layer {
+    background: linear-gradient(rgba(0, 0, 0, 0.2), transparent),
+      url("https://www.whatsuplife.in/wp-content/uploads/2017/07/wardrobe-essentials.jpg")
+        100% / cover no-repeat border-box;
+    background-position: 100%;
+    height: 500px;
+  }
+  
+  .main-layer__container {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-left: 100px;
+    text-align: center;
+    color: #ffffff;
+  }
+  
+  .main-layer__container a {
+    margin-right: 5px;
+    margin-top: 20px;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 5px 15px;
+    border-radius: 4px;
+  }
+  
+  .main-layer__container a:hover {
+    color: #999999;
+  }

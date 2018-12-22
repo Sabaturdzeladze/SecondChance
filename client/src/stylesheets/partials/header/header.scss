@@ -1,0 +1,92 @@
+.headerTop {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    height: 130px;
+  }
+  .searchable-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .headerTop--search,
+  .headerTop--logo,
+  .headerTop--account-cart {
+    flex: 1;
+    display: flex;
+  }
+  .header-heading {
+    width: 350px;
+    margin: auto;
+  }
+  .headerTop--account-cart__items {
+    text-align: right;
+  }
+  .headerTop--search form {
+    margin: auto 0;
+    width: 100%;
+  }
+  .headerTop--account-cart__items {
+    margin: auto 0;
+    text-align: right;
+    width: 100%;
+  }
+  .search-input {
+    width: 80%;
+    border: none;
+    border-bottom: 1px solid black;
+  }
+  .search-button {
+    margin-left: -10px;
+    border: none;
+    border-bottom: 1px solid black;
+    background: white;
+    cursor: pointer;
+    padding-bottom: 1px;
+  }
+  .search-button:focus,
+  .search-input:focus {
+    outline: none;
+  }
+  .shipping-info {
+    width: 100%;
+    height: 50px;
+    background: #282321;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+  }
+
+.headerTop--logo {
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .header-heading {
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    font-family: "Lobster", cursive;
+    font-size: 3rem;
+    user-select: none;
+  }
+  
+  .cart-link {
+    position: relative;
+  }
+  
+  .cart-length {
+    position: absolute;
+    background-color: red;
+    padding: 0 6px;
+    font-size: 0.8em;
+    border-radius: 50%;
+    color: #ffffff;
+    bottom: 10px;
+    right: -15px;
+  }
+
+  .headerTop--account-cart__items a {
+    margin: 0 10px;
+  }
+
+  

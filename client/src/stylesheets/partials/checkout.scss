@@ -1,0 +1,104 @@
+.checkout--buttons {
+    padding-top: 10px;
+    width: 800px;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .checkout--buttons button {
+    color: white;
+    border: 1px solid #fb8f3d;
+    background: -webkit-linear-gradient(top, #fda251, #fb8f3d);
+    background: -moz-linear-gradient(top, #fda251, #fb8f3d);
+    background: -ms-linear-gradient(top, #fda251, #fb8f3d);
+  }
+  .checkout--buttons button:hover {
+    border: 1px solid #eb5200;
+    background: -webkit-linear-gradient(top, #fd924c, #f9760b);
+    background: -moz-linear-gradient(top, #fd924c, #f9760b);
+    background: -ms-linear-gradient(top, #fd924c, #f9760b);
+    box-shadow: 0 1px #efefef;
+  }
+  
+  .checkout {
+    /* background-color: wheat; */
+    padding-top: 40px;
+    width: 800px;
+    margin: auto;
+    /* border-bottom: 2px solid black; */
+    /* display: flex; */
+  }
+  
+  .checkout--products {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 2px solid black;
+    text-align: center;
+  }
+  
+  .checkout--products-product {
+    flex: 1;
+  }
+  
+  .checkout--products-description {
+    flex: 1;
+  }
+  
+  .checkout--products-container {
+    display: flex;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid gray;
+    /* flex-direction: column; */
+  }
+  
+  .checkout--products-price {
+    flex: 0.6;
+  }
+  
+  .checkout--products-container_img {
+    height: 150px;
+    flex: 0.9;
+    border-right: 1px solid rgba(200, 192, 192, 0.9);
+    display: flex;
+  }
+  
+  .checkout--products-container_img img {
+    height: 100%;
+    margin: 0 auto;
+  }
+  
+  .checkout--products-container_description {
+    height: 150px;
+    padding-left: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /* text-align: center; */
+    justify-content: center;
+  }
+  
+  .checkout--products-container_delete {
+    display: flex;
+    flex: 0.6;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 10px;
+    border-left: 1px solid rgba(200, 192, 192, 0.9);
+  }
+  
+  .fa-trash-alt {
+    font-size: 1.3em;
+    padding-top: 2px;
+    color: white;
+  }
+  
+  .fa-trash-alt:hover {
+    cursor: pointer;
+  }
+  
+  .headline {
+    margin: 0;
+  }

@@ -28,8 +28,7 @@ import UserNavbar from './components/user/UserNavbar';
 import BoughtItems from "./components/user/bought-items/BoughtItems";
 import Reviews from "./components/reviews/Reviews";
 
-
-import "./App.css";
+import "./stylesheets/main.scss";
 
 // clearing localstorage before app unloading
 window.onload = () => {

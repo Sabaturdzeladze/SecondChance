@@ -1,0 +1,51 @@
+.feedback {
+    padding-top: 20px;
+    padding-bottom: 30px;
+  }
+  .rating {
+    position: absolute;
+    transform: rotateY(180deg);
+    display: flex;
+  }
+  .rating input {
+    display: none;
+  }
+  .rating label {
+    display: block;
+    cursor: pointer;
+    width: 50px;
+    color: #101010;
+  }
+  .rating label:before {
+    content: "★";
+    font-family: "fontAwesome";
+    position: relative;
+    display: block;
+    font-size: 50px;
+    color: #ffffcc;
+  }
+  .rating label:after {
+    content: "★";
+    font-family: "fontAwesome";
+    position: absolute;
+    display: block;
+    font-size: 50px;
+    color: #f5a019;
+    top: 0;
+    opacity: 0.4;
+    transition: 0.5s;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  .rating label:hover:after,
+  .rating label:hover ~ label:after,
+  .rating input:checked ~ label:after {
+    opacity: 1;
+  }
+
+  .seenState {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: red;
+    display: inline-block;
+  }
