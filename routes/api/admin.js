@@ -3,9 +3,6 @@ const router = express.Router();
 const path = require("path");
 const fs = require("fs");
 
-router.get("/new", (req, res) => res.json({ msg: "Admin endpoint Works" }));
-// testing admin endpoint
-
 // PATH @/api/users/:id
 router.delete("/users/:id", (req, res) => {
   let id = req.params.id;

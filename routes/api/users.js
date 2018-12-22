@@ -22,8 +22,6 @@ const User = require("../../modules/user");
 const validateRegisterInput = require("../../validation/register.js");
 const validateLoginInput = require("../../validation/login.js");
 
-router.get("/test", (req, res) => res.json({ msg: "Users endpoint Works" }));
-
 // PATH @/api/users/register
 router.post("/register", (req, res) => {
   // destructing validation

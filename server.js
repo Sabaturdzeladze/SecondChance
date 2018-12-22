@@ -17,10 +17,6 @@ app.use(cors("*"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ limit: "5mb" }));
 
-app.get("/", (req, res) => {
-  res.json({ loaded: true });
-});
-
 // Use Routes
 app.use("/api/users", users);
 app.use("/api/admin", admin);
