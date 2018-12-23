@@ -1,3 +1,4 @@
+// Introducing libraries to the current file.
 const express = require("express");
 const router = express.Router();
 const path = require("path");
@@ -26,13 +27,16 @@ const Product = require("../../modules/products");
 // adding new products
 // PATH @/api/admin/products/addnew
 router.post("/addnew", upload, (req, res) => {
-  let products = JSON.parse(
+  
+  let products = JSON.parse( // Saving products database
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
   );
 
-  const product = new Product(req.body, req.file, uuidv4());
-  // modifying products array and writing it to products.json file
+  const product = new Product(req.body, req.file, uuidv4());   //Creating new Product
+
+  // Adding new product to products array
   products.unshift(product);
+  // Updating products database
   products = JSON.stringify(products);
   fs.writeFileSync(
     path.join(__dirname, "../../db") + "/products.json",
@@ -46,12 +50,12 @@ router.post("/addnew", upload, (req, res) => {
 router.get("/:id", (req, res) => {
   // taking the id provided in url  (ex: /api/products/aojsnecpjn102enq2389hqnd)
   let id = req.params.id;
-  // taking the array of products from our json file
+  // Saving products database
   const products = JSON.parse(
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
   );
-  // searching the product in products array
-  const product = products.find(product => product.id === id);
+
+  const product = products.find(product => product.id === id); // Finding product id in products database
   // if NOT found
   if (!product) {
     return res.status(404).json({ msg: "Product not found" });
@@ -94,13 +98,14 @@ router.get("/:id", (req, res) => {
 // deleting products by id
 // PATH @/api/admin/products/:id
 router.delete("/:id", (req, res) => {
-  // getting id from url and saving in variable
+  // taking the id provided in url  (ex: /api/products/aojsnecpjn102enq2389hqnd)
   let id = req.params.id;
-  let products = JSON.parse(
+
+  let products = JSON.parse(  // Saving products database
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
   );
-  // finding product in array with id
-  const product = products.find(product => product.id === id);
+  
+  const product = products.find(product => product.id === id);  // Finding product id in products database
   if (!product) {
     return res.status(404).json({ msg: "Product not found" });
   }
@@ -108,13 +113,15 @@ router.delete("/:id", (req, res) => {
   // finding product index and deleting from array
   const index = products.indexOf(product);
   products.splice(index, 1);
-  products = JSON.stringify(products);
 
+  // Updating database
+  products = JSON.stringify(products);
   fs.writeFileSync(
     path.join(__dirname, "../../db") + "/products.json",
     products
   );
 
+  // destructing the product to get the needed data to return as a json object
   const {
     gender,
     images,
@@ -208,11 +215,14 @@ router.put("/:id", upload, (req, res) => {
 // Searching products by parameters
 // PATH @/api/admin/products/search/all
 router.get("/search/all", (req, res) => {
-  const products = JSON.parse(
+  
+  const products = JSON.parse(    // Saving products database
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
   );
 
-  let foundProducts = products;
+  let foundProducts = products;   // ???
+
+
   // check if query is in url
   if (req.query.gender) {
     // filter array with query

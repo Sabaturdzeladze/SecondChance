@@ -1,15 +1,17 @@
+// Introducing libraries to the current file.  
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
-
 const app = express();
 
-const users = require("./routes/api/users");
-const admin = require("./routes/api/admin"); // Admin initialization
-const cart = require("./routes/api/cart");
-const wishlist = require("./routes/api/wishlist");
-const products = require("./routes/api/products");
+
+// Initialazing required routes for the server.
+const users = require("./routes/api/users"); // user
+const admin = require("./routes/api/admin"); // admin
+const cart = require("./routes/api/cart");  // cart
+const wishlist = require("./routes/api/wishlist"); // wishlist
+const products = require("./routes/api/products"); // products
 
 app.use(cors("*"));
 // to use post methods         (req.body to work)

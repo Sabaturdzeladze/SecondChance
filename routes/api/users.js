@@ -1,12 +1,13 @@
+// Introducing libraries to the current file.
 const express = require("express");
 const router = express.Router();
 const path = require("path");
 const crypto = require("crypto");
 const fs = require("fs");
 const uuidv4 = require("uuid/v4"); // creating random id
-
 const secret = "secret__second";
 
+// 
 const encrypt = data => {
   const hash = crypto
     .createHmac("sha256", secret)
@@ -16,9 +17,10 @@ const encrypt = data => {
   return hash;
 };
 
+// importing user module
 const User = require("../../modules/user");
 
-// requiring validation
+// importing our validation
 const validateRegisterInput = require("../../validation/register.js");
 const validateLoginInput = require("../../validation/login.js");
 
@@ -33,7 +35,6 @@ router.post("/register", (req, res) => {
   }
 
   const { email, username } = req.body;
-  // console.log(process.cwd());
 
   let users = JSON.parse(
     fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
@@ -59,10 +60,9 @@ router.post("/register", (req, res) => {
 
 // PATH @/api/users/:id
 router.get("/:id", (req, res) => {
-  // taking the id provided in url  (ex: /api/users/aojsnecpjn102enq2389hqnd)
-  let id = req.params.id;
-  // taking the array of users from our json file
-  const users = JSON.parse(
+  let id = req.params.id;   // taking the id provided in url  (ex: /api/users/aojsnecpjn102enq2389hqnd)
+
+  const users = JSON.parse( // Saving users database
     fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
   );
 
@@ -100,15 +100,14 @@ router.get("/:id", (req, res) => {
 });
 
 router.get("/:id/conversation", (req, res) => {
-  // taking the id provided in url  (ex: /api/users/aojsnecpjn102enq2389hqnd)
-  let id = req.params.id;
-  // taking the array of users from our json file
-  const users = JSON.parse(
+  let id = req.params.id;     // taking the id provided in url  (ex: /api/users/aojsnecpjn102enq2389hqnd)
+
+  
+  const users = JSON.parse(   // Saving users database
     fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
   );
 
-  // searching the user in users array
-  const user = users.find(user => user.id === id);
+  const user = users.find(user => user.id === id); // Finding users id in users database
   // if NOT found
   if (!user) {
     return res.status(404).json({ msg: "User not found" });
@@ -121,15 +120,13 @@ router.get("/:id/conversation", (req, res) => {
 
 // editing users conversation, seenBy: true
 router.put("/:id/conversation", (req, res) => {
-  // taking the id provided in url  (ex: /api/users/aojsnecpjn102enq2389hqnd)
-  let id = req.params.id;
-  // taking the array of users from our json file
-  const users = JSON.parse(
+  let id = req.params.id;   // taking the id provided in url  (ex: /api/users/aojsnecpjn102enq2389hqnd)
+
+  const users = JSON.parse( // Saving users database
     fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
   );
 
-  // searching the user in users array
-  const user = users.find(user => user.id === id);
+  const user = users.find(user => user.id === id); // Finding users id in users database
   // if NOT found
   if (!user) {
     return res.status(404).json({ msg: "User not found" });
@@ -160,28 +157,33 @@ router.put("/:id/conversation", (req, res) => {
 
 // PATH @/api/users/all
 router.get("/all/list", (req, res) => {
-  // taking the array of users from our json file
-  const users = JSON.parse(
+  const users = JSON.parse( // Saving users database
     fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
   );
   res.json(users);
   // getting all the members of users array
 });
 
+
 // PATH @/api/users/:id
 router.put("/:id", (req, res) => {
-  let id = req.params.id;
-  let users = JSON.parse(
+  let id = req.params.id; // Saving id 
+
+  let users = JSON.parse( // Saving users database
     fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
   );
 
-  let user = users.find(user => user.id === id);
+  let user = users.find(user => user.id === id); // Finding users id in users database
+
   if (!user) {
     return res.status(404).json({ msg: "User not found" });
   }
 
+
   if (req.body.username) {
-    let admin = users[0];
+
+    let admin = users[0]; // Initialazing admin 
+
     admin.reviews.forEach(review => {
       if (review.username === user.username) {
         review.username = req.body.username;
