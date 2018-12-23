@@ -39,11 +39,16 @@
     padding: 20px 0;
     background-color: #362d2e;
   }
-  
-  .footer-contact__items,
-  .footer--container-shop-items {
+   
+  .footer--container-shop-items, {
     width: 130px;
-    margin: auto;
+    margin-left: calc( (100% - 65px)/2 );
+  }
+  
+  .footer-contact__items {
+    width: 130px;
+    margin-left: calc( (100% - 100px)/2 );
+    
   }
   
   .footer--container-shop {

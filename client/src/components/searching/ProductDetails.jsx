@@ -86,45 +86,23 @@ export default class ProductDetails extends Component {
       <Consumer>
         {value => {
           return (
-            <div className="container">
+            <div className="product-details__container">
               <div className="card">
                 <div className="container-fliud">
                   <div className="wrapper row">
-                    <ProductImages main={this.state.images} url1={this.state.url1} url2={this.state.url2}/>
+                    <ProductImages main={this.state.images} url1={this.state.url1} url2={this.state.url2} />
                     <div className="details col-md-6">
-                      <h3 className="product-title">
-                        {this.state.gender}'s {this.state.subCategory}{" "}
+                      <h2 className="product-informaton"><span>Product Information</span></h2>
+
+                      <h3>
+                        <strong><span className="product-title">{this.state.gender}</span>'s {this.state.subCategory}</strong>{" "}
                       </h3>
-                      <p>
-                        <strong>Brand: {this.state.brand}</strong>
-                      </p>
-                      <p className="product-description">{this.state.desc}</p>
-                      <h5 className="price">
-                        Price:{" "}
-                        {this.state.priceSale && (
-                          <span style={{ color: "black" }} className="price">
-                            {this.state.priceSale}$
-                          </span>
-                        )}{" "}
-                        <span
-                          className={this.state.priceSale ? "reduced" : "price"}
-                        >
-                          {this.state.price}$
-                        </span>
+                      <h5 className="brand">
+                        <strong>Brand:</strong> {this.state.brand}
                       </h5>
+
                       <h5 className="sizes">
-                        condition:{" "}
-                        <span
-                          className="size"
-                          data-toggle="tooltip"
-                          title="small"
-                          style={{ marginLeft: "0px" }}
-                        >
-                          {this.state.condition}
-                        </span>
-                      </h5>
-                      <h5 className="sizes">
-                        size:{" "}
+                        <strong>size:</strong>{" "}
                         <span
                           className="size"
                           data-toggle="tooltip"
@@ -134,10 +112,43 @@ export default class ProductDetails extends Component {
                           {this.state.size}
                         </span>
                       </h5>
-                      <h5 className="colors">color: {this.state.color}</h5>
+
+                      <h5 className="colors">
+                        <strong>color:</strong> {this.state.color}
+                      </h5>
+
+                      <h5 className="condition">
+                        <strong>condition:</strong>{" "}
+                        <span
+                          className="size"
+                          data-toggle="tooltip"
+                          title="small"
+                          style={{ marginLeft: "0px" }}
+                        >
+                          {this.state.condition}
+                        </span>
+                      </h5>
+
+                      <h3 className="product-description"><span>Product Description</span></h3>
+                      <p className="product-description">{this.state.desc}</p>
+
+                      <h5 className="price-header">
+
+                        <span
+                          className={this.state.priceSale ? "reduced" : "price"}
+                        >
+                          {this.state.price}$
+                          </span> <br />
+                        {this.state.priceSale && (
+                          <span style={{ color: "black" }} className="price">
+                            {this.state.priceSale}$
+                            </span>
+                        )}
+                      </h5>
+
                       <div className="action">
                         <button
-                          className="product-details__button btn btn-default"
+                          className="product-details__button product-details__button--cart btn btn-default"
                           type="button"
                           onClick={e =>
                             this.onSubmitHandler(
@@ -150,7 +161,7 @@ export default class ProductDetails extends Component {
                           Add To Cart
                         </button>
                         <button
-                          className="product-details__button btn btn-default"
+                          className="product-details__button product-details__button--wishlist btn btn-default"
                           type="button"
                           onClick={e =>
                             this.onWishlistAdd(

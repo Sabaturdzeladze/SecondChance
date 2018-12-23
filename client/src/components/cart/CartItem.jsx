@@ -1,18 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom"
 
 export const CartItem = props => {
   return props.cart.map(item => (
     <div key={item.id} className="checkout--products-container">
 
       <div className="checkout--products-container_img">
-        <img
+        <Link to={`/products/item/${item.id}`}><img
           src="http://bestjquery.com/tutorial/product-grid/demo9/images/img-2.jpg"
           alt="sneakers"
-        />
+        /></Link>
+
       </div>
 
       <div className="checkout--products-container_description">
-        <p  className="headline capitalize">
+        <p className="headline capitalize">
           <b>
             {item.gender}'s {item.subCategory}
           </b>
@@ -27,7 +29,7 @@ export const CartItem = props => {
         <b>
           <span className={item.priceSale ? "reduced" : "price"}>
             {item.price}$
-          </span> <br/>
+          </span> <br />
           {item.priceSale && (
             <span className="price">{item.priceSale}$</span>
           )}
