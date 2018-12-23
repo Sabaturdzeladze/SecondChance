@@ -95,6 +95,7 @@
   }
 
   .checkout {
+    max-width: 575px;
     width: 90%
   }
 }
@@ -230,6 +231,14 @@
   .footer-container__icons,
   .aboutus {
     margin-bottom: 10px;
+  }
+  
+  .headerTop--account-cart__items a {
+    margin: 0 5px;
+  }
+  
+  .headerTop--account-cart__items .cart-link {
+    margin-right: 15px;
   }
 
 }

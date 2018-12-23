@@ -409,42 +409,65 @@ export default class Checkout extends Component {
                 </form>
               </div>
 
-              <div>
-                <p>
-                  <b>Total Price:</b> {this.totalCalculator(user.cart)}$
-                </p>
-                <p>
-                  <b>Shipping:</b>{" "}
-                  {this.totalCalculator(user.cart) >= 25 ? "0.00$" : "4.99$"}{" "}
-                </p>
-                <p>
-                  <b>Grand Total:</b>{" "}
-                  {this.grandTotal(this.totalCalculator(user.cart)).toFixed(2)}$
-                </p>
 
-                <button onClick={e => this.onClickHandler(value)}>
-                  Submit Order
-                </button>
+
+
+              <div className="checkout-cart-total">
+                <table className="cart-total__table">
+                  <tbody>
+                    <tr>
+
+                      <td>
+                        <h5>Subtotal <br /> Estimated shipping <br /> </h5>
+                        <h3>Total</h3>
+                      </td>
+
+                      <td className="text-right">
+                        <h5><strong>{this.totalCalculator(user.cart).toFixed(2)}$
+                          <br />{this.totalCalculator(user.cart) >= 25 ? "0.00$" : "4.99$"}{" "} </strong>
+                        </h5>
+                        <h3>{this.grandTotal(this.totalCalculator(user.cart)).toFixed(2)}$
+                        </h3>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <Link to="/dashboard/cart" className="back-to-cart__button">
+                          <i className="fas fa-shopping-cart"></i> Back To Cart
+                        </Link>
+                      </td>
+                      <td>
+                        <button className="checkout-button" onClick={e => this.onClickHandler(value)}>
+                          Submit Order
+                        </button>
+                      </td>
+                    </tr>
+
+                  
+                  </tbody>
+                </table>
               </div>
             </div>
+
           ) : this.state.loading ? (
             <Spinner />
           ) : (
-            <div
-              style={{ width: "50%", margin: "0 auto", textAlign: "center" }}
-            >
-              <h2 style={{ margin: "20px 0" }}>
-                Your order has been placed successfully <br/>
-                <Success />
-              </h2>
-              <Link style={{ display: "block" }} to="/">
-                Home
+                  <div
+                    style={{ width: "50%", margin: "0 auto", textAlign: "center" }}
+                  >
+                    <h2 style={{ margin: "20px 0" }}>
+                      Your order has been placed successfully <br />
+                      <Success />
+                    </h2>
+                    <Link style={{ display: "block" }} to="/">
+                      Home
               </Link>
-              <Link style={{ display: "block" }} to="/dashboard">
-                My Account
+                    <Link style={{ display: "block" }} to="/dashboard">
+                      My Account
               </Link>
-            </div>
-          );
+                  </div>
+                );
         }}
       </Consumer>
     );

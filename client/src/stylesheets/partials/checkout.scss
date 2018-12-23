@@ -1,6 +1,6 @@
 .checkout--buttons {
     padding-top: 10px;
-    width: 800px;
+    width: 700px;
     margin: auto;
     display: flex;
     justify-content: space-evenly;
@@ -24,7 +24,7 @@
   .checkout {
     padding-top: 20px;
     width: 60%;
-    max-width: 800px;
+    max-width: 700px;
     margin: auto;
   }
   
@@ -37,22 +37,19 @@
    
   .checkout--products-product,
   .checkout--products-container_img {
-    width: 25%
+    width: 120px;
   }
 
   .checkout--products-description,
   .checkout--products-container_description {
-    width: 50%;
+    width: 100%;
   }
   
   .checkout--products-price,
   .checkout--products-container_delete {
-    width: 25%
+    width: 180px
   }
 
-  .checkout--products-container_img a {
-    margin: 0 auto;
-  }
 
   .checkout--products-container {
     display: flex;
@@ -66,6 +63,10 @@
     display: flex;
   }
   
+  .checkout--products-container_img a {
+    margin: 0 auto;
+  }   
+
   .checkout--products-container_img img {
     height: 100%;
     margin: 0 auto;
@@ -117,9 +118,11 @@
   }
 
   .checkout-button,
-  .continue-shopping-button {
+  .continue-shopping-button,
+  .back-to-cart__button {
     padding: 6px 12px;
     border-radius: 4px;
+    cursor: pointer;
   }
   
   .checkout-button {
@@ -134,14 +137,20 @@
     color: white;
   }
 
-  .continue-shopping-button {
+  .continue-shopping-button,
+  .back-to-cart__button {
     background-color: #fff;
     border: 1px solid #adadad;
   }
   
-  .continue-shopping-button:hover {
+  .continue-shopping-button:hover,
+  .back-to-cart__button:hover {
     background-color: #ebebeb;
     color: black;
+  }
+
+  .back-to-cart__button {
+    padding: 8.5px 16px;
   }
 
   .cart-total__table {
@@ -159,4 +168,15 @@
   
   .reduced {
     font-size: 1.1em
+  }
+
+  .checkout-cart-total .cart-total__table {
+    margin: 0 auto 40px auto;
+  }
+
+  .checkout-cart-total .cart-total__table .pay-button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    margin-left: calc((343px - 174px)/2);
+    cursor:pointer;
   }
