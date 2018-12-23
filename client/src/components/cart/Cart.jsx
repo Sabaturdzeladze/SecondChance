@@ -51,17 +51,19 @@ export default class Cart extends Component {
           ) : user.cart.length ? (
             <main>
               <div className="checkout">
+
                 <div className="checkout--products">
-                  <div className="checkout--products-description">
-                    <h6>Product</h6>
+                  <div className="checkout--products-product">
+                    <b>Product</b>
                   </div>
-                  <div className="checkout--products--description">
-                    <h6>Description</h6>
+                  <div className="checkout--products-description">
+                    <b>Description</b>
                   </div>
                   <div className="checkout--products-price">
-                    <h6>Price</h6>
+                    <b>Price</b>
                   </div>
                 </div>
+
                 <div className="cart-item__container">
                   <CartItem
                     value={value}
@@ -69,50 +71,56 @@ export default class Cart extends Component {
                     cart={value.user.cart}
                   />
                 </div>
-                <div className="cart-price">
-                  <p>
-                  
-                    <b>Total Price:</b> {this.totalCalculator(value.user.cart).toFixed(2)}$
-                  </p>
-                  <p>
 
-                    <b>Shipping:</b>{" "}
+                <div>
+                  <table className="cart-total__table">
+                    <tbody>
+                      <tr>
 
-                    {this.totalCalculator(value.user.cart) >= 25
-                      ? "0.00$"
-                      : (
-                        <>
-                        4.99$ <br/> <small style={{color: "red"}}>Add {25 - this.totalCalculator(value.user.cart)}$ worth items and get free shipping</small>
-                        </>
-                      ) } 
-                 
-                  </p>
+                        <td>
+                          <h5>Subtotal<br />Estimated shipping <br /> {this.totalCalculator(value.user.cart) >= 25
+                            ? ""
+                            : (
+                              <p><small style={{ color: "red" }}>Add {25 - this.totalCalculator(value.user.cart)}$ worth items and get</small></p>
+                            )}</h5><h3>Total</h3></td>
+                        <td className="text-right"><h5><strong>{this.totalCalculator(value.user.cart).toFixed(2)}$<br />{this.totalCalculator(value.user.cart) >= 25
+                          ? "0.00$"
+                          : (<p>4.99$<br /> <small style={{ color: "red" }}>free shipping</small></p>)
+                        } </strong></h5><h3>{this.grandTotal(
+                          this.totalCalculator(value.user.cart)
+                        ).toFixed(2)}
+                            $</h3></td>
+                      </tr>
 
-                  <p>
-                    <b>Grand Total:</b>{" "}
-                    {this.grandTotal(
-                      this.totalCalculator(value.user.cart)
-                    ).toFixed(2)}
-                    $
-                  </p>
+                      <tr>
+                        <td>
+                          <Link to="/" className="continue-shopping-button">
+                            <i className="fas fa-shopping-cart"></i> Continue Shopping
+                        </Link>
+                        </td>
+                        <td>
+                          <Link to="/dashboard/checkout" className="checkout-button">
+                            Checkout{" "}
+                            <i className="fas fa-arrow-circle-right" />
+                          </Link>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
                 </div>
-                <div className="checkout--buttons">
-                  <Link to="/">
-                    <i className="fas fa-arrow-circle-left" /> Continue Shopping
-                  </Link>
-                  <Link to="/dashboard/checkout">
-                    PROCEED TO CHECKOUT{" "}
-                    <i className="fas fa-arrow-circle-right" />
-                  </Link>
-                </div>
+
+                <hr />
+
+
               </div>
             </main>
           ) : (
-            <div style={{textAlign: 'center', padding: '30px'}}>
-              <h2 style={{padding: '50px'}}>No items in Cart</h2>
-              <Link to="/">Go Back To Shopping</Link>
-            </div>
-          );
+                  <div style={{ textAlign: 'center', padding: '30px' }}>
+                    <h2 style={{ padding: '50px' }}>No items in Cart</h2>
+                    <Link to="/">Go Back To Shopping</Link>
+                  </div>
+                );
         }}
       </Consumer>
     );

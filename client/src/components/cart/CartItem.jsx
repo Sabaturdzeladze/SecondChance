@@ -3,29 +3,31 @@ import React from "react";
 export const CartItem = props => {
   return props.cart.map(item => (
     <div key={item.id} className="checkout--products-container">
+
       <div className="checkout--products-container_img">
         <img
           src="http://bestjquery.com/tutorial/product-grid/demo9/images/img-2.jpg"
           alt="sneakers"
         />
       </div>
+
       <div className="checkout--products-container_description">
-        <p  className="headline">
+        <p  className="headline capitalize">
           <b>
             {item.gender}'s {item.subCategory}
           </b>
         </p>
-        <p className="headline">Brand: {item.brand}</p>
-        <p className="headline">Condition: {item.condition}</p>
-        <p className="headline">Color: {item.color}</p>
-        <p className="headline">Size: {item.size}</p>
+        <p className="headline capitalize"><strong>Brand:</strong> {item.brand}</p>
+        <p className="headline capitalize"><strong>Condition:</strong> {item.condition}</p>
+        <p className="headline capitalize"><strong>Color:</strong> {item.color}</p>
+        <p className="headline capitalize"><strong>Size:</strong> {item.size}</p>
       </div>
+
       <div className="checkout--products-container_delete">
         <b>
-          Price:{" "}
           <span className={item.priceSale ? "reduced" : "price"}>
             {item.price}$
-          </span>{" "}
+          </span> <br/>
           {item.priceSale && (
             <span className="price">{item.priceSale}$</span>
           )}
@@ -34,11 +36,13 @@ export const CartItem = props => {
           onClick={e =>
             props.onDelete(e, props.value.user.id, item.id, props.value)
           }
+          type="button"
           className="btn btn-danger"
         >
-          <i className="fas fa-trash-alt" />
+          <i className="fas fa-trash-alt" /> <span className="remove-caption">Remove</span>
         </button>
       </div>
+
     </div>
   ));
 };

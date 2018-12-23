@@ -6,7 +6,7 @@ class AdminNavigation extends Component {
     return (
       <div id="cssmenu">
         <ul>
-          <li className="last">
+          <li>
             <NavLink to="/admin/messenger">
               <span>Messenger</span>
             </NavLink>
@@ -21,7 +21,7 @@ class AdminNavigation extends Component {
               <span>New Product</span>
             </NavLink>
           </li>
-          <li>
+          <li className="last">
             <NavLink to="/admin/users">
               <span>Users</span>
             </NavLink>
