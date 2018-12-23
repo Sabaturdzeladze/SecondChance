@@ -119,10 +119,9 @@ router.post("/:id/dashboard/checkout", (req, res) => {
 
   // stringifying users bedore updating
   users = JSON.stringify(users);
-  products = JSON.stringify(products)
-
+  
   // Updating products and users databases.
-  fs.writeFileSync(path.join(__dirname, "../../db") + "/products.json", products);
+  fs.writeFileSync(path.join(__dirname, "../../db") + "/products.json", JSON.stringify(products));
   fs.writeFileSync(path.join(__dirname, "../../db") + "/users.json", users);
 
   return res.json({ user, products });
