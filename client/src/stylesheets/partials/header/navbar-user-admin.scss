@@ -3,97 +3,114 @@
     width: 550px;
     margin: 5px auto;
     border-radius: 50px;
+
+    ul {
+      list-style: none;
+      width: 90%;
+      margin: auto;
+      padding: 0;
+      line-height: 1;
+      display: block;
+      zoom: 1;
+
+      li {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+
+        a {
+          color: #ffffff;
+          text-decoration: none;
+          display: block;
+          padding: 15px 25px;
+          font-family: "Open Sans", sans-serif;
+          font-weight: 700;
+          text-transform: uppercase;
+          font-size: 14px;
+          position: relative;
+          -webkit-transition: color 0.25s;
+          -moz-transition: color 0.25s;
+          -ms-transition: color 0.25s;
+          -o-transition: color 0.25s;
+          transition: color 0.25s;
+
+          &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            right: -3px;
+            top: 19px;
+            height: 6px;
+            width: 6px;
+            background: #ffffff;
+            opacity: 0.5;
+          }
+          
+          &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 0;
+            background: #333333;
+            -webkit-transition: width 0.25s;
+            -moz-transition: width 0.25s;
+            -ms-transition: width 0.25s;
+            -o-transition: width 0.25s;
+            transition: width 0.25s;
+          }
+
+          &:hover {
+            color: #333333;
+
+            &:before {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      &:after {
+        content: " ";
+        display: block;
+        font-size: 0;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+      }
+    }
   }
-  #cssmenu ul {
-    list-style: none;
-    width: 90%;
-    margin: auto;
-    padding: 0;
-    line-height: 1;
-    display: block;
-    zoom: 1;
-  }
-  #cssmenu ul:after {
-    content: " ";
-    display: block;
-    font-size: 0;
-    height: 0;
-    clear: both;
-    visibility: hidden;
-  }
-  #cssmenu ul li {
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-  }
-  #cssmenu.align-right ul li {
-    float: right;
-  }
-  #cssmenu.align-center ul {
-    text-align: center;
-  }
-  #cssmenu ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    display: block;
-    padding: 15px 25px;
-    font-family: "Open Sans", sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 14px;
-    position: relative;
-    -webkit-transition: color 0.25s;
-    -moz-transition: color 0.25s;
-    -ms-transition: color 0.25s;
-    -o-transition: color 0.25s;
-    transition: color 0.25s;
-  }
-  #cssmenu ul li a:hover {
+
+#cssmenu.align-right ul li {
+  float: right;
+}
+
+#cssmenu.align-center ul {
+  text-align: center;
+}
+
+#cssmenu ul li.last > a:after,
+#cssmenu ul li:last-child > a:after {
+  display: none;
+}
+
+#cssmenu ul li.active {
+  a {
     color: #333333;
+    
+    &:before {
+      width: 100%;
+    }
   }
-  #cssmenu ul li a:hover:before {
-    width: 100%;
-  }
-  #cssmenu ul li a:after {
-    content: "";
-    display: block;
-    position: absolute;
-    right: -3px;
-    top: 19px;
-    height: 6px;
-    width: 6px;
-    background: #ffffff;
-    opacity: 0.5;
-  }
-  #cssmenu ul li a:before {
-    content: "";
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 3px;
-    width: 0;
-    background: #333333;
-    -webkit-transition: width 0.25s;
-    -moz-transition: width 0.25s;
-    -ms-transition: width 0.25s;
-    -o-transition: width 0.25s;
-    transition: width 0.25s;
-  }
-  #cssmenu ul li.last > a:after,
-  #cssmenu ul li:last-child > a:after {
-    display: none;
-  }
-  #cssmenu ul li.active a {
-    color: #333333;
-  }
-  #cssmenu ul li.active a:before {
-    width: 100%;
-  }
-  #cssmenu.align-right li.last > a:after,
-  #cssmenu.align-right li:last-child > a:after {
-    display: block;
-  }
-  #cssmenu.align-right li:first-child a:after {
-    display: none;
-  }
+}
+
+#cssmenu.align-right li.last > a:after,
+#cssmenu.align-right li:last-child > a:after {
+  display: block;
+}
+
+#cssmenu.align-right li:first-child a:after {
+  display: none;
+}

@@ -4,27 +4,18 @@
     justify-content: center;
     margin: 20px auto 0;
   }
+
   .center-on-page {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
   h1 {
     text-align: center;
   }
-  /* Reset Select */
-  .select select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    appearance: none;
-    outline: 0;
-    box-shadow: none;
-    border: 0 !important;
-    background: #3f3536;
-    background-image: none;
-  }
+  
   /* Custom Select */
   .select {
     position: relative;
@@ -36,39 +27,52 @@
     overflow: hidden;
     border-radius: 0.25em;
     margin: 0 5px;
+
+    /* Transition */
+    &:hover {
+      &:after {
+      color: white;
+      }
+    }
+
+    /* Arrow */
+    &:after {
+      content: "\25BC";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0 7px;
+      background: #473c3d;
+      pointer-events: none;
+      -webkit-transition: 0.25s all ease;
+      -o-transition: 0.25s all ease;
+      transition: 0.25s all ease;
+    }
+
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      appearance: none;
+      outline: 0;
+      box-shadow: none;
+      border: 0 !important;
+      background: #3f3536;
+      background-image: none;
+      width: 100%;
+      height: 100%;
+      margin: 0 10px;
+      padding: 0 0 0 0.5em;
+      color: #fff;
+      cursor: pointer;
+
+      &:-ms-expand {
+        display: none;
+      }
+    }
   }
-  .select select {
-    width: 100%;
-    height: 100%;
-    margin: 0 10px;
-    padding: 0 0 0 0.5em;
-    color: #fff;
-    cursor: pointer;
-  }
-  select::-ms-expand {
-    display: none;
-  }
-  /* Arrow */
-  .select::after {
-    content: "\25BC";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    padding: 0 7px;
-    background: #473c3d;
-    pointer-events: none;
-  }
-  /* Transition */
-  .select:hover::after {
-    color: white;
-  }
-  .select::after {
-    -webkit-transition: 0.25s all ease;
-    -o-transition: 0.25s all ease;
-    transition: 0.25s all ease;
-  }
-  
+
   .user-navbar,
   .admin-navbar {
     width: 500px;

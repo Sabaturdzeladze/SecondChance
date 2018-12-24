@@ -3,34 +3,33 @@
     justify-content: center;
   }
   
-  .admin-main__users {
-    padding: 40px 0;
-    width: 20%;
-    min-height: 500px;
-    background: #ffffff;
-  }
-  
-  .admin-main__messages {
-    padding: 40px 0;
-    width: 35%;
-    height: 500px;
-    margin-left: 10px;
-  }
-  
-  .admin-main__users--list {
-    list-style-type: none;
-    background: #d3d3d3;
-    padding: 10px 2px;
-    height: 100%;
-    border-radius: 5px;
-  }
-  
-  .admin-main__users--item {
-    width: 100%;
-    text-align: center;
-  }
-  
-  .admin-main__users--item button {
+.admin-main__users {
+  padding: 40px 0;
+  width: 20%;
+  min-height: 500px;
+  background: #ffffff;
+}
+
+.admin-main__messages {
+  padding: 40px 0;
+  width: 35%;
+  height: 500px;
+  margin-left: 10px;
+}
+
+.admin-main__users--list {
+  list-style-type: none;
+  background: #d3d3d3;
+  padding: 10px 2px;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.admin-main__users--item {
+  width: 100%;
+  text-align: center;
+
+  button {
     display: block;
     width: 100%;
     margin-top: 5px;
@@ -39,76 +38,76 @@
     border: none;
     cursor: pointer;
     padding: 5px 0;
+
+    &:hover {
+      background: #ffffff;
+    }
   }
-  
-  .admin-main__messages--wrapper {
-    background-color: #d3d3d3;
-    height: 100%;
-    padding: 20px;
-  }
-  
-  .admin-main__users--item button:hover {
-    background: #ffffff;
-  }
-  
-  .current-conversation {
-    height: 10%;
-    text-align: center;
-    font-weight: bold;
-    background-color: #eeeeee;
-    padding: 7px;
-    border-radius: 2px;
-  }
-  
-  .admin-main__messages--text {
-    max-height: 55%;
-    overflow-y: auto;
-    border: 2px solid #ffffff;
-    background: #ffffff;
-    padding: 5px;
-    display: flex;
-    flex-wrap: wrap;
-    overflow-y: auto;
-  }
-  
-  .admin-main__messages--text span {
+}
+
+.admin-main__messages--wrapper {
+  background-color: #d3d3d3;
+  height: 100%;
+  padding: 20px;
+}
+
+.current-conversation {
+  height: 10%;
+  text-align: center;
+  font-weight: bold;
+  background-color: #eeeeee;
+  padding: 7px;
+  border-radius: 2px;
+}
+
+.admin-main__messages--text {
+  max-height: 55%;
+  overflow-y: auto;
+  border: 2px solid #ffffff;
+  background: #ffffff;
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+
+  span {
     display: flex;
     font-size: 0.8em;
     width: 100%;
   }
-  
-  .admin-main__messages--text .admin-span {
+
+  .admin-span {
     display: flex;
     justify-content: flex-end;
   }
-  
-  .admin-main__admin {
-    max-width: 45%;
-    text-align: right;
-    background: #d6d6d6;
-    margin: 2px;
-    line-height: 1.2em;
-    padding: 5px;
-    border-radius: 5px;
-  }
-  
-  .admin-main__user {
-    max-width: 45%;
-    background: #aaf5f1;
-    margin: 2px;
-    padding: 2px 10px;
-    border-radius: 5px;
-    line-height: 1.2em;
-  }
-  
-  .admin-main__messages--form {
-    height: 20%;
-    max-width: 100%;
-    width: 100%;
-    margin: 10px 0;
-  }
-  
-  .admin-main__messages--form textarea {
+}
+
+.admin-main__admin {
+  max-width: 45%;
+  text-align: right;
+  background: #d6d6d6;
+  margin: 2px;
+  line-height: 1.2em;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.admin-main__user {
+  max-width: 45%;
+  background: #aaf5f1;
+  margin: 2px;
+  padding: 2px 10px;
+  border-radius: 5px;
+  line-height: 1.2em;
+}
+
+.admin-main__messages--form {
+  height: 20%;
+  max-width: 100%;
+  width: 100%;
+  margin: 10px 0;
+
+  textarea {
     width: 100%;
     border-radius: 2px;
     border: none;
@@ -117,8 +116,8 @@
     resize: none;
     font-size: 0.8em;
   }
-  
-  .admin-main__messages--form button {
+
+  button {
     display: block;
     width: 100%;
     margin-top: 3px;
@@ -126,3 +125,4 @@
     border-radius: 5px;
     border: none;
   }
+}

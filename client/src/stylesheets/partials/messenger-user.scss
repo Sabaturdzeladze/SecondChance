@@ -1,58 +1,61 @@
-/* .messenger-wrapper {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-} */
 textarea {
     resize: none;
     width: 100%;
     border-radius: 5px;
     font-size: 0.8em;
-  }
-  .main-contact {
-    max-width: 300px;
-    margin: 0 auto;
-    background: #ebebeb;
-    padding: 10px;
-    border: 1px solid #ffffff;
-    border-radius: 10px 10px 0 0;
-  }
-  .main-contact__conversation {
-    max-height: 400px;
-  }
-  .main-contact__conversation span {
+}
+
+.main-contact {
+  max-width: 300px;
+  margin: 0 auto;
+  background: #ebebeb;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 10px 10px 0 0;
+}
+
+.main-contact__conversation {
+  max-height: 400px;
+
+  span {
     display: flex;
     font-size: 0.8em;
   }
-  .main-contact__conversation--text {
-    /* border: 2px solid rgb(212, 212, 212); */
-    border-right: none;
-    /* min-height: 100px; */
-    max-height: 250px;
-    overflow-y: scroll;
-    padding: 5px 5px 0;
-  }
-  .admin-span {
-    display: flex;
-    justify-content: flex-end;
-  }
-  .admin-span p {
+}
+
+.main-contact__conversation--text {
+  border-right: none;
+  max-height: 250px;
+  overflow-y: scroll;
+  padding: 5px 5px 0;
+}
+
+.admin-span {
+  display: flex;
+  justify-content: flex-end;
+
+  p {
     max-width: 50%;
   }
-  .user {
-    background: #aaf5f1;
-    padding: 2px 10px;
-    border: 1px solid #8ef7f1;
-    border-radius: 5px;
-    max-width: 50%;
-  }
-  .admin {
-    background: #d6d6d6;
-    padding: 2px 10px;
-    border: 1px solid #eeeeee;
-    border-radius: 5px;
-  }
-  .main-contact__form button {
+}
+
+.user {
+  background: #aaf5f1;
+  padding: 2px 10px;
+  border: 1px solid #8ef7f1;
+  border-radius: 5px;
+  max-width: 50%;
+}
+
+.admin {
+  background: #d6d6d6;
+  padding: 2px 10px;
+  border: 1px solid #eeeeee;
+  border-radius: 5px;
+}
+
+.main-contact__form {
+  button {
     width: 100%;
     outline: 0;
     border: none;
@@ -60,43 +63,46 @@ textarea {
     padding: 5px 0;
     cursor: pointer;
   }
-  .close-contact {
-    background: none;
-    border: none;
-    outline: none;
-  }
-  .close-contact:hover {
+}
+
+.close-contact {
+  background: none;
+  border: none;
+  outline: none;
+
+  &:hover {
     color: #555;
     cursor: pointer;
   }
-  /* Scrollbar styling */
-  ::-webkit-scrollbar {
-    width: 7px;
-  }
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-  }
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+::-webkit-scrollbar { /* Scrollbar styling */
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb { /* Handle */
+  background: #888;
+
+  &:hover { /* Handle on hover */
     background: #555;
     cursor: pointer;
   }
+}
 
-  .conversation {
-    position: fixed;
-    bottom: 0;
-    right: 5%;
-    width: 300px;
-    z-index: 100;
-  }
-  
-  .conversation-open {
-    display: block;
-    width: 100%;
-    border-radius: 10px 10px 0 0;
-  }
-  
-  .conversation-hide {
-    display: none;
-  }
+.conversation {
+  position: fixed;
+  bottom: 0;
+  right: 5%;
+  width: 300px;
+  z-index: 100;
+}
+
+.conversation-open {
+  display: block;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.conversation-hide {
+  display: none;
+}

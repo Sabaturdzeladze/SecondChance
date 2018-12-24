@@ -1,31 +1,24 @@
-.totop {
-    padding: 20px 0px;
-    text-align: center;
-    background-color: #282321;
-    color: white;
-  }
-  .totop:hover {
-    cursor: pointer;
-    background-color: wheat;
-    color: darkslateblue;
-  }
-  
   .footer-header {
     font-size: 1.7em;
     color: white;
-    font-family: "Lobster", cursive;
+    font-family: $font-logo;
+    text-align: center;
   }
   
-  .footer-container__brand .footer-container__header {
-    font-family: "Lobster", cursive;
-    font-size: 1.4rem;
-    margin-top: -10px;
+  .footer-container__brand {
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    font-size: 2em;
+
+    .footer-container__header {
+      font-family: $font-logo;
+      font-size: 1.4rem;
+      margin-top: -10px;
+      color: white;
+    }
   }
-  
-  .footer-container__header {
-    color: white;
-    font-size: 0.5em;
-  }
+ 
   .footer-container__feedback {
     text-align: center;
     justify-content: space-around;
@@ -33,14 +26,14 @@
   
   .footer--container {
     display: grid;
-    grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-template-columns: (100/3)*1% (100/3)*1% (100/3)*1%;
     grid-auto-rows: minmax(180px, auto);
     grid-template-areas: "shop brand account";
     padding: 20px 0;
-    background-color: #362d2e;
+    background-color: $light-brown;
   }
    
-  .footer--container-shop-items, {
+  .footer--container-shop-items {
     width: 130px;
     margin-left: calc( (100% - 65px)/2 );
   }
@@ -48,13 +41,12 @@
   .footer-contact__items {
     width: 130px;
     margin-left: calc( (100% - 100px)/2 );
-    
   }
   
   .footer--container-shop {
     grid-area: shop;
   }
-  
+
   .footer-container__brand {
     grid-area: brand;
   }
@@ -63,58 +55,59 @@
     grid-area: account;
   }
   
-  .footer-container__brand {
-    flex-direction: column;
-    text-align: center;
-    justify-content: space-between;
-    font-size: 2em;
-  }
   .footer--container-socialMedia {
     text-align: center;
     padding: 0px 20px;
   }
+
   .fa-pied-piper-hat {
     font-size: 2em;
-    color: #f5a019;
+    color: $orange;
   }
+
   .footerSM {
     font-size: 2em;
     padding: 5px;
     color: white;
+
+    &:hover {
+      color: #111111;
+    }
   }
-  .footerSM:hover {
-    color: #111111;
-  }
+
   .footer-div {
     color: white;
   }
   
   .footer {
-    background: #362d2e;
+    background: $light-brown;
     color: #ffffff;
     padding: 50px 20px;
   }
+
   .aboutus {
     color: white;
     text-align: center;
+
+    a {
+      color: white;
+
+      &:hover {
+        color: $orange
+      }
+    }
   }
   
-  .aboutus a {
-    color: white;
-  }
-  
-  .aboutus a:hover {
-    color: #f5a019
-  }
-  
-  .footer-container__payments img {
-    width: 70%;
+  .footer-container__payments {
+    img {
+      width: 70%;
+    }
   }
   
   .footer3 {
     padding: 20px 0 35px 0;
     display: flex;
-    background-color: #282321;
+    background-color: $dark-brown;
     justify-content: space-around;
   }
   
@@ -127,36 +120,34 @@
     align-items: center;
   }
   
-  .footer-div a {
-    color: white;
+  .footer-div {
+    a {
+      color: white;
+      &:hover {
+        color: $orange
+      }
+    }
   }
-  
-  .footer-div a:hover {
-    color: #f5a019
-  }
-  
-  .footer-header {
-    text-align: center;
-    color: white;
-  }
-  
+    
   .footer-container {
     display: flex;
     justify-content: center;
     padding: 50px 0;
+
+    p {
+      padding: 0 20px;
+    }
+
+    a {
+      color: #dfdfdf;
+    }
   }
   
-  .footer-container p {
-    padding: 0 20px;
-  }
-  
-  .footer-container a {
-    color: #dfdfdf;
-  }
-  
-  .footer-container__icons .footer-header {
-    font-size: 1rem;
-    font-family: "Roboto", serif;
+  .footer-container__icons {
+    .footer-header {
+      font-size: 1rem;
+      font-family: $font-website;
+    }
   }
   
   .footer > p {

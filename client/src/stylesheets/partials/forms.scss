@@ -5,30 +5,30 @@ form {
 } 
 
 .form-header {
-    text-align: center;
-    margin-top: 25px;
-  }
-  
-  .register-button {
-    width: 120px;
-    padding: 5px 10px;
-    margin: auto;
-    margin-top: 25px;
-  }
-  
-  .login-button {
-    padding: 7px 27px;
-  }
-  
-  .login-form {
-    width: 350px;
-    margin: auto;
-  }
-  
-  .form-signin {
-    width: 250px;
-  }
-  
-  .login-form .form-control {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.register-button {
+  width: 120px;
+  padding: 5px 10px;
+  margin: auto;
+  margin-top: 25px;
+}
+
+.login-button {
+  padding: 7px 27px;
+}
+
+.login-form {
+  width: 350px;
+  margin: auto;
+
+  .form-control {
     margin-bottom: 10px;
   }
+}
+
+.form-signin {
+  width: 250px;
+}

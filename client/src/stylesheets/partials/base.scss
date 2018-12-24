@@ -8,8 +8,8 @@
 
 a {
     color: black;
-  }
 
-a:hover {
-    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
   }

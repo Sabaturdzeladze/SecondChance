@@ -243,59 +243,58 @@
 
 }
 
-  @media screen and (max-width: 420px) {
-    .continue-shopping-button .fa-shopping-cart,
-    .checkout-button .fa-arrow-circle-right {
-      display: none;
-    }
-
-    .cart-total__table small {
-      font-size: 0.75em;
-    }
-
-    .checkout--products-container_delete .btn-danger {
-      font-size: 0.8rem;
-    }
-
-    .checkout--products-container_description p {
-      font-size: 0.8rem;
-    }
-
-    .checkout--products-container_delete .reduced {
-      font-size: 1em;
-    }
-
-    .checkout--products-container_delete .price {
-      font-size: 1.4em;
-    }
-
-    .product-informaton::before,
-    .product-informaton::after,
-    h3.product-description::before,
-    h3.product-description::after, {
-      content: none;
-    }
-
-    .product-informaton,
-    h3.product-description {
-      font-size: 1.5rem;
-      text-align: center;
-      margin: 20px 0
-    }
-
-    div.action {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    div.action button {
-      margin: 5px;
-    }
-    
+@media screen and (max-width: 420px) {
+  .continue-shopping-button .fa-shopping-cart,
+  .checkout-button .fa-arrow-circle-right {
+    display: none;
   }
 
+  .cart-total__table small {
+    font-size: 0.75em;
+  }
+
+  .checkout--products-container_delete .btn-danger {
+    font-size: 0.8rem;
+  }
+
+  .checkout--products-container_description p {
+    font-size: 0.8rem;
+  }
+
+  .checkout--products-container_delete .reduced {
+    font-size: 1em;
+  }
+
+  .checkout--products-container_delete .price {
+    font-size: 1.4em;
+  }
+
+  .product-informaton::before,
+  .product-informaton::after,
+  h3.product-description::before,
+  h3.product-description::after, {
+    content: none;
+  }
+
+  .product-informaton,
+  h3.product-description {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 20px 0
+  }
+
+  div.action {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  div.action button {
+    margin: 5px;
+  }
+  
+}
 
 @media screen and (max-width: 20rem) {
   .header-heading {
