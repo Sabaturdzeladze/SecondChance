@@ -238,7 +238,6 @@ export default class NewProduct extends Component {
             <div className="form-group col-md-4">
               <label htmlFor="formGroupExampleInput10">Price Sale</label>
               <input
-                required
                 type="text"
                 className="form-control"
                 id="formGroupExampleInput10"
