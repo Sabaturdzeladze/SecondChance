@@ -8,7 +8,7 @@
 
 .bg-light {
   background: white !important;
-  border: 1px solid rgba(211, 211, 211, 0.432);
+  border: 1px solid rgba(211, 211, 211, 0.884);
 }
 
 .dropdown-item {
@@ -20,6 +20,12 @@
 
   ul {
     flex: 1;
+  }
+}
+
+.dropdown-menu {
+  a {
+    color: rgba(0,0,0,.5)
   }
 }
 
@@ -47,18 +53,7 @@
   }
 }
 
-.dropdown-menu--flexed__category--title {
+a.dropdown-menu--flexed__category--title {
   font-weight: bold;
-}
-
-/* ეს არ წაშალოთ */
-/* .navbar-nav li:hover .dropdown-menu {  
-  display: block;
-} */
-
-@media screen and (max-width: 380px) {
-  .dropdown-menu--flexed {
-    flex-direction: column;
-    width: 100%;
-  }
+  color: black;
 }

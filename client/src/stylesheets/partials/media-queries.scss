@@ -202,6 +202,50 @@
 }
 
 /* Responsive Footer */
+@media screen and (min-width: 768px) {
+  .dropdown {
+    .dropdown-menu {
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+  
+      max-height: 0;
+      display: block;
+      overflow: hidden;
+      opacity: 0;
+  }
+
+    &:hover {
+      .dropdown-menu {
+        transition-delay: 0.2s;
+        max-height: 440px;
+        opacity: 1;
+    }
+    }
+  }
+
+  
+  .dropdown-toggle:active {
+    pointer-events: none;
+  }
+
+  .dropdown-menu--flexed {
+    width: 450px;
+  }
+
+  .dropdown-menu {
+    padding-left: 15px;
+  }
+
+  .dropdown-menu--flexed__category {
+    padding: 10px 0;
+  }
+
+  
+}  
+
 @media screen and (max-width: 768px) {
   .footer--container {
     grid-template-columns: 50% 50%;
@@ -294,6 +338,10 @@
     margin: 5px;
   }
   
+  .dropdown-menu--flexed {
+    flex-direction: column;
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 20rem) {
