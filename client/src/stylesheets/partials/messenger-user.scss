@@ -76,16 +76,20 @@ textarea {
   }
 }
 
-::-webkit-scrollbar { /* Scrollbar styling */
-  width: 7px;
-}
 
-::-webkit-scrollbar-thumb { /* Handle */
-  background: #888;
-
-  &:hover { /* Handle on hover */
-    background: #555;
-    cursor: pointer;
+.main-contact__conversation--text {
+  
+  &::-webkit-scrollbar { /* Scrollbar styling */
+    width: 7px;
+  }
+  
+  &::-webkit-scrollbar-thumb { /* Handle */
+    background: #888;
+  
+    &:hover { /* Handle on hover */
+      background: #555;
+      cursor: pointer;
+    }
   }
 }
 

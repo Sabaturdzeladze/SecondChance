@@ -124,6 +124,7 @@ export default class Conversation extends Component {
                         id="message"
                         cols="30"
                         rows="3"
+                        value={this.state.text}
                         placeholder="Message"
                       />
                       <button>Submit</button>
