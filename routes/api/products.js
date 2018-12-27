@@ -168,7 +168,7 @@ router.put("/:id", upload, (req, res) => {
   if (req.body.gender) product.gender = req.body.gender;
   if (req.file) product.images = req.file;
   if (req.body.category) product.category = req.body.category;
-  if (req.body.category) product.subCategory = req.body.subCategory;
+  if (req.body.subCategory) product.subCategory = req.body.subCategory;
   if (req.body.brand) product.brand = req.body.brand;
   if (req.body.size) product.size = req.body.size;
   if (req.body.color) product.color = req.body.color;
@@ -235,9 +235,7 @@ router.get("/search/all", (req, res) => {
     }
   }
 
-  // check if query is in url
   if (req.query.brand) {
-    // filter array with query
     foundProducts = foundProducts.filter(
       product => product.brand === req.query.brand
     );
