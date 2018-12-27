@@ -13,6 +13,7 @@ class Header extends Component {
       let brandFound = false;
       let categoryFound = false;
       let subCategoryFound = false;
+      let genderFound = false;
       for (const item of input) {
         for (const i of products) {
           if (i.brand && i.brand.toLowerCase().includes(item) && !brandFound) {
@@ -24,6 +25,10 @@ class Header extends Component {
           } else if (i.subCategory && i.subCategory.toLowerCase().includes(item) && !subCategoryFound) {
             url += `subCategory=${item}&`;
             subCategoryFound = true;
+          }
+          else if (i.gender && i.gender.toLowerCase().includes(item) && !genderFound) {
+            url += `gender=${item}&`;
+            genderFound = true;
           }
         }
       }
