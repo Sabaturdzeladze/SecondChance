@@ -11,7 +11,7 @@ export default class NewProduct extends Component {
     size: "",
     color: "",
     price: 0,
-    priceSale: 0,
+    priceSale: "",
     desc: "",
     condition: "",
     images: [],
@@ -141,8 +141,7 @@ export default class NewProduct extends Component {
                   <option value="shirts">Shirts</option>
                   <option value="t-shirts/tops">T-shirts / Tops</option>
                   <option value="polos">Polos</option>
-                  <option value="sweaters">Sweaters</option>
-                  <option value="hoodies">Hoodies</option>
+                  <option value="sweaters-hoodies">Sweaters & Hoodies</option>
                   <option value="outerwear/blazers/coats">
                     Outerwear / Blazers / Coats
                   </option>
