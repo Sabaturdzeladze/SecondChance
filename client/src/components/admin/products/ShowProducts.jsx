@@ -26,7 +26,11 @@ export default class ShowProducts extends Component {
           prod.subCategory.toLowerCase().includes(input)
         )
           return true;
-
+        else if (
+          prod.gender && //
+          prod.gender.toLowerCase().includes(input)
+        )
+          return true;
         return false;
       });
       this.setState(() => ({ products, filtered: true }));
@@ -58,9 +62,9 @@ export default class ShowProducts extends Component {
             <main>
               <div className="checkout">
                 <label style={{ width: "100%" }} htmlFor="filter">
-                  Filter By Brand or Category or Sub Category: <br />
-                  <input
-                    style={{ width: "100%" }}
+                  
+                <input
+                    style={{ width: "100%"}}
                     onChange={e => this.onChangeHandler(e, value.newest)}
                     type="text"
                     name="filter"

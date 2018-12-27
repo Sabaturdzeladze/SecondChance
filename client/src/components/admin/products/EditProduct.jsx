@@ -283,7 +283,7 @@ export default class EditProduct extends Component {
               />
             </div>
           </div>
-
+        
           <div className="form-row">
             <label htmlFor="customFile">Product Images</label>
 
@@ -292,12 +292,39 @@ export default class EditProduct extends Component {
                 type="file"
                 className="custom-file-input"
                 id="customFile"
-                name="selectedFile"
+                name="files"
                 onChange={this.onChangeHandler}
               />
               <label className="custom-file-label" htmlFor="customFile">
-                Choose 4 photos
+                Choose Main Photo
               </label>
+            </div>
+          </div>
+
+          <div className="form-row" style={{ marginTop: "15px" }}>
+            <div className="form-group col-md-12">
+              <input
+                className="form-control"
+                id="formGroupExampleInput12"
+                type="text"
+                name="url1"
+                value={this.state.url1}
+                placeholder="Second Image"
+                onChange={this.onChangeHandler}
+              />
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="form-group col-md-12">
+              <input
+                className="form-control"
+                id="formGroupExampleInput12"
+                type="text"
+                name="url2"
+                value={this.state.url2}
+                placeholder="Third Image"
+                onChange={this.onChangeHandler}
+              />
             </div>
           </div>
 
