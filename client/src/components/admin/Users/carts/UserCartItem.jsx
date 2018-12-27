@@ -5,7 +5,7 @@ export const UserCartItem = ({ cart, onDelete }) => {
     <div key={item.id} className="checkout--products-container">
       <div className="checkout--products-container_img">
         <img
-          src="http://bestjquery.com/tutorial/product-grid/demo9/images/img-2.jpg"
+          src={`/images/${item.images.filename}`}
           alt="sneakers"
         />
       </div>

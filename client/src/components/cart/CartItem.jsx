@@ -7,7 +7,7 @@ export const CartItem = props => {
 
       <div className="checkout--products-container_img">
         <Link to={`/products/item/${item.id}`}><img
-          src="http://bestjquery.com/tutorial/product-grid/demo9/images/img-2.jpg"
+          src={`/images/${item.images.filename}`}
           alt="sneakers"
         /></Link>
 

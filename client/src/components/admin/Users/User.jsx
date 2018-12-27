@@ -11,7 +11,7 @@ export default ({ users, onDelete }) => {
             <td>{user.balance}</td>
             <td>{user.email}</td>
             <td>{user.birthday}</td>
-            <td>
+            <td className="user-edit__buttons">
               <Link
                 to={`/admin/users/edit/${user.id}`}
                 className="btn btn-success"
