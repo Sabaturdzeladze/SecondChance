@@ -8,7 +8,7 @@ export const CartItem = props => {
       <div className="checkout--products-container_img">
         <Link to={`/products/item/${item.id}`}><img
           src={`/images/${item.images.filename}`}
-          alt="sneakers"
+          alt={item.subCategory}
         /></Link>
 
       </div>

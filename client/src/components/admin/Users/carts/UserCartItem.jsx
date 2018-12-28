@@ -6,7 +6,7 @@ export const UserCartItem = ({ cart, onDelete }) => {
       <div className="checkout--products-container_img">
         <img
           src={`/images/${item.images.filename}`}
-          alt="sneakers"
+          alt={item.subCategory}
         />
       </div>
       <div className="checkout--products-container_description">

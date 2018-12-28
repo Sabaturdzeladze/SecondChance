@@ -5,8 +5,8 @@ export const BoughtItem = props => {
     <div key={item.id} className="checkout--products-container">
       <div className="checkout--products-container_img">
         <img
-          src="http://bestjquery.com/tutorial/product-grid/demo9/images/img-2.jpg"
-          alt="sneakers"
+          src={`/images/${item.images.filename}`}
+          alt={item.subCategory}
         />
       </div>
       <div className="checkout--products-container_description">
