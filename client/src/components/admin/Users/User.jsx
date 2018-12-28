@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default ({ users, onDelete }) => {
   return (
     <tbody>
-      {users.slice(1).map(user => {
+      {users.map(user => {
         return (
           <tr key={user.id}>
             <td>{user.username}</td>
