@@ -3,6 +3,7 @@ import axios from "axios";
 import FilteredItem from "./FilteredItem";
 import Spinner from "../common/Spinner";
 import Filter from "./Filter";
+import ProductNotFound from "../common/ProductNotFound";
 
 class Filtered extends Component {
   state = {
@@ -52,7 +53,8 @@ class Filtered extends Component {
     const { array, loading } = this.state;
     return array.length === 0 || loading ? (
       loading === false && array.length === 0 ? (
-        <h2>No Items found</h2>
+        // <h2>No Items found</h2>
+        <ProductNotFound />
       ) : (
         <Spinner />
       )

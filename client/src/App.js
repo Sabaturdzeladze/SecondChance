@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Provider from "./context-api/Context";
 import { ProtectedRoute } from "./components/common/ProtectedRoute";
 import Login from "./components/auth/Login";
@@ -27,6 +27,7 @@ import Wishlist from './components/user/Wishlist/Wishlist';
 import UserNavbar from './components/user/UserNavbar';
 import BoughtItems from "./components/user/bought-items/BoughtItems";
 import Reviews from "./components/reviews/Reviews";
+import NotFound from "./components/common/NotFound";
 
 import "./stylesheets/main.scss";
 
@@ -48,29 +49,32 @@ class App extends Component {
         <Router>
           <>
             <Header />
-            <ProtectedRoute path="/admin" component={Admin} />
-            <ProtectedRoute path="/admin/products" component={ShowProducts} />
-            <ProtectedRoute path="/admin/messenger" component={Messenger} />
-            <ProtectedRoute path="/admin/product/add" component={NewProduct} />
-            <ProtectedRoute path="/admin/product/edit/:id" component={EditProduct} />
-            <ProtectedRoute path="/admin/users" exact component={ShowUsers} />
-            <ProtectedRoute path="/admin/users/edit/:id" component={EditUser} />
-            <ProtectedRoute path="/admin/users/cart/edit/:id" component={UserCart} />
-            <Route path="/dashboard" component={UserNavbar} />
-            <Route path="/dashboard/checkout" component={Checkout}/>
-            <Route path="/dashboard/history" component={BoughtItems} />
-            <Route path="/dashboard/cart" component={Cart} />
-            <Route path="/dashboard/wishlist" component={Wishlist} />
-            <Route path="/dashboard" exact component={Dashboard}  />
             <Route path="/" component={Conversation} />
-            <Route path="/" exact component={MainContent} />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/products/search" component={Filtered} />
-            <Route path="/products/item/:id" component={ProductDetails} />
-            <Route path="/deals" component={Deals} />
-            <Route path="/newest" component={Newest} />
-            <Route path="/reviews" component={Reviews} />
+            <Route path="/dashboard" component={UserNavbar} />
+            <ProtectedRoute path="/admin" component={Admin} />
+            <Switch>
+              <ProtectedRoute path="/admin/products" component={ShowProducts} />
+              <ProtectedRoute path="/admin/messenger" component={Messenger} />
+              <ProtectedRoute path="/admin/product/add" component={NewProduct} />
+              <ProtectedRoute path="/admin/product/edit/:id" component={EditProduct} />
+              <ProtectedRoute path="/admin/users" exact component={ShowUsers} />
+              <ProtectedRoute path="/admin/users/edit/:id" component={EditUser} />
+              <ProtectedRoute path="/admin/users/cart/edit/:id" component={UserCart} />
+              <Route path="/dashboard" exact component={Dashboard}  />
+              <Route path="/dashboard/checkout" component={Checkout}/>
+              <Route path="/dashboard/history" component={BoughtItems} />
+              <Route path="/dashboard/cart" component={Cart} />
+              <Route path="/dashboard/wishlist" component={Wishlist} />
+              <Route path="/" exact component={MainContent} />
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+              <Route path="/products/search" component={Filtered} />
+              <Route path="/products/item/:id" component={ProductDetails} />
+              <Route path="/deals" component={Deals} />
+              <Route path="/newest" component={Newest} />
+              <Route path="/reviews" component={Reviews} />
+              <Route component={NotFound} />
+            </Switch>
             <Footer />
           </>
         </Router>
