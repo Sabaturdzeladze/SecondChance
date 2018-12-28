@@ -95,7 +95,7 @@ class FilteredItem extends Component {
                         )
                       }
                     >
-                      <i className="fa fa-shopping-bag" />
+                      <i className="fas fa-heart"></i>
                     </button>
                   </li>
                   <li>

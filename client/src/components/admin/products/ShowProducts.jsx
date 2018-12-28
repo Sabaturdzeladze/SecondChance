@@ -42,13 +42,12 @@ export default class ShowProducts extends Component {
     axios
       .delete(`/api/products/${prod_id}`)
       .then(res => {
-        let products = value.newest.filter(
-          prod => {
-            console.log(prod.id !== res.data.id)
-            return prod.id !== res.data.id
-          }
-        );
-        value.onStateChange({newest: products})
+        let products = value.newest.filter(prod => {
+          // console.log(prod.id !== res.data.id)
+          return prod.id !== res.data.id;
+        });
+        value.onStateChange({ newest: products });
+        this.setState({ products });
       })
       .catch(err => console.log(err));
   };
@@ -62,9 +61,8 @@ export default class ShowProducts extends Component {
             <main>
               <div className="checkout">
                 <label style={{ width: "100%" }} htmlFor="filter">
-                  
-                <input
-                    style={{ width: "100%"}}
+                  <input
+                    style={{ width: "100%" }}
                     onChange={e => this.onChangeHandler(e, value.newest)}
                     type="text"
                     name="filter"

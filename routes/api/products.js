@@ -27,12 +27,12 @@ const Product = require("../../modules/products");
 // adding new products
 // PATH @/api/admin/products/addnew
 router.post("/addnew", upload, (req, res) => {
-  
-  let products = JSON.parse( // Saving products database
+  let products = JSON.parse(
+    // Saving products database
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
   );
 
-  const product = new Product(req.body, req.file, uuidv4());   //Creating new Product
+  const product = new Product(req.body, req.file, uuidv4()); //Creating new Product
 
   // Adding new product to products array
   products.unshift(product);
@@ -101,11 +101,12 @@ router.delete("/:id", (req, res) => {
   // taking the id provided in url  (ex: /api/products/aojsnecpjn102enq2389hqnd)
   let id = req.params.id;
 
-  let products = JSON.parse(  // Saving products database
+  let products = JSON.parse(
+    // Saving products database
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
   );
-  
-  const product = products.find(product => product.id === id);  // Finding product id in products database
+
+  const product = products.find(product => product.id === id); // Finding product id in products database
   if (!product) {
     return res.status(404).json({ msg: "Product not found" });
   }
@@ -119,6 +120,23 @@ router.delete("/:id", (req, res) => {
   fs.writeFileSync(
     path.join(__dirname, "../../db") + "/products.json",
     products
+  );
+
+  let users = JSON.parse(
+    // Saving products database
+    fs.readFileSync(path.join(__dirname, "../../db") + "/users.json")
+  );
+
+  users.forEach(person => {
+    if (!person.isAdmin) {
+      person.cart = person.cart.filter(prod => product.id !== prod.id);
+      person.wishlist = person.wishlist.filter(prod => product.id !== prod.id);
+    }
+  });
+
+  fs.writeFileSync(
+    path.join(__dirname, "../../db") + "/users.json",
+    JSON.stringify(users)
   );
 
   // destructing the product to get the needed data to return as a json object
@@ -215,13 +233,12 @@ router.put("/:id", upload, (req, res) => {
 // Searching products by parameters
 // PATH @/api/admin/products/search/all
 router.get("/search/all", (req, res) => {
-  
-  const products = JSON.parse(    // Saving products database
+  const products = JSON.parse(
+    // Saving products database
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
   );
 
-  let foundProducts = products;   // ???
-
+  let foundProducts = products; // ???
 
   // check if query is in url
   if (req.query.gender) {

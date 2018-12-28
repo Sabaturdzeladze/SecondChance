@@ -12,7 +12,7 @@ export const Newest = () => (
           <h2 style={{textAlign: 'center', paddingTop: '20px'}}>Newest Products</h2>
           <div className="row productsDisplay">
             {newest.slice(0, 12).map((item, index) => (
-              <FilteredItem {...item} key={index} />
+              <FilteredItem {...item} key={index}/>
             ))}
           </div>
         </>

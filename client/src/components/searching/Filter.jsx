@@ -3,35 +3,100 @@ import React from "react";
 export default class Filter extends React.Component {
   state = {
     size: false,
-    shoeSize: false
+    shoeSize: false,
+    url: this.props.location.search
   };
 
   onColorChange = e => {
-    let array = this.props.array.filter(
-      prod => e.target.value.toLowerCase() === prod.color.toLowerCase()
-    );
-    this.props.stateChange({ array });
+    let url = this.props.location.search;
+    if (!url.includes("color")) {
+      this.setState(() => ({ url }));
+      url += `&color=${e.target.value.toLowerCase()}`;
+      window.location = url;
+    } else {
+      url = url.split("&");
+      let url2 = "";
+      for (let item of url) {
+        if (item.includes("color")) {
+          item = item.split("=");
+          let replace = `${e.target.value.toLowerCase()}`;
+          item.splice(1, 1, replace);
+          url2 += item.join("=");
+          window.location = url2;
+          break;
+        }
+        url2 += `${item}&`;
+      }
+    }
   };
 
   onSizeChange = e => {
-    let array = this.props.array.filter(
-      prod => e.target.value.toLowerCase() === prod.size.toLowerCase()
-    );
-    this.props.stateChange({ array });
+    let url = this.props.location.search;
+    if (!url.includes("size")) {
+      this.setState(() => ({ url }));
+      url += `&size=${e.target.value.toLowerCase()}`;
+      window.location = url;
+    } else {
+      url = url.split("&");
+      let url2 = "";
+      for (let item of url) {
+        if (item.includes("size")) {
+          item = item.split("=");
+          let replace = `${e.target.value.toLowerCase()}`;
+          item.splice(1, 1, replace);
+          url2 += item.join("=");
+          window.location = url2;
+          break;
+        }
+        url2 += `${item}&`;
+      }
+    }
   };
 
   onShoeSizeChange = e => {
-    let array = this.props.array.filter(
-      prod => parseInt(e.target.value) === parseInt(prod.size)
-    );
-    this.props.stateChange({ array });
+    let url = this.props.location.search;
+    if (!url.includes("size")) {
+      this.setState(() => ({ url }));
+      url += `&size=${e.target.value.toLowerCase()}`;
+      window.location = url;
+    } else {
+      url = url.split("&");
+      let url2 = "";
+      for (let item of url) {
+        if (item.includes("size")) {
+          item = item.split("=");
+          let replace = `${e.target.value.toLowerCase()}`;
+          item.splice(1, 1, replace);
+          url2 += item.join("=");
+          window.location = url2;
+          break;
+        }
+        url2 += `${item}&`;
+      }
+    }
   };
 
   onConditionChange = e => {
-    let array = this.props.array.filter(
-      prod => e.target.value.toLowerCase() === prod.condition.toLowerCase()
-    );
-    this.props.stateChange({ array });
+    let url = this.props.location.search;
+    if (!url.includes("condition")) {
+      this.setState(() => ({ url }));
+      url += `&condition=${e.target.value.toLowerCase()}`;
+      window.location = url;
+    } else {
+      url = url.split("&");
+      let url2 = "";
+      for (let item of url) {
+        if (item.includes("condition")) {
+          item = item.split("=");
+          let replace = `${e.target.value.toLowerCase()}`;
+          item.splice(1, 1, replace);
+          url2 += item.join("=");
+          window.location = url2;
+          break;
+        }
+        url2 += `${item}&`;
+      }
+    }
   };
 
   render() {

@@ -101,6 +101,11 @@
 }
 
 @media only screen and (max-width: 40rem) {
+  .main-layer__container {
+    width: 90%;
+    margin: auto;
+  }
+
   .admin-main__wrapper {
     flex-wrap: wrap;
     min-height: 400px;
@@ -210,7 +215,7 @@
       -ms-transition: all 0.3s;
       -o-transition: all 0.3s;
       transition: all 0.3s;
-  
+      z-index: 10;
       max-height: 0;
       display: block;
       overflow: hidden;
@@ -366,5 +371,6 @@
   .select-group option {
     width: 80%;
   }
+
 }
 

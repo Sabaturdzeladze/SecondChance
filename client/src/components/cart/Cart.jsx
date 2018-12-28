@@ -1,3 +1,4 @@
+// importing files and libraries
 import React, { Component } from "react";
 import { Redirect, Link } from "react-router-dom";
 import { Consumer } from "../../context-api/Context";
@@ -5,20 +6,23 @@ import { CartItem } from "./CartItem";
 import axios from "axios";
 import Spinner from "../common/Spinner";
 
+
 export default class Cart extends Component {
+  // total/grandtotal for balance coverage, loading for spinner animation
   state = {
     total: 0,
     grandTotal: 0,
     loading: false
   };
 
+  // axios delete method 
   onDelete = (e, user_id, product_id, value) => {
     this.setState(() => ({ loading: true }));
     axios
-      .delete(`/api/users/${user_id}/cart/${product_id}`)
+      .delete(`/api/users/${user_id}/cart/${product_id}`) // delete method on provided url 
       .then(res => {
-        let user = value.user;
-        user.cart = res.data;
+        let user = value.user; // taking user from context-api
+        user.cart = res.data; 
         localStorage.setItem("user", JSON.stringify(user));
         value.onStateChange({ user });
         this.setState(() => ({ loading: false }));
