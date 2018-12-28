@@ -180,7 +180,8 @@ export default class EditUser extends Component {
                                       style={{
                                         width: "25px",
                                         marginLeft: "10px",
-                                        borderRadius: "15px"
+                                        borderRadius: "15px",
+                                        height: "auto"
                                       }}
                                     />
                                   )}

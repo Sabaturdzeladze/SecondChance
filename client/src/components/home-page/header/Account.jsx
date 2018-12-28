@@ -2,14 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import LoginModal from "../../auth/LoginModal";
 
-/* 
-  state = {
-    openLogin: false
-  }
-
-  onLoginClose = () => this.setState((prev) => ({ openLogin: !prev.openLogin }));
-*/
-
 export class Account extends React.Component {
   state = {
     openLogin: false,
@@ -27,10 +19,7 @@ export class Account extends React.Component {
     return !this.props.value.isLogged ? (
       <>
         {this.state.width > 500 ? (
-          <button
-            style={{ background: "none", border: "none", cursor: "pointer" }}
-            onClick={this.onClickHandler}
-          >
+          <button className="login-modal" onClick={this.onClickHandler}>
             Login
           </button>
         ) : (
