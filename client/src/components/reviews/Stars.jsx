@@ -7,7 +7,6 @@ export default ({ stars }) => {
         <i
           key={index}
           className="fas fa-star"
-          style={{ fontSize: "30px", color: "#d6880e" }}
         />
       ))}
     </>

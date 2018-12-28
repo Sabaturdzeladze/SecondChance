@@ -30,11 +30,16 @@ export default class Reviews extends Component {
           <div className="row">
             <div className="posts" style={{ width: "80%", margin: "0 auto" }}>
               <h2 style={{ textAlign: "center", paddingTop: "20px" }}>
-                Average Rating - <strong>{this.state.average}</strong>
+                Average Rating - <strong>
+                {this.state.average > 4.5 && <span><i className="fas fa-star"/><i className="fas fa-star"/><i className="fas fa-star"/><i className="fas fa-star"/><i className="fas fa-star"/></span>}
+                {this.state.average >= 3.5 && this.state.average < 4.5 && <span><i className="fas fa-star"/><i className="fas fa-star"/><i className="fas fa-star"/><i className="fas fa-star"/></span>}
+                {this.state.average >= 2.5 && this.state.average < 3.5 && <span><i className="fas fa-star"/><i className="fas fa-star"/><i className="fas fa-star"/></span>}
+                {this.state.average >= 1.5 && this.state.average < 2.5 && <span><i className="fas fa-star"/><i className="fas fa-star"/></span>}
+                {this.state.average >= 0.5 && this.state.average < 1.5 && <span><i className="fas fa-star"/></span>}
+                </strong>
               </h2>
               <div
                 className="card card-body mb-3"
-                style={{ padding: "0 20px", marginTop: "10px" }}
               >
                 {this.state.reviews.map(review => (
                   <UserReview

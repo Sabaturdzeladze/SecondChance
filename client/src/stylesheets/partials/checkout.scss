@@ -55,6 +55,10 @@
     display: flex;
     padding: 4px 0;
     border-bottom: 1px solid gray;
+
+    &:hover {
+      background: rgba(235, 235, 235, 0.726)
+    }
   }
   
   .checkout--products-container_img {
