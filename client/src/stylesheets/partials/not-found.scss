@@ -1,0 +1,29 @@
+.not-found {
+  margin-bottom: 30px;
+
+  * {
+    display: block;
+  }
+
+  h2 {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  img {
+    width: auto;
+    margin: 0 auto;
+  }
+
+  .not-found__wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .not-found__btn {
+    background: lightblue;
+    padding: 5px 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+  }
+}
