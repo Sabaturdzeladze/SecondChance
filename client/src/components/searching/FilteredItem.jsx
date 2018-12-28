@@ -69,6 +69,7 @@ class FilteredItem extends Component {
             <div className="product-grid">
               <div className="product-image">
                 <div className={this.props.priceSale ? "sale-tag" : "hide"}>SALE</div>
+                <div className={this.props.newest ? "new-tag" : "hide"}>NEW</div>
                 <Link to={`/products/item/${this.props.id}`}>
                   <img
                     alt="Product"

@@ -38,6 +38,18 @@ h3.h3 {
       font-size: 1.2em;
       padding: 15px 6.5px;
     }
+    
+    .new-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: white;
+      background: $orange;
+      border: 1px solid #da8f17;
+      border-radius: 50px;
+      font-size: 1.2em;
+      padding: 15px 8.2px;
+    }
   }
 
   .pic-1 {

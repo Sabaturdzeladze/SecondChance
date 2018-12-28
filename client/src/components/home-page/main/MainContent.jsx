@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Consumer } from "../../../context-api/Context";
 import { Slider } from "./Slider";
+import { SliderNewest } from "./SliderNewest"
 import { CategoryProducts } from "./CategoryProducts";
 
 export const MainContent = () => {
@@ -25,9 +26,9 @@ export const MainContent = () => {
                   paddingBottom: "20px"
                 }}
               >
-                Our Newest Products
+                Newest Products
               </h2>
-              <Slider products={value.newest.slice(0, 4)} />
+              <SliderNewest products={value.newest.slice(0, 4)} />
             </section>
             <CategoryProducts />
             <section className="row productsDisplay">
@@ -38,7 +39,7 @@ export const MainContent = () => {
                   paddingBottom: "20px"
                 }}
               >
-                Products on Sale
+                Sales & Deals
               </h2>
               <Slider products={value.saleItems.slice(0, 4)} />
             </section>
