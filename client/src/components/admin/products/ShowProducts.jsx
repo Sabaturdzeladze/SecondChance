@@ -39,17 +39,19 @@ export default class ShowProducts extends Component {
 
   onDelete = (prod_id, value) => {
     // console.log(value.newest);
-    axios
-      .delete(`/api/products/${prod_id}`)
-      .then(res => {
-        let products = value.newest.filter(prod => {
-          // console.log(prod.id !== res.data.id)
-          return prod.id !== res.data.id;
-        });
-        value.onStateChange({ newest: products });
-        this.setState({ products });
-      })
-      .catch(err => console.log(err));
+    if (window.confirm("Are you sure you want to delete this product?")) {
+      axios
+        .delete(`/api/products/${prod_id}`)
+        .then(res => {
+          let products = value.newest.filter(prod => {
+            // console.log(prod.id !== res.data.id)
+            return prod.id !== res.data.id;
+          });
+          value.onStateChange({ newest: products });
+          this.setState({ products });
+        })
+        .catch(err => console.log(err));
+    }
   };
 
   render() {
