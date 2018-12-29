@@ -48,7 +48,8 @@ class App extends Component {
       <Provider>
         <Router>
           <>
-            <Header />
+            {/* <Header /> */}
+            <Route path="/" component={Header} />
             <Route path="/" component={Conversation} />
             <Route path="/dashboard" component={UserNavbar} />
             <ProtectedRoute path="/admin" component={Admin} />

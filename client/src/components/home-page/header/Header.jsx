@@ -23,6 +23,7 @@ class Header extends Component {
             url += `category=${item}&`;
             categoryFound = true;
           } else if (i.subCategory && i.subCategory.toLowerCase().includes(item) && !subCategoryFound) {
+            console.log(item);
             url += `subCategory=${item}&`;
             subCategoryFound = true;
           }
@@ -34,7 +35,8 @@ class Header extends Component {
       }
       // if url did not change after iterations giving it notFound query, and getting 404 status from back end
       url = url === "/products/search?" ? "/products/search?notFound='notFound'" : url;
-      window.location = url;
+      this.props.history.push(url);
+      // window.location = url;
     }
   };
   render() {

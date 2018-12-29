@@ -243,8 +243,8 @@ router.get("/search/all", (req, res) => {
   // check if query is in url
   if (req.query.gender) {
     // filter array with query
-    foundProducts = foundProducts.filter(
-      product => product.gender === req.query.gender
+    foundProducts = foundProducts.filter(product =>
+      product.gender.toLowerCase().includes(req.query.gender)
     );
 
     if (foundProducts.lenght === 0) {
@@ -253,8 +253,8 @@ router.get("/search/all", (req, res) => {
   }
 
   if (req.query.brand) {
-    foundProducts = foundProducts.filter(
-      product => product.brand === req.query.brand
+    foundProducts = foundProducts.filter(product =>
+      product.brand.toLowerCase().includes(req.query.brand)
     );
 
     if (foundProducts.lenght === 0) {
@@ -263,18 +263,17 @@ router.get("/search/all", (req, res) => {
   }
 
   if (req.query.subCategory) {
-    foundProducts = foundProducts.filter(
-      product => product.subCategory === req.query.subCategory
+    foundProducts = foundProducts.filter(product =>
+      product.subCategory.toLowerCase().includes(req.query.subCategory)
     );
-
     if (foundProducts.lenght === 0) {
       return res.status(404).json({ msg: "Product not found" });
     }
   }
 
   if (req.query.category) {
-    foundProducts = foundProducts.filter(
-      product => product.category === req.query.category
+    foundProducts = foundProducts.filter(product =>
+      product.category.toLowerCase().includes(req.query.category)
     );
 
     if (foundProducts.lenght === 0) {
