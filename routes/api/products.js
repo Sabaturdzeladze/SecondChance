@@ -263,8 +263,8 @@ router.get("/search/all", (req, res) => {
   }
 
   if (req.query.subCategory) {
-    foundProducts = foundProducts.filter(product =>
-      product.subCategory.includes(req.query.subCategory)
+    foundProducts = foundProducts.filter(
+      product => product.subCategory === req.query.subCategory
     );
 
     if (foundProducts.lenght === 0) {
