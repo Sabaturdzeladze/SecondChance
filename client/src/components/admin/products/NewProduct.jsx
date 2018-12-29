@@ -135,16 +135,15 @@ export default class NewProduct extends Component {
                 <optgroup label="Clothing">
                   <option value="jeans">Jeans</option>
                   <option value="pants">Pants</option>
-                  <option value="joggers">Joggers</option>
+                  <option value="joggers-shorts">Joggers / Shorts</option>
                   <option value="shorts">Shorts</option>
-                  <option value="skirts/dress">Skirts / Dress</option>
+                  <option value="dresses-skirts">Skirts / Dress</option>
                   <option value="shirts">Shirts</option>
-                  <option value="t-shirts/tops">T-shirts / Tops</option>
+                  <option value="t-shirts">T-shirts</option>
                   <option value="polos">Polos</option>
-                  <option value="sweaters-hoodies">Sweaters & Hoodies</option>
-                  <option value="outerwear/blazers/coats">
-                    Outerwear / Blazers / Coats
-                  </option>
+                  <option value="sweaters">Sweaters</option>
+                  <option value="hoodies">Hoodies</option>
+                  <option value="outerwears">Outerwear</option>
                   <option value="winter-jacket">Winter Jackets</option>
                   <option value="winter-pants">Winter Pants</option>
                 </optgroup>
