@@ -243,8 +243,8 @@ router.get("/search/all", (req, res) => {
   // check if query is in url
   if (req.query.gender) {
     // filter array with query
-    foundProducts = foundProducts.filter(product =>
-      product.gender.toLowerCase().includes(req.query.gender)
+    foundProducts = foundProducts.filter(
+      product => product.gender === req.query.gender
     );
 
     if (foundProducts.lenght === 0) {
