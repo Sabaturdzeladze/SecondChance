@@ -20,6 +20,7 @@ export default class Register extends Component {
 
   onSubmitHandler = e => {
     e.preventDefault();
+    this.setState({errors: {}})
     const {
       email,
       password,
