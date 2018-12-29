@@ -53,6 +53,7 @@ class Filtered extends Component {
     return (
       <>
         <Filter
+          history={this.props.history}
           location={this.props.location}
           stateChange={this.stateChange}
           array={this.state.array}

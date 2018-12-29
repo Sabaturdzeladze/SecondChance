@@ -12,7 +12,7 @@ export default class Filter extends React.Component {
     if (!url.includes("color")) {
       this.setState(() => ({ url }));
       url += `&color=${e.target.value.toLowerCase()}`;
-      window.location = url;
+      this.props.history.push(`/products/search${url}`);
     } else {
       url = url.split("&");
       let url2 = "";
@@ -22,7 +22,8 @@ export default class Filter extends React.Component {
           let replace = `${e.target.value.toLowerCase()}`;
           item.splice(1, 1, replace);
           url2 += item.join("=");
-          window.location = url2;
+          // window.location = url2;
+          this.props.history.push(`/products/search${url2}`);
           break;
         }
         url2 += `${item}&`;
@@ -35,7 +36,7 @@ export default class Filter extends React.Component {
     if (!url.includes("size")) {
       this.setState(() => ({ url }));
       url += `&size=${e.target.value.toLowerCase()}`;
-      window.location = url;
+      this.props.history.push(`/products/search${url}`);
     } else {
       url = url.split("&");
       let url2 = "";
@@ -45,7 +46,7 @@ export default class Filter extends React.Component {
           let replace = `${e.target.value.toLowerCase()}`;
           item.splice(1, 1, replace);
           url2 += item.join("=");
-          window.location = url2;
+          this.props.history.push(`/products/search${url2}`);
           break;
         }
         url2 += `${item}&`;
@@ -58,7 +59,7 @@ export default class Filter extends React.Component {
     if (!url.includes("size")) {
       this.setState(() => ({ url }));
       url += `&size=${e.target.value.toLowerCase()}`;
-      window.location = url;
+      this.props.history.push(`/products/search${url}`);
     } else {
       url = url.split("&");
       let url2 = "";
@@ -68,7 +69,7 @@ export default class Filter extends React.Component {
           let replace = `${e.target.value.toLowerCase()}`;
           item.splice(1, 1, replace);
           url2 += item.join("=");
-          window.location = url2;
+          this.props.history.push(`/products/search${url2}`);
           break;
         }
         url2 += `${item}&`;
@@ -81,7 +82,7 @@ export default class Filter extends React.Component {
     if (!url.includes("condition")) {
       this.setState(() => ({ url }));
       url += `&condition=${e.target.value.toLowerCase()}`;
-      window.location = url;
+      this.props.history.push(`/products/search${url}`);
     } else {
       url = url.split("&");
       let url2 = "";
@@ -91,7 +92,7 @@ export default class Filter extends React.Component {
           let replace = `${e.target.value.toLowerCase()}`;
           item.splice(1, 1, replace);
           url2 += item.join("=");
-          window.location = url2;
+          this.props.history.push(`/products/search${url2}`);
           break;
         }
         url2 += `${item}&`;
