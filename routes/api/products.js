@@ -191,7 +191,7 @@ router.put("/:id", upload, (req, res) => {
   if (req.body.size) product.size = req.body.size;
   if (req.body.color) product.color = req.body.color;
   if (req.body.price) product.price = req.body.price;
-  if (req.body.price) product.salePrice = req.body.salePrice;
+  if (req.body.priceSale) product.priceSale = req.body.priceSale;
   if (req.body.desc) product.desc = req.body.desc;
   if (req.body.condition) product.condition = req.body.condition;
 
