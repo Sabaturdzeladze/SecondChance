@@ -13,7 +13,7 @@ export const MainContent = () => {
           <main className="main">
             <section className="main-layer">
               <div className="main-layer__container">
-                <h1>Second Chance for Products</h1>
+                <h1>Second Chance for Clothes</h1>
                 <Link to="/products/search?gender=women">Shop Women's</Link>
                 <Link to="/products/search?gender=men">Shop Men's</Link>
               </div>

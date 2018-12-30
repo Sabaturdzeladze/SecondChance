@@ -4,14 +4,14 @@ main {
   
 .main-layer {
   background: linear-gradient(rgba(0, 0, 0, 0.2), transparent),
-    url("https://www.whatsuplife.in/wp-content/uploads/2017/07/wardrobe-essentials.jpg")
+    url("https://popstore.files.wordpress.com/2014/02/industrie-uk-store-covent-garden-8.jpg?fbclid=IwAR2jPzMfQCHaVv8RYaTJbXAb08HUV7nkWklDFbEmetNCOXWbKCkTuzgV2TQ")
       100% / cover no-repeat border-box;
   background-position: 100%;
   height: 500px;
 }
 
 .main-layer__container {
-  width: 25%;
+  width: 33%;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -27,9 +27,9 @@ main {
     margin-top: 20px;
     background-color: #000000;
     color: #ffffff;
-    padding: 5px 15px;
+    padding: 5px 10px;
     border-radius: 4px;
-
+    width: 130px;
     &:hover {
       color: #999999;
     }
