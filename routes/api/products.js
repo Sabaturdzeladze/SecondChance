@@ -20,7 +20,7 @@ const storage = multer.diskStorage({
   }
 });
 
-const upload = multer({ storage }).single("files");
+const upload = multer({ storage }).array("files");
 
 const Product = require("../../modules/products");
 
@@ -32,7 +32,7 @@ router.post("/addnew", upload, (req, res) => {
     fs.readFileSync(path.join(__dirname, "../../db") + "/products.json")
   );
 
-  const product = new Product(req.body, req.file, uuidv4()); //Creating new Product
+  const product = new Product(req.body, req.files, uuidv4()); //Creating new Product
 
   // Adding new product to products array
   products.unshift(product);

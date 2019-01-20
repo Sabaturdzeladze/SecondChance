@@ -23,7 +23,7 @@ export default class NewProduct extends Component {
   onChangeHandler = e => {
     switch (e.target.name) {
       case "files":
-        this.setState({ files: e.target.files[0] });
+        this.setState({ files: e.target.files});
         console.log(this.state.files);
         break;
       default:
@@ -62,7 +62,10 @@ export default class NewProduct extends Component {
     formData.append("condition", condition);
     formData.append("url1", url1);
     formData.append("url2", url2);
-    formData.append("files", files);
+
+    for (const file of files) {
+      formData.append('files', file)
+    }
 
     axios
       .post("/api/products/addnew", formData)
@@ -282,6 +285,7 @@ export default class NewProduct extends Component {
 
             <div className="custom-file col-md-12">
               <input
+                multiple
                 type="file"
                 className="custom-file-input"
                 id="customFile"
