@@ -45,7 +45,7 @@ router.post("/register", (req, res) => {
     users.filter(user => user.email === email).length > 0 ||
     users.filter(user => user.username === username).length > 0
   ) {
-    errors.email = "User with this email or Username already exists";
+    errors.email = "User with this email already exists";
     return res.status(400).json(errors);
   } else {
     // didn't find the user with provided email

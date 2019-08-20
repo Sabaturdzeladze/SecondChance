@@ -19,3 +19,7 @@
 @import "./partials/media-queries.scss";
 @import "./partials/loginModal.scss";
 @import "./partials/not-found.scss";
+
+.invalid {
+    color: red;
+}
